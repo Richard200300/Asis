@@ -59,6 +59,10 @@ app.use("/api/auth", authenticationRoutes);
 const productRoutes = require("./routes/products");
 app.use("/api/products", productRoutes);
 
+// CART ROUTES
+const cartRoutes = require("./routes/carts");
+app.use("/api/carts", cartRoutes);
+
 // ######################################################################################################
 // ######################################################################################################
 // Handler Middleware
