@@ -31,7 +31,15 @@ app.use(cors(corsOptions));
 app.use(cookieParser(process.env.COOKIE_SECRET));
 
 // HANDLE JSON REQUESTS MIDDLEWARE
-app.use(express.json());
+// app.use(express.raw({ type: "*/*" }));
+app.use((req, res, next) => {
+    if (req.originalUrl === "/webhook/stripe") {
+        express.raw({ type: "application/json" })(req, res, next);
+    } else {
+        express.json()(req, res, next);
+    }
+});
+// app.use(express.json());
 
 // MORGAN SETUP
 app.use(morgan("dev"));
@@ -69,6 +77,10 @@ app.use("/api/shippings", shippingRoutes);
 // ORDER ROUTES
 const orderRoutes = require("./routes/orders");
 app.use("/api/orders", orderRoutes);
+
+// WEBHOOK ROUTES
+const webhookRoutes = require("./routes/webhooks");
+app.use("/webhook", webhookRoutes);
 
 // ######################################################################################################
 // ######################################################################################################
