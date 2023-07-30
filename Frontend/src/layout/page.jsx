@@ -3,8 +3,7 @@ import { Outlet } from "react-router-dom";
 
 const Page = () => {
   return (
-    <div className=" h-full p-0 ">
-      <h1>Layout</h1>
+    <div className='px-7 bg-[#FFFEF5]'>
       <div>
         <Outlet />
       </div>

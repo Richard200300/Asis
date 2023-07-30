@@ -1,20 +1,20 @@
 import React from "react";
-import light from "../assets/light.svg";
-import globe from "../assets/globe.svg";
-import down from "../assets/down.svg";
-import flag from "../assets/flag.svg";
-
+// importing icons
+import light from "../assets/icons/light.svg";
+import globe from "../assets/icons/globe.svg";
+import down from "../assets/icons/down.svg";
+import flag from "../assets/icons/flag.svg";
 const Header = () => {
   return (
     <div className=" pt-[10px] uppercase">
-      <section className="flex py-[10px] justify-end ">
+      <section className="flex justify-end py-[10px] ">
         <div className="flex gap-6">
-          <div className="border-[1.5px] border-[#0B0B0B] py-[5px] px-[8px] flex items-center gap-3 font-[500] cursor-pointer text-[#0B0B0B] w-[139px] ">
+          <div className="flex w-[139px] cursor-pointer items-center gap-3 border-[1.5px] border-[#0B0B0B] px-[8px] py-[5px] font-[500] text-[#0B0B0B] ">
             <img src={globe} alt="globe" />
             <p className="text-[12px]">language</p>
             <img src={down} alt="down" />
           </div>
-          <div className="border-[1.5px] border-[#0B0B0B] px-[8px] py-[12px]  flex justify-center item-center w-[99px] h-[32px] font-[500] cursor-pointer text-[#0B0B0B]">
+          <div className="item-center flex h-[32px] w-[99px]  cursor-pointer justify-center border-[1.5px] border-[#0B0B0B] px-[8px] py-[12px] font-[500] text-[#0B0B0B]">
             <div className="flex items-center gap-2">
               <img src={flag} alt="globe" />
               <p className="text-[12px]">ngn</p>
@@ -23,31 +23,39 @@ const Header = () => {
           </div>
         </div>
       </section>
-      <div className="border-y-[1.5px] border-[#0B0B0B]  flex items-center justify-between ">
+      <div className="flex items-center  justify-between border-y-[1.5px] border-[#0B0B0B] ">
         <div className="flex">
-          <div className="nav-box flex justify-center w-[174px]  max-lg:hidden">
+          <div className="flex w-[174px] cursor-pointer justify-center px-[12px] py-[8px] text-[14px]/[21px] font-[600] text-[#0B0B0B] text-[#]  max-lg:hidden">
             <p className="">shop</p>
           </div>
-          <div className="nav-box border-[#0B0B0B] border-x-[1.5px] flex justify-center w-[174px]">
-            <div className="flex gap-2 items-center">
+          <div
+            className="flex w-[174px] cursor-pointer
+           justify-center border-x-[1.5px] border-[#0B0B0B] 
+           px-[12px] py-[8px] text-[14px]/[21px] font-[600] 
+           text-[#0B0B0B] text-[#]"
+          >
+            <div className="flex items-center gap-2">
               <p>explore</p>
               <img src={down} alt="down" />
             </div>
           </div>
         </div>
-        <img src={light} alt="light" className="ml-5"/>
+        <img src={light} alt="light" className="ml-5" />
         <article className="flex">
-          <div className="nav-box border-[#0B0B0B] border-x-[1.5px] w-[174px] flex justify-center max-lg:hidden ">
+          <div
+            className="flex w-[174px] cursor-pointer justify-center border-x-[1.5px]
+           border-[#0B0B0B] px-[12px] py-[8px] text-[14px]/[21px] font-[600] text-[#0B0B0B] text-[#] max-lg:hidden "
+          >
             <p className="">
               wishlist <span className="">(0)</span>
             </p>
           </div>
-          <div className="nav-box flex border-[#0B0B0B] border-r-[1.5px] justify-center min-w-[172px]  max-lg:hidden">
+          <div className="flex min-w-[172px] cursor-pointer justify-center border-r-[1.5px] border-[#0B0B0B] px-[12px] py-[8px] text-[14px]/[21px] font-[600] text-[#0B0B0B] text-[#]  max-lg:hidden">
             <p className="">
               cart <span className="">(0)</span>
             </p>
           </div>
-          <div className="nav-box min-w-[108px] flex justify-center max-lg:border-l-[1.5px] border-[#0B0B0B] ">
+          <div className="flex min-w-[108px] cursor-pointer justify-center border-[#0B0B0B] px-[12px] py-[8px] text-[14px]/[21px] font-[600] text-[#0B0B0B] text-[#] max-lg:border-l-[1.5px] ">
             <p className="">sign in</p>
           </div>
         </article>
