@@ -38,7 +38,7 @@ const customerAuthorization = async (req, res, next) => {
     // get token from cookie and throw error if token is not present
     const { customerToken } = req.signedCookies;
     if (!customerToken) {
-        throw new BadRequestError("Not authorized to access this route");
+        return next();
     }
 
     try {

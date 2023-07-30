@@ -36,7 +36,6 @@ app.use(express.json());
 // MORGAN SETUP
 app.use(morgan("dev"));
 
-
 // ######################################################################################################
 // ######################################################################################################
 // Routes
@@ -62,6 +61,14 @@ app.use("/api/products", productRoutes);
 // CART ROUTES
 const cartRoutes = require("./routes/carts");
 app.use("/api/carts", cartRoutes);
+
+// SHIPPING ROUTES
+const shippingRoutes = require("./routes/shippings");
+app.use("/api/shippings", shippingRoutes);
+
+// ORDER ROUTES
+const orderRoutes = require("./routes/orders");
+app.use("/api/orders", orderRoutes);
 
 // ######################################################################################################
 // ######################################################################################################

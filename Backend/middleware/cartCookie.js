@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 const Cart = require("../models/carts.js");
 
 const getCartFromCookie = async (req, res, next) => {
-    const { cart } = req.cookies;
+    const { cart } = req.signedCookies;
     if (!cart) {
         return next();
     }
