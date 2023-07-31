@@ -181,7 +181,7 @@ const Collection = () => {
             <div className="flex items-center gap-2">
               <p className="font-[500] text-[16px]/[10.5px] text-[#000000]">1</p>
               <div className="w-[78px] h-[2px] bg-[#B0B0B0] rounded-sm"></div>
-              <p className="font-[500] text-[16px]/[10.5px] text-[#000000]">3</p>
+              <p className="font-[500] text-[16px]/[10.5px] text-[#000000]">4</p>
             </div>
             <img src={herorightbutton} alt="herorightbutton" className="cursor-pointer"/>
           </div>

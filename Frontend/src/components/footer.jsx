@@ -8,6 +8,7 @@ import Reddit from "../assets/icons/Reddit.svg";
 import Twitter from "../assets/icons/Twitter.svg";
 
 
+
 const Footer = () => {
   return (
     <div className="grid grid-cols-4 max-lg:grid-cols-2 border-[#0B0B0B] border-t-[1.5px] mt-10">
@@ -24,7 +25,7 @@ const Footer = () => {
         <input
           type="email"
           placeholder="ENTER YOUR EMAIL ADDRESS"
-          className="w-full absolute bottom-[10px] outline-0 font-[600] text-[12px]/[16px] text-[#3C3C3C] px-5"
+          className="w-full absolute bottom-[10px] outline-0 font-[600] text-[12px]/[16px] text-[#3C3C3C] px-5 bg-[url('./assets/images/bg_img.png')]"
         />
       </div>
       <div className="border-b-[1.5px] border-l-[1.5px] border-[#0B0B0B] h-[96px] uppercase relative pl-5">
@@ -83,8 +84,7 @@ const Footer = () => {
         <ul className="list-none font-[600] text-[16px] text-[#0B0B0B] absolute bottom-[14px] ml-5">
           <li className="my-2 cursor-pointer">shipping & payment</li>
           <li className="my-2 cursor-pointer">refund & return policy</li>
-          <li className="my-2 cursor-pointer">care instructions</li>
-          <li className="cursor-pointer">faq</li>
+          <li className="cursor-pointer">care instructions</li>
         </ul>
       </div>
       <div className="my-8 ml-5 uppercase font-[600] text-[12px]/[12px] text-[#0B0B0B]">coyright 2023, aisi right reserved </div>

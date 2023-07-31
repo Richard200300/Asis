@@ -4,7 +4,8 @@ import newarrivalrightbutton from "../../assets/icons/herorightbutton.svg";
 import new1 from "../../assets/images/new1.png";
 import new2 from "../../assets/images/new2.png";
 import new3 from "../../assets/images/new3.png";
-import newarrivalicon from "../../assets/icons/newarrivalicon.svg";
+import up_arrow from "../../assets/icons/up_arrow.svg";
+
 const New_Arrival = () => {
   return (
     <section className="flex items-start justify-between mt-7 border-[#000000] border-t-[1.5px] pt-16 relative">
@@ -33,7 +34,7 @@ const New_Arrival = () => {
         </div>
         <div className="w-[104px] h-[32px] border-[#000000] border-[1.5px] uppercase absolute bottom-0 left-[80px] flex justify-center items-center gap-2">
           <p className="font-[500] text-[12px]/[16px]">view all</p>
-          <img src={newarrivalicon} alt="newarrivalicon" />
+          <img src={up_arrow} alt="up_arrow" />
         </div>
       </article>
       <article className="flex gap-4 border-b-[1px] border-[#B0B0B0] pb-5 ml-[auto]">
