@@ -6,7 +6,10 @@ import up_arrow from "../../assets/icons/up_arrow.svg";
 
 const Shop = () => {
   return (
-    <section className=" relative mt-[100px] flex items-start  justify-between border-t-[1.5px] border-[#0B0B0B] pt-3">
+    <section
+      className=" relative mt-[100px] flex items-start 
+     justify-between border-t-[1.5px] border-[#0B0B0B] pt-3"
+    >
       <article className="basis-[20%]">
         <div className="mt-10   w-[200px] text-[40px]/[40px] font-[500] uppercase">
           <p className="">

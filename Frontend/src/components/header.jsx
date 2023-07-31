@@ -1,13 +1,13 @@
 import React from "react";
 // importing icons
-import light from "../assets/icons/light.svg";
+import header_logo from "../assets/icons/header_logo.svg";
 import globe from "../assets/icons/globe.svg";
 import down from "../assets/icons/down.svg";
 import flag from "../assets/icons/flag.svg";
 const Header = () => {
   return (
     <div className=" pt-[10px] uppercase">
-      <section className="flex justify-end py-[10px] ">
+      <section className=" flex justify-end py-[10px]">
         <div className="flex gap-6">
           <div className="flex w-[139px] cursor-pointer items-center gap-3 border-[1.5px] border-[#0B0B0B] px-[8px] py-[5px] font-[500] text-[#0B0B0B] ">
             <img src={globe} alt="globe" />
@@ -40,7 +40,7 @@ const Header = () => {
             </div>
           </div>
         </div>
-        <img src={light} alt="light" className="ml-5" />
+        <img src={header_logo} alt="header_logo" className="ml-5" />
         <article className="flex">
           <div
             className="flex w-[174px] cursor-pointer justify-center border-x-[1.5px]

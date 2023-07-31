@@ -1,7 +1,7 @@
 import React from "react";
-import footerlogo from "../assets/icons/footerlogo.svg"
-import footerimg from "../assets/images/footerimg.png";
-import footerarrow from "../assets/icons/footerarrow.svg";
+import footer_logo from "../assets/icons/footer_logo.svg"
+import footer_img from "../assets/images/footer_img.png";
+import footer_icon from "../assets/icons/footer_icon.svg";
 import facebook from "../assets/icons/facebook.svg";
 import Instagram from "../assets/icons/Instagram.svg";
 import Reddit from "../assets/icons/Reddit.svg";
@@ -33,22 +33,22 @@ const Footer = () => {
           <p className="font-[600] text-[12px]/[16px] text-[#0B0B0B] ">
             agree & subscribe
           </p>
-          <img src={footerarrow} alt="footerarrow" />
+          <img src={footer_icon} alt="footer_icon" />
         </div>
       </div>
       {/* down footer seciton */}
       <div className="border-r-[1.5px] border-[#0B0B0B]  h-[392px] pt-7 pr-4 pl-3 border-b-[1.5px] ">
         <div className="w-[305px] h-[348px] max-lg:w-[100%] max-lg:h-[97%] ">
         <img
-          src={footerimg}
-          alt="footerimg"
+          src={footer_img}
+          alt="footer_img"
           className="w-[100%] h-[100%]  object-cover object-top  "
         />
         </div>
     
       </div>
       <div className="h-[392px] relative border-b-[1.5px] border-[#0B0B0B]">
-    <img src={footerlogo} alt="footerlogo" className="ml-5 absolute top-[30px] cursor-pointer" />
+    <img src={footer_logo} alt="footer_logo" className="ml-5 absolute top-[30px] cursor-pointer" />
           <p className="w-[256px] ml-5 absolute top-[30%] font-[500] text-[12px]/[15.5px] text-[#0B0B0B] uppercase max-lg:w-[100%]">
             AISI offers a carefully curated collection of stylish and versatile
             clothing pieces that are designed to elevate everyday looks. From

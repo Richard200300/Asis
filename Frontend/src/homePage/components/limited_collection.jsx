@@ -5,34 +5,34 @@ import down_arrow from "../../assets/icons/down_arrow.svg";
 
 const Limited_collection = () => {
   return (
-    <section className="flex items-start justify-between relative border-[#0B0B0B] border-t-[1.5px] pt-3 mt-[100px] ">
-      <article className="basis-[52.5%]  uppercase h-[100%] mt-6">
+    <section className="relative mt-[100px] flex items-start justify-between border-t-[1.5px] border-[#0B0B0B] pt-3 ">
+      <article className="mt-6  h-[100%] basis-[52.5%] uppercase">
         <div className="w-[282px] text-[40px]/[40px] font-[500] ">
           <p>
             <span className="font-[400]">/</span>limit
             <em className="font-[400]">e</em>d{" "}
             <span className="font-[400]">
               c<em>o</em>llecti<em>o</em>n
-            </span>{" "}
+            </span>
           </p>
         </div>
-        <article className="uppercase bottom-0 absolute w-[52.5%] text-[#5C5C5C] text-[16px]/[24px] font-[400]">
-          <div className="flex justify-between border-[#5C5C5C] border-y-[1px] py-2 cursor-pointer">
+        <article className="absolute bottom-0 w-[52.5%] text-[16px]/[24px] font-[400] uppercase text-[#5C5C5C]">
+          <div className="flex cursor-pointer justify-between border-y-[1px] border-[#5C5C5C] py-2">
             <p> pre-fall 2023</p>
             <img src={down_arrow} alt="down_arrow" />
           </div>
-          <div className="flex justify-between border-[#5C5C5C] border-b-[1px] py-2 cursor-pointer">
+          <div className="flex cursor-pointer justify-between border-b-[1px] border-[#5C5C5C] py-2">
             <p>uncommon [limited time sale]</p>
             <img src={down_arrow} alt="down_arrow" />
           </div>
-          <div className="flex justify-between border-[#5C5C5C] border-b-[1px] py-2 cursor-pointer">
+          <div className="flex cursor-pointer justify-between border-b-[1px] border-[#5C5C5C] py-2">
             <p> essentials 2023</p>
             <img src={down_arrow} alt="down_arrow" />
           </div>
         </article>
       </article>
       <article className="relative h-[632px] w-[470px]">
-        <div className="flex h-[614px] w-[458px] items-center justify-center mt-[20px]">
+        <div className="mt-[20px] flex h-[614px] w-[458px] items-center justify-center">
           <img
             src={limited_img}
             alt="limited_img"

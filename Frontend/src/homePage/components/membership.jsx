@@ -2,9 +2,13 @@ import React from "react";
 import logo_white from "../../assets/icons/logo_white.svg";
 const Membership = () => {
   return (
-    <section className=" flex justify-between border-[#0B0B0B] border-t-[1.5px] pt-14 mt-[100px]">
-      <div className="w-[264px] text-[40px]/[40px] uppercase font-[500]">
-        <p><span className="font-[400]">/</span>aisi m<em className="font-[400]">e</em>mb<em className="font-[400]">e</em>rship</p>
+    <section className=" mt-[100px] flex justify-between border-t-[1.5px] border-[#0B0B0B] pt-14">
+      <div className="w-[264px] text-[40px]/[40px] font-[500] uppercase">
+        <p>
+          <span className="font-[400]">/</span>aisi m
+          <em className="font-[400]">e</em>mb<em className="font-[400]">e</em>
+          rship
+        </p>
       </div>
       <article className="relative flex h-[296px] basis-[75%] items-start justify-start bg-[#A67700] p-5">
         <article className="basis-[50%]">
