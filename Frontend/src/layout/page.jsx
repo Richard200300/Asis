@@ -3,7 +3,7 @@ import { Outlet } from "react-router-dom";
 
 const Page = () => {
   return (
-    <div className="bg-[url('./assets/images/bg_img.png')] px-7">
+    <div className="bg-[url('./assets/images/bg_img.png')] px-7  max-md:px-3">
       <div>
         <Outlet />
       </div>

@@ -5,7 +5,7 @@ import down_arrow from "../../assets/icons/down_arrow.svg";
 
 const Limited_collection = () => {
   return (
-    <section className="relative mt-[100px] flex items-start justify-between border-t-[1.5px] border-[#0B0B0B] pt-3 ">
+    <section className="relative mt-[100px] flex items-start justify-between border-t-[1.5px] border-[#0B0B0B] pt-3 max-md:block">
       <article className="mt-6  h-[100%] basis-[52.5%] uppercase">
         <div className="w-[282px] text-[40px]/[40px] font-[500] ">
           <p>
@@ -31,8 +31,8 @@ const Limited_collection = () => {
           </div>
         </article>
       </article>
-      <article className="relative h-[632px] w-[470px]">
-        <div className="mt-[20px] flex h-[614px] w-[458px] items-center justify-center">
+      <article className="relative h-[632px] w-[470px] max-md:w-[100%] max-md:h-[100%]">
+        <div className="mt-[20px] flex h-[614px] w-[458px] items-center justify-center  max-md:w-[100%] max-md:h-[100%]">
           <img
             src={limited_img}
             alt="limited_img"

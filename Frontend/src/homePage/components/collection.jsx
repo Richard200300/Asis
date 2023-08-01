@@ -11,9 +11,9 @@ import right_button from "../../assets/icons/right_button.svg";
 
 const Collection = () => {
   return (
-    <section className="flex items-start  border-b-[1.5px] border-[#0B0B0B]">
-      <section className="basis-[47%] border-r-[1.5px] border-[#0B0B0B] pb-[60px] ">
-        <article className="mt-7 w-[384px] text-[48px]/[48px] uppercase   text-[#0B0B0B]">
+    <section className="flex items-start  border-b-[1.5px] border-[#0B0B0B] max-xl:block ">
+      <section className="basis-[47%] border-r-[1.5px] border-[#0B0B0B] pb-[60px] max-xl:border-r-0 ">
+        <article className="mt-7 w-[384px] text-[48px]/[48px] uppercase   text-[#0B0B0B] max-md:w-[100%]">
           <p>
             /n<em>e</em>w 2<em>0</em>23
           </p>
@@ -25,7 +25,7 @@ const Collection = () => {
           </p>
         </article>
         <article>
-          <p className="ml-[auto] mr-[20px] mt-7 w-[403px] text-[12px]/[13px] font-[600]">
+          <p className="ml-[auto] mr-[20px] mt-7 w-[403px] text-[12px]/[13px] font-[600] max-xl:w-[100%]">
             Asis offers a carefully curated collection of stylish and versatile
             clothing pieces that are designed to elevate everyday looks. From
             comfortable essentials to trendy statement pieces, Aisi aims to
@@ -33,8 +33,8 @@ const Collection = () => {
             confidence.
           </p>
         </article>
-        <article className="relative m-[auto]  mt-7 h-[292px] w-[489px]">
-          <div className="flex h-[260px] w-[489px] items-center justify-center">
+        <article className="relative m-[auto]  mt-7 h-[292px] w-[489px] max-md:w-[100%] max-md:h-[100%]">
+          <div className="flex h-[260px] w-[489px] items-center justify-center max-md:w-[100%] max-md:h-[100%]">
             <img
               src={collection_img}
               alt="collection_img"
@@ -72,9 +72,9 @@ const Collection = () => {
           <img src={collection_arrow} alt="collection_arrow" />
         </article>
       </section>
-      <section className="flex basis-[53%] items-center justify-between  ">
+      <section className="flex basis-[53%] items-center justify-between max-md:flex-col-reverse">
         <div className="">
-          <section className="w-[319px] border-b-[1.5px]  border-[#0B0B0B]  px-9 py-7">
+          <section className="w-[319px] border-b-[1.5px]  border-[#0B0B0B]  px-9 py-7 max-md:my-10 max-md:px-0">
             <div className="w-[246px]">
               <p className="w-[89%] border-b-[1.5px] border-[#0B0B0B] pb-1 text-[12px]/[18px] font-[600]">
                 <span className="mr-[2px]">/</span> ASIS HIGH FASHION ALTE
@@ -104,7 +104,7 @@ const Collection = () => {
             </div>
           </section>
 
-          <section className="w-[319px] border-b-[1.5px]  border-[#0B0B0B]  px-9 py-7">
+          <section className="w-[319px] border-b-[1.5px]  border-[#0B0B0B]  px-9 py-7 max-md:hidden">
             <div className="w-[246px]">
               <p className="w-[89%] border-b-[1.5px] border-[#0B0B0B] pb-1 text-[12px]/[18px] font-[600]">
                 <span className="mr-[2px]">/</span> ASIS HIGH FASHION ALTE
@@ -129,7 +129,7 @@ const Collection = () => {
             </div>
           </section>
 
-          <section className="w-[319px] border-b-[1.5px]  border-[#0B0B0B]  px-9 py-7">
+          <section className="w-[319px] border-b-[1.5px]  border-[#0B0B0B]  px-9 py-7 max-md:hidden">
             <div className="w-[246px]">
               <p className="w-[89%] border-b-[1.5px] border-[#0B0B0B] pb-1 text-[12px]/[18px] font-[600]">
                 <span className="mr-[2px]">/</span> ASIS HIGH FASHION ALTE
@@ -153,7 +153,7 @@ const Collection = () => {
               </div>
             </div>
           </section>
-          <section className="w-[319px] px-9  py-7 ">
+          <section className="w-[319px] px-9  py-7 max-md:hidden">
             <div className="w-[246px]">
               <p className="w-[89%] border-b-[1.5px] border-[#0B0B0B] pb-1 text-[12px]/[18px] font-[600]">
                 <span className="mr-[2px]">/</span> ASIS HIGH FASHION ALTE
