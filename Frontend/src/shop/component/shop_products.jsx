@@ -1,55 +1,25 @@
 import React from "react";
 import Products from "../../components/products";
-const Shop_products = ({hide_filter}) => {
+
+const ShopProducts = ({ allProducts, hide_filter }) => {
+  const gridColumns = hide_filter ? "grid-cols-3" : "grid-cols-4";
+
   return (
     <section className="mt-5">
-      <div>
-      <div  className={hide_filter ? "grid grid-cols-3 gap-10" : "grid grid-cols-4 gap-10"}>
-
-        <Products />
-        <Products />
-        <Products />
-        <Products />
-        <Products />
-        <Products />
-        <Products />
-        <Products />
-        <Products />
-        <Products />
-        <Products />
-        <Products />
-        <Products />
-        <Products />
-        <Products />
-        <Products />
-        <Products />
-        <Products />
-        <Products />
-        <Products />
-        <Products />
-        <Products />
-        <Products />
-        <Products />
-        <Products />
-        <Products />
-        <Products />
-        <Products />
-        <Products />
-        <Products />
-        <Products />
-        <Products />
-        <Products />
-        <Products />
-        <Products />
-        <Products />
-        <Products />
-        <Products />
-        <Products />
+      <div className={`grid ${gridColumns} gap-10`}>
+        {allProducts.products?.map((product) => (
+          <div key={product.name}>
+            <Products
+              name={product.name}
+              price={product.price}
+              collaborations={product.collaborations}
+              images={product.images}
+            />
+          </div>
+        ))}
       </div>
-      </div>
-    
     </section>
   );
 };
 
-export default Shop_products;
+export default ShopProducts;

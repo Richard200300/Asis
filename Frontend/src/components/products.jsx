@@ -1,16 +1,32 @@
-import React from 'react'
-import products_img from "../assets/images/products_img.png"
-const Products = () => {
-  return (
-    <div className='w-[268px] h-[445px] cursor-pointer'>
-      <img src={products_img} alt="products_img" />
-      <div className="uppercase font-[600] mt-2">
-      <p className='text-[16px]/[20px]'>Masked scrow/var 1</p> 
-      <p className='text-[12px]/[16px] text-[#17A500]'>zara X asis</p> 
-      <p className='text-[#0B0B0B] text-[12px]/[16px]'>150,000 ngn</p> 
-      </div>        
-    </div>
-  )
-}
+import React from "react";
 
-export default Products
+
+const Products = ({ name, price, collaborations, images }) => {
+  return (
+    <div className="h-[445px] w-[268px] cursor-pointer">
+      <div className="h-[380px] w-[268px] border-[1px] border-[#878787]">
+        <img
+          src={` https://asis.blob.core.windows.net/asisimages/${images[0]}`}
+          alt="products_img"
+          className="h-[100%] w-[100%] object-cover object-top"
+        />
+      </div>
+      <p></p>
+      <div className="mt-2 font-[600] uppercase">
+        <p className="text-[16px]/[20px]">{name}</p>
+        <div className="flex gap-4">
+          {collaborations?.map((data) => {
+            return (
+              <div>
+                <p className="text-[12px]/[16px] text-[#17A500]">{data}</p>
+              </div>
+            );
+          })}
+        </div>
+        <p className="text-[12px]/[16px] text-[#0B0B0B]">{price} ngn</p>
+      </div>
+    </div>
+  );
+};
+
+export default Products;
