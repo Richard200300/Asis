@@ -32,7 +32,7 @@ const Header = () => {
             className="flex w-[174px] cursor-pointer
            justify-center border-x-[1.5px] border-[#0B0B0B] 
            px-[12px] py-[8px] text-[14px]/[21px] font-[600] 
-           text-[#0B0B0B] text-[#]"
+           text-[#0B0B0B] max-lg:border-l-0 max-md:w-full"
           >
             <div className="flex items-center gap-2">
               <p>explore</p>
@@ -55,7 +55,7 @@ const Header = () => {
               cart <span className="">(0)</span>
             </p>
           </div>
-          <div className="flex min-w-[108px] cursor-pointer justify-center border-[#0B0B0B] px-[12px] py-[8px] text-[14px]/[21px] font-[600] text-[#0B0B0B] text-[#] max-lg:border-l-[1.5px] ">
+          <div className="flex min-w-[108px] cursor-pointer justify-center border-[#0B0B0B] px-[12px] py-[8px] text-[14px]/[21px] font-[600] text-[#0B0B0B] text-[#] max-lg:border-l-[1.5px] max-md:w-full ">
             <p className="">sign in</p>
           </div>
         </article>

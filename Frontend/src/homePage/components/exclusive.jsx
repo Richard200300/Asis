@@ -7,8 +7,8 @@ import exclusive_2_icon from "../../assets/icons/exclusive_2.svg";
 import exclusive_1_icon from "../../assets/icons/exclusive_3.svg";
 const Exclusive = () => {
   return (
-    <section className="mt-[70px] flex items-center justify-between gap-4">
-      <article className="relative h-[692px] w-[435px] ">
+    <section className="mt-[70px] flex items-center justify-center gap-4 max-md:block">
+      <article className="relative h-[692px] w-[435px] max-md:w-full max-md:h-full ">
         <div className="relative h-[648] w-[100%]">
           <img
             src={exclusive_1}
@@ -31,7 +31,7 @@ const Exclusive = () => {
           </p>
         </div>
       </article>
-      <article className="relative h-[692px] w-[435px] ">
+      <article className="relative h-[692px] w-[435px] max-md:w-full max-md:h-full ">
         <div className="relative h-[648] w-[100%]">
           <img
             src={exclusive_2}
@@ -56,7 +56,7 @@ const Exclusive = () => {
           </p>
         </div>
       </article>
-      <article className="relative h-[692px] w-[435px] ">
+      <article className="relative h-[692px] w-[435px] max-md:w-full max-md:h-full ">
         <div className="relative h-[648] w-[100%]">
           <img
             src={exclusive_3}

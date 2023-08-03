@@ -8,7 +8,7 @@ const Shop = () => {
   return (
     <section
       className=" relative mt-[100px] flex items-start 
-     justify-between border-t-[1.5px] border-[#0B0B0B] pt-3"
+     justify-between border-t-[1.5px] border-[#0B0B0B] pt-3 max-md:block"
     >
       <article className="basis-[20%]">
         <div className="mt-10   w-[200px] text-[40px]/[40px] font-[500] uppercase">
@@ -36,9 +36,9 @@ const Shop = () => {
           </div>
         </div>
       </article>
-      <article className="flex basis-[72%] items-start justify-between">
-        <article className="relative h-[632px] w-[470px] ">
-          <div className="mt-[20px] flex h-[614px] w-[458px] items-center justify-center">
+      <article className="flex basis-[72%] items-start justify-between max-xl:block ">
+        <article className="relative h-[632px] w-[470px] max-md:w-full max-md:h-full">
+          <div className="mt-[20px] flex h-[614px] w-[458px] items-center justify-center max-md:w-full max-md:h-full">
             <img
               src={shop_img}
               alt="limited_img"
@@ -67,7 +67,7 @@ const Shop = () => {
           />
         </article>
         <article className="">
-          <div className="mt-10 h-[415px] w-[433px]">
+          <div className="mt-10 h-[415px] w-[433px] max-md:w-full max-md:h-full">
             <img
               src={shop_img2}
               alt="shop_img2"

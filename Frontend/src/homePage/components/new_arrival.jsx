@@ -8,7 +8,7 @@ import up_arrow from "../../assets/icons/up_arrow.svg";
 
 const New_Arrival = () => {
   return (
-    <section className="relative mt-7 flex items-start justify-between border-t-[1.5px] border-[#000000] pt-16">
+    <section className="relative mt-7 flex items-start justify-between border-t-[1.5px] border-[#000000] pt-16 max-md:block">
       <article className=" h-[100%]">
         <div className="w-[194px] uppercase ">
           <p className="text-right text-[40px]/[40px] font-[500]">
@@ -37,7 +37,7 @@ const New_Arrival = () => {
           <img src={up_arrow} alt="up_arrow" />
         </div>
       </article>
-      <article className="ml-[auto] flex gap-4 border-b-[1px] border-[#B0B0B0] pb-5">
+      <article className="ml-[auto] flex gap-4 border-b-[1px] border-[#B0B0B0] pb-5 max-md:block">
         <div className="h-[541px] w-[336px] uppercase">
           <img src={new1} alt="new1" />
           <div className="mt-2">

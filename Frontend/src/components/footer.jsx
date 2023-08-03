@@ -11,7 +11,7 @@ import Twitter from "../assets/icons/Twitter.svg";
 
 const Footer = () => {
   return (
-    <div className="grid grid-cols-4 max-lg:grid-cols-2 border-[#0B0B0B] border-t-[1.5px] mt-10">
+    <div className="grid grid-cols-4 max-lg:grid-cols-2 border-[#0B0B0B] border-t-[1.5px] mt-10 max-md:block">
       <div className="uppercase border-b-[1.5px] border-[#0B0B0B]">
         <p className="w-[512px] font-[600] text-[20px]/[32px] mt-2 ml-3  max-lg:w-[70vw] ">
           /subsricb<em className="font-[400]" >e</em > to our n<em className="font-[400]" >e</em >wslett<em className="font-[400]" >e</em >r & be th
@@ -90,7 +90,7 @@ const Footer = () => {
       <div className="my-8 ml-5 uppercase font-[600] text-[12px]/[12px] text-[#0B0B0B]">coyright 2023, aisi right reserved </div>
       <div className="max-lg:hidden"></div>
       <div className="my-8 ml-5 uppercase font-[600] text-[12px]/[12px] text-[#0B0B0B]">[ terms and conditions ]</div>
-      <div className="my-8 uppercase text-right font-[600] text-[12px]/[12px] text-[#0B0B0B]">[ privacy ]</div>
+      <div className="my-8 uppercase text-right font-[600] text-[12px]/[12px] text-[#0B0B0B] max-md:text-left ml-5" >[ privacy ]</div>
     </div>
   );
 };

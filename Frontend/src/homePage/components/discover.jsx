@@ -3,7 +3,7 @@ import discover_img from "../../assets/images/discover_img.png";
 
 const Discover = () => {
   return (
-    <section className=" mt-[50px] flex justify-end pt-3">
+    <section className=" mt-[50px] flex justify-end pt-3 max-md:block">
       <article className="relative text-[64px]/[64px] font-[400] uppercase ">
         <p className=" mr-3 w-[375px] text-right">
           <span className="mr-1 font-[300]">/</span>W
@@ -11,7 +11,7 @@ const Discover = () => {
           TE
         </p>
 
-        <p className="absolute left-[60%] w-[572px] ">
+        <p className="absolute left-[60%] w-[572px] max-md:w-full max-md:relative">
           F<em className="font-[300]">a</em>SH
           <span className="text-[#FFFFFF]">
             I<em className="font-[300]">o</em>N AR
