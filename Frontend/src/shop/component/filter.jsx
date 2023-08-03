@@ -1,5 +1,23 @@
 import React from "react";
 
+const FilterItem = ({ item, fetchData, lastItem }) => {
+  const handleItemClick = () => {
+    fetchData(`?${lastItem}=${item}`);
+  };
+
+  return (
+    <label
+      className="my-2 flex cursor-pointer items-center gap-2"
+      onClick={handleItemClick}
+    >
+      <input type="checkbox" className="cursor-pointer" />
+      <p className="w-[194px] text-[12px]/[16px] font-[500] text-[#0B0B0B]">
+        {item}
+      </p>
+    </label>
+  );
+};
+
 const Filter = ({ fetchData }) => {
   const miniData = [
     "shoes & slides",
@@ -9,39 +27,29 @@ const Filter = ({ fetchData }) => {
     "wristwatches",
     "headset glasses",
   ];
-  const genderData = ["male", "female", "unisex"];
-  const salesAndOffers = [
-    "Members only free shipping for orders above 50,000 NGN",
-    "LIMITED TIME SALES",
+  const filterData = [
+    {
+      type: "sales & offers",
+      items: [
+        "Members only free shipping for orders above 50,000 NGN",
+        "LIMITED TIME SALES",
+      ],
+    },
+    {
+      type: "Gender",
+      items: ["male", "female", "unisex"],
+    },
+    {
+      type: "Collaborations",
+      items: [
+        "aisi X Nike",
+        "aisi X oakley",
+        "aisi X bluboy",
+        "aisi X zara",
+        "aisi X piece et patch",
+      ],
+    },
   ];
-  const collaborations = [
-    "aisi X Nike",
-    "aisi X oakley",
-    "aisi X bluboy",
-    "aisi X zara",
-    "aisi X piece et patch",
-  ];
-
-  const renderFilterItems = (data, type) => {
-    return (
-      <div className="border-b-[1px] border-[#878787] pb-5 uppercase">
-        <p className="mt-5 text-[14px]/[21px] font-[600] uppercase text-[#000000]">
-          {type}
-        </p>
-        {data.map((item) => (
-          <div
-            key={item}
-            className="my-2 flex cursor-pointer items-center gap-2"
-          >
-            <input type="checkbox" className="cursor-pointer" />
-            <p className="w-[194px] text-[12px]/[16px] font-[500] text-[#0B0B0B]">
-              {item}
-            </p>
-          </div>
-        ))}
-      </div>
-    );
-  };
 
   return (
     <section className="filter_component mt-5 h-[90vh] max-h-[] w-[292px] border-[1.5px] border-[#0B0B0B] bg-[url('./assets/images/bg_img.png')] px-5 pb-5 pt-10">
@@ -63,9 +71,24 @@ const Filter = ({ fetchData }) => {
           ))}
         </ul>
       </div>
-      {renderFilterItems(salesAndOffers, "sales & offers")}
-      {renderFilterItems(genderData, "Gender")}
-      {renderFilterItems(collaborations, "Collaborations")}
+      {filterData.map(({ type, items }) => (
+        <div
+          key={type}
+          className="border-b-[1px] border-[#878787] pb-5 uppercase"
+        >
+          <p className="mt-5 text-[14px]/[21px] font-[600] uppercase text-[#000000]">
+            {type}
+          </p>
+          {items.map((item, index) => (
+            <FilterItem
+              key={item}
+              item={item}
+              fetchData={fetchData}
+              lastItem={type.toLowerCase()}
+            />
+          ))}
+        </div>
+      ))}
     </section>
   );
 };

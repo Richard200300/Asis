@@ -14,6 +14,7 @@ const Page = () => {
   useEffect(() => {
     fetchData("products/?limit=30");
   }, []);
+  console.log(all_products)
 
   async function fetchData(product_data = "products/?limit=30") {
     try {
