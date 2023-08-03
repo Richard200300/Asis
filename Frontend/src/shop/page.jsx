@@ -7,6 +7,7 @@ import backToTop from "../assets/icons/back_to_top.svg";
 import Shop_products from "./component/shop_products";
 import Filter from "./component/filter";
 import Footer from "../components/footer";
+import Loading from "../components/loading";
 
 const Page = () => {
   const [hide_filter, setHide_filter] = useState(true);
@@ -53,11 +54,15 @@ const Page = () => {
           }
         >
           <div className="relative">
-            <Shop_products
-              hide_filter={hide_filter}
-              allProducts={all_products}
-              set_all_products={set_all_products}
-            />
+          {all_products.loading ? (
+              <Loading /> // Display the loading spinner
+            ) : (
+              <Shop_products
+                hide_filter={hide_filter}
+                allProducts={all_products}
+                set_all_products={set_all_products}
+              />
+            )}
           </div>
         </div>
         <div>
