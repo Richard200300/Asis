@@ -50,7 +50,7 @@ const SpecialCategory = ({ name }) => {
             </div>
             <div className="absolute bottom-0 w-56">
               <Link to={`/shop`}>
-                <div className=" ml-auto flex h-8 w-32 cursor-pointer items-center justify-center gap-2 border border-[#000000] px-5 uppercase">
+                <div className=" ml-auto flex h-8 w-32 cursor-pointer items-center justify-center gap-2 border border-black px-5 uppercase">
                   <p className="text-xs font-medium">view all</p>
                   <img src={up_arrow} alt="up_arrow" />
                 </div>

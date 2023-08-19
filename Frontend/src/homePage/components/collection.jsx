@@ -115,9 +115,9 @@ const Collection = () => {
               className="cursor-pointer"
             />
             <div className="flex items-center gap-2">
-              <p className="text-base font-medium text-[#000000]">1</p>
+              <p className="text-base font-medium text-black">1</p>
               <div className="h-1 w-20 rounded-sm bg-[#B0B0B0]"></div>
-              <p className="text-base font-medium text-[#000000]">4</p>
+              <p className="text-base font-medium text-black">4</p>
             </div>
             <img
               src={right_button}

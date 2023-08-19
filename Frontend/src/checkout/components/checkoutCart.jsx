@@ -33,7 +33,7 @@ const CheckoutCart = () => {
                 <p className="text-[36px]/[36px] font-[500] uppercase">
                   /your cart
                 </p>
-                <p className="absolute left-[215px] top-[-8px] text-[16px]/[16px] font-[500] text-[#000000]">
+                <p className="absolute left-[215px] top-[-8px] text-[16px]/[16px] font-[500] text-black">
                   ({cartData.length})
                 </p>
               </div>
@@ -61,7 +61,7 @@ const CheckoutCart = () => {
                             <p className="w-[212px] text-[14px]/[20px] font-[700] text-asisDark">
                               {data.name}
                             </p>
-                            <p className="mt-2 text-[11px]/[20px] font-[600] text-[#000000]">
+                            <p className="mt-2 text-[11px]/[20px] font-[600] text-black">
                               {data.price} NGN
                             </p>
                           </div>
@@ -74,7 +74,7 @@ const CheckoutCart = () => {
                           </div>
                         </div>
                         <div className=" mt-3 flex w-full items-start justify-between">
-                          <div className="text-[11px]/[20px] font-[600] text-[#000000]">
+                          <div className="text-[11px]/[20px] font-[600] text-black">
                             <p className="">{data.color}</p>
                             <p className="">size: {data.size}</p>
                           </div>

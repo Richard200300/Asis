@@ -14,7 +14,7 @@ const Wishlist = ({ setHideWish, wishlistData }) => {
             <div className="item-center relative flex justify-between border-b border-asisDark pb-10">
               <div>
                 <p className="text-4xl font-medium ">wishlist</p>
-                <p className="absolute -top-2 left-40 text-base font-medium text-[#000000]">
+                <p className="absolute -top-2 left-40 text-base font-medium text-black">
                   ({wishlistData.length})
                 </p>
               </div>
@@ -45,7 +45,7 @@ const Wishlist = ({ setHideWish, wishlistData }) => {
                             <p className="w-[212px] text-sm font-bold text-asisDark">
                               {data.name}
                             </p>
-                            <p className="mt-2 text-xs font-semibold text-[#000000]">
+                            <p className="mt-2 text-xs font-semibold text-black">
                               {data.price?.toLocaleString()} NGN
                             </p>
                           </div>
@@ -65,7 +65,7 @@ const Wishlist = ({ setHideWish, wishlistData }) => {
                             </div>
                           </div>
                         </div>
-                        <div className="mt-3 flex w-full items-start justify-between text-xs font-semibold text-[#000000]">
+                        <div className="mt-3 flex w-full items-start justify-between text-xs font-semibold text-black">
                           <div>
                             <p>{data.color}</p>
                             <p>size: {data.size}</p>
@@ -94,7 +94,7 @@ const Wishlist = ({ setHideWish, wishlistData }) => {
               <div className="item-center relative flex justify-between border-b border-asisDark pb-8">
                 <div>
                   <p className="text-4xl font-medium ">Wishlist</p>
-                  <p className="absolute -top-1 left-40 text-base font-medium text-[#000000]">
+                  <p className="absolute -top-1 left-40 text-base font-medium text-black">
                     ({wishlistData.length})
                   </p>
                 </div>

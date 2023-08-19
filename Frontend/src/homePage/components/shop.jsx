@@ -30,7 +30,7 @@ const Shop = () => {
           SERVE THE SAME PURPOSE.
         </div>
         <div className="absolute bottom-0 w-3/12 ">
-          <div className="ml-auto flex h-8 w-28 cursor-pointer items-center justify-center gap-2 border border-[#000000] uppercase">
+          <div className="ml-auto flex h-8 w-28 cursor-pointer items-center justify-center gap-2 border border-black uppercase">
             <p className="text-xs font-semibold">shop now</p>
             <img src={up_arrow} alt="up_arrow" />
           </div>

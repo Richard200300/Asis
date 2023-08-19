@@ -72,7 +72,7 @@ const Filter = ({ setDynamicUrl }) => {
     <section className="filter_component left-0 mt-5 w-72 overflow-y-scroll border border-asisDark px-5 pb-5 pt-10 filter">
       {/* MiniData filters */}
       <div>
-        <p className="px-1 text-sm font-semibold uppercase text-[#000000]">
+        <p className="px-1 text-sm font-semibold uppercase text-black">
           <em
             onClick={() => {
               setDynamicUrl("products");
@@ -88,7 +88,7 @@ const Filter = ({ setDynamicUrl }) => {
             <li
               key={data}
               className={`my-2 cursor-pointer rounded p-1 ${
-                activeItem === data ? "italic text-[#000000]" : ""
+                activeItem === data ? "italic text-black" : ""
               }`}
             >
               <span
@@ -104,7 +104,7 @@ const Filter = ({ setDynamicUrl }) => {
       {/* Other filter categories */}
       {filterData.map(({ type, items }) => (
         <div key={type} className="border-b border-[#878787] pb-5 uppercase">
-          <p className="mt-5 text-sm font-semibold uppercase text-[#000000]">
+          <p className="mt-5 text-sm font-semibold uppercase text-black">
             {type}
           </p>
           {items.map((item, index) => (

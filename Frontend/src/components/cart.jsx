@@ -16,7 +16,7 @@ const Cart = ({ setHideCart, cartData }) => {
                 <p className="text-4xl font-medium uppercase">
                   <span className="mr-1 font-normal">/</span>your cart
                 </p>
-                <p className="absolute -top-2 left-52 text-base font-medium text-[#000000]">
+                <p className="absolute -top-2 left-52 text-base font-medium text-black">
                   ({cartData.length})
                 </p>
               </div>
@@ -47,7 +47,7 @@ const Cart = ({ setHideCart, cartData }) => {
                             <p className="w-[212px] text-sm font-bold text-asisDark">
                               {data.name}
                             </p>
-                            <p className="mt-2 text-xs font-semibold text-[#000000]">
+                            <p className="mt-2 text-xs font-semibold text-black">
                               {data.price?.toLocaleString()} NGN
                             </p>
                           </div>
@@ -58,7 +58,7 @@ const Cart = ({ setHideCart, cartData }) => {
                             className="w-5 cursor-pointer"
                           />
                         </div>
-                        <div className="mt-3 flex w-full items-start justify-between text-xs font-semibold text-[#000000]">
+                        <div className="mt-3 flex w-full items-start justify-between text-xs font-semibold text-black">
                           <div>
                             <p>{data.color}</p>
                             <p>size: {data.size}</p>
@@ -102,7 +102,7 @@ const Cart = ({ setHideCart, cartData }) => {
               <div className="item-center relative flex justify-between border-b border-asisDark pb-8">
                 <div>
                   <p className="text-4xl font-medium uppercase">/your cart</p>
-                  <p className="absolute -top-1 left-52 text-base font-medium text-[#000000]">
+                  <p className="absolute -top-1 left-52 text-base font-medium text-black">
                     ({cartData.length})
                   </p>
                 </div>
