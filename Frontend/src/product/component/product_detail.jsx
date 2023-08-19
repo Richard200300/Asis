@@ -7,6 +7,26 @@ const Product_detail = ({ data }) => {
   const [errorMessage, setErrorMessage] = useState("");
   const [selectedSize, setSelectedSize] = useState("");
 
+  function getFormattedTime() {
+    const now = new Date();
+    const hours = String(now.getHours()).padStart(2, "0");
+    const minutes = String(now.getMinutes()).padStart(2, "0");
+    const seconds = String(now.getSeconds()).padStart(2, "0");
+    const milliseconds = String(now.getMilliseconds()).padStart(3, "0");
+
+    return `${hours}:${minutes}:${seconds}:${milliseconds}`;
+  }
+  const [currentTime, setCurrentTime] = useState(getFormattedTime());
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      setCurrentTime(getFormattedTime());
+    }, 1000);
+
+    return () => {
+      clearInterval(intervalId);
+    };
+  }, []);
+
   // Effect to set initial selected image
   useEffect(() => {
     if (data.images && data.images.length > 0) {
@@ -80,9 +100,9 @@ const Product_detail = ({ data }) => {
                 <div
                   key={index}
                   onClick={() => setSelectedSize(sizeData.size)}
-                  className={`flex h-10 w-24 items-center justify-center border text-xs font-medium uppercase ${
+                  className={`flex h-10 w-24 cursor-pointer items-center justify-center border text-xs font-medium uppercase ${
                     selectedSize === sizeData.size
-                      ? "cursor-pointer border-asisDark text-asisDark"
+                      ? " border-asisDark text-asisDark"
                       : " border-[#C4C4C4] text-[#C4C4C4]"
                   }`}
                 >
@@ -96,7 +116,7 @@ const Product_detail = ({ data }) => {
               {/* Time */}
               <article className="flex items-center justify-between text-base font-semibold">
                 <p className="uppercase text-asisDark">time</p>
-                <p className="text-[#17A500]">12:01:43:20</p>
+                <p className="text-[#17A500]">{currentTime}</p>
               </article>
 
               {/* Description */}
