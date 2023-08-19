@@ -16,7 +16,7 @@ const Products = ({ name, price, collaborations, images }) => {
     <div className="h-[445px] w-[268px] cursor-pointer ">
       <div className="h-[380px] w-[268px] border-[1px] border-[#878787] max-md:w-full">
         <img
-          src={`https://asis.blob.core.windows.net/asisimages/${images[0]}`}
+          src={`${import.meta.env.VITE_BLOB_URL}${images[0]}`}
           alt="products_img"
           className="h-full w-full object-cover object-top"
         />

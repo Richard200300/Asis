@@ -7,19 +7,26 @@ import Wishlist from "../components/wishlist";
 import collection_img_2 from "../assets/images/collection_img_2.png";
 import Banner from "../components/banner";
 import axios from "axios";
+import { Toaster } from "react-hot-toast";
+import { useSelector, useDispatch } from "react-redux";
+import { setCart } from "../../redux/asis";
 
 const Page = () => {
   // State to control the visibility of the cart and wishlist
   const [hideCart, setHideCart] = useState(false);
   // const [hideWish, setHideWish] = useState(false);
 
-  const [cartData, setCartData] = React.useState([]);
+  const cartData = useSelector((state) => state.asis.cart);
+  const dispatch = useDispatch();
 
   const handleGetCartContent = async () => {
     try {
+      axios.defaults.withCredentials = true;
       const response = await axios.get(`${import.meta.env.VITE_API_URL}carts`);
-      console.log(response.data.products);
-      setCartData(response.data.products);
+      console.log(response.data);
+      // setCartData(response.data.products);
+      dispatch(setCart(response.data));
+      console.log(cartData);
     } catch (error) {
       console.log(error);
     }
@@ -52,21 +59,23 @@ const Page = () => {
   //   },
   // ];
 
-  
   return (
     <main className="bg-[url('./assets/images/bg_img.png')] px-7 max-md:px-3">
       <section className="flex w-full items-start justify-center">
         <div className="max-w-7xl">
+          <Toaster position="top-right" />
           {/* Render the header component and pass cart and wishlist data */}
           <Header
             setHideCart={setHideCart}
             // setHideWish={setHideWish}
-            cartData={cartData}
+            cartLength={cartData?.products?.length}
             // wishlistData={wishData}
           />
 
           {/* Render the Cart component if hideCart is true */}
-          {hideCart && <Cart setHideCart={setHideCart} cartData={cartData} />}
+          {hideCart && (
+            <Cart setHideCart={setHideCart} cartData={cartData.products} />
+          )}
           {/* Render banner component */}
           <Banner />
 

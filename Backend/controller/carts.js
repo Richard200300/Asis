@@ -53,6 +53,7 @@ const editCart = async (req, res) => {
             })
             .json({
                 msg: "Product added to cart",
+                cart: cart
             });
     } else {
         const cart = await Cart.findById(cartId);
@@ -91,6 +92,7 @@ const editCart = async (req, res) => {
         await cart.save();
         return res.status(201).json({
             msg: "Product added to cart",
+            cart: cart,
         });
     }
 };
@@ -120,6 +122,7 @@ const removeItem = async (req, res) => {
     }
 
     const { productId, size } = req.body;
+    console.log(req.body)
 
     if (!productId || !size) {
         throw new BadRequestError("Please fill all the fields");

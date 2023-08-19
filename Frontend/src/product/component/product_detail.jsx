@@ -1,11 +1,20 @@
 import React, { useState, useEffect } from "react";
 import down from "../../assets/icons/down.svg";
+import toast from "react-hot-toast";
+import axios from "axios";
+import { useDispatch } from "react-redux";
+import { setCart } from "../../../redux/asis";
+import CartLoading from "../../components/cartLoader";
+import AddToCartLoading from "./addToCartLoading";
 
 const Product_detail = ({ data }) => {
   // States
   const [selectedImage, setSelectedImage] = useState(null);
   const [errorMessage, setErrorMessage] = useState("");
   const [selectedSize, setSelectedSize] = useState("");
+  const [isAddingToCart, setIsAddingToCart] = useState(false);
+
+  const dispatch = useDispatch();
 
   function getFormattedTime() {
     const now = new Date();
@@ -35,20 +44,56 @@ const Product_detail = ({ data }) => {
   }, [data]);
 
   // Handle adding to cart
-  const handleAddToCart = () => {
+  const handleAddToCart = async () => {
+    setIsAddingToCart(true);
     if (selectedSize) {
-      setErrorMessage("Item has been added to cart successfully.");
-      console.log("Item has been added to cart successfully.");
-      setTimeout(() => {
-        setErrorMessage("");
-      }, 3000);
+      try {
+        axios.defaults.withCredentials = true;
+        let item = {
+          productId: data._id,
+          size: selectedSize,
+          quantity: 1,
+        };
+        const response = await axios.put(
+          `${import.meta.env.VITE_API_URL}carts`,
+          item,
+        );
+        dispatch(setCart(response.data.cart));
+        toast.success("Item added to cart", {
+          style: {
+            border: "1px solid #713200",
+            padding: "8px 16px",
+            color: "#713200",
+            borderRadius: "4px",
+          },
+          iconTheme: {
+            primary: "#713200",
+            secondary: "#FFFAEE",
+          },
+        });
+        setIsAddingToCart(false);
+      } catch (error) {
+        console.log(error);
+        toast.error("Failed to add item to cart", {
+          style: {
+            border: "1px solid red",
+            padding: "8px 16px",
+            color: "red",
+            borderRadius: "4px",
+          },
+        });
+        setIsAddingToCart(false);
+      }
     } else {
-      setErrorMessage("Please select a size before adding to cart.");
-      console.log("Please select a size before adding to cart.");
-
-      setTimeout(() => {
-        setErrorMessage("");
-      }, 2000);
+      toast.error("Select a size to add to cart", {
+        style: {
+          border: "1px solid red",
+          padding: "8px 16px",
+          color: "red",
+          borderRadius: "4px",
+        },
+      });
+      setIsAddingToCart(false);
     }
   };
 
@@ -70,7 +115,7 @@ const Product_detail = ({ data }) => {
                 }`}
               >
                 <img
-                  src={`https://asis.blob.core.windows.net/asisimages/${img}`}
+                  src={`${import.meta.env.VITE_BLOB_URL}${img}`}
                   alt="collection_img"
                   className="mr-5 h-16 w-14 object-cover object-top "
                 />
@@ -82,7 +127,7 @@ const Product_detail = ({ data }) => {
           <section className="items-cent  flex basis-[45%] justify-center overflow-hidden border-x border-asisDark px-3 py-5">
             {selectedImage && (
               <img
-                src={`https://asis.blob.core.windows.net/asisimages/${selectedImage}`}
+                src={`${import.meta.env.VITE_BLOB_URL}${selectedImage}`}
                 className="h-[31rem] w-[32rem]   overflow-hidden object-cover object-top"
               />
             )}
@@ -127,20 +172,25 @@ const Product_detail = ({ data }) => {
               {/* Add to cart */}
 
               <button
-                className={`my-3 w-full  bg-asisDark py-4 text-center text-xs font-semibold uppercase ${
-                  selectedSize
-                    ? "cursor-pointer text-[#FFFFFF]"
-                    : " cursor-default text-[#C4C4C4]"
+                className={`relative my-3 flex max-h-12  w-full justify-center  py-4 text-center text-xs font-semibold uppercase ${
+                  (selectedSize)
+                    ? "bg-asisDark text-[#FFFFFF]"
+                    : "bg-asisDark/70 text-[#C4C4C4]"
                 }`}
+                disabled={isAddingToCart}
                 onClick={() => {
                   handleAddToCart();
                 }}
               >
-                Add to cart -{data.price?.toLocaleString()} NGN
+                {isAddingToCart ? (
+                  <AddToCartLoading />
+                ) : (
+                  <p>Add to cart- {data.price?.toLocaleString()} NGN</p>
+                )}
               </button>
 
               {/* Add to wishlist */}
-              <button className="mb-3 w-full cursor-pointer border border-asisDark py-4 text-center text-xs font-semibold uppercase text-asisDark">
+              <button className="relative mb-3 w-full cursor-pointer border border-asisDark py-4 text-center text-xs font-semibold uppercase text-asisDark">
                 add to wishlist
               </button>
 

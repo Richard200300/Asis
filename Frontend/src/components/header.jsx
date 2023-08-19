@@ -7,7 +7,7 @@ import down from "../assets/icons/down.svg";
 import flag from "../assets/icons/flag.svg";
 import { Link } from "react-router-dom";
 
-const Header = ({ setHideCart, setHideWish, cartData, wishlistData }) => {
+const Header = ({ setHideCart, setHideWish, cartLength, wishlistData }) => {
   return (
     <div className=" sticky top-[-66px] z-10 bg-[url('./assets/images/bg_img.png')] pt-[10px] uppercase">
       <section className=" flex justify-end px-4 py-3">
@@ -76,7 +76,7 @@ const Header = ({ setHideCart, setHideWish, cartData, wishlistData }) => {
             className="flex min-w-[172px] cursor-pointer justify-center border-x border-asisDark px-[12px] py-[8px] text-[14px]/[21px] font-[600] text-[#] text-asisDark  max-lg:hidden"
           >
             <p className="">
-              cart <span className="">({cartData.length})</span>
+              cart <span className="">({cartLength})</span>
             </p>
           </div>
           <div className="flex min-w-[108px] cursor-pointer justify-center border-asisDark px-[12px] py-[8px] text-[14px]/[21px] font-[600] text-[#] text-asisDark max-lg:border-l max-md:w-full ">

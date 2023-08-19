@@ -3,12 +3,123 @@ import cancel_cart from "../assets/icons/cancel_cart.svg";
 import cartIcon from "../assets/icons/cart-icon.svg";
 import down from "../assets/icons/down.svg";
 import { Link } from "react-router-dom";
+import axios from "axios";
+import toast from "react-hot-toast";
+import CartLoading from "./cartLoader";
+import { useSelector, useDispatch } from "react-redux";
+import { setCart } from "../../redux/asis";
 
-const Cart = ({ setHideCart, cartData }) => {
+const Cart = ({ setHideCart }) => {
+  const cartData = useSelector((state) => state.asis.cart);
+  const dispatch = useDispatch();
+  const [isLoading, setIsLoading] = React.useState(true);
+
+  const handleGetCartContent = async () => {
+    setIsLoading(true);
+    try {
+      axios.defaults.withCredentials = true;
+      const response = await axios.get(`${import.meta.env.VITE_API_URL}carts`);
+      // console.log(response.data);
+      // setCartData(response.data);
+      dispatch(setCart(response.data));
+      setIsLoading(false);
+      setIsLoading(false);
+    } catch (error) {
+      console.log(error);
+      toast.error("Failed to load cart items", {
+        style: {
+          border: "1px solid red",
+          padding: "8px 16px",
+          color: "red",
+          borderRadius: "4px",
+        },
+      });
+      setIsLoading(false);
+    }
+  };
+  React.useEffect(() => {
+    handleGetCartContent();
+    console.log(cartData);
+  }, []);
+
+  const removeItemFromCart = async (id, size) => {
+    setIsLoading(true);
+    try {
+      axios.defaults.withCredentials = true;
+      const item = {
+        productId: id,
+        size: size,
+      };
+      await axios.delete(`${import.meta.env.VITE_API_URL}carts/removeItem`, {
+        data: item,
+      });
+      console.log(item);
+      toast.success("Item removed from cart", {
+        style: {
+          border: "1px solid #713200",
+          padding: "8px 16px",
+          color: "#713200",
+          borderRadius: "4px",
+        },
+        iconTheme: {
+          primary: "#713200",
+          secondary: "#FFFAEE",
+        },
+      });
+      await handleGetCartContent();
+      setIsLoading(false);
+    } catch (error) {
+      console.log(error);
+      toast.error("Failed to remove item, try again", {
+        style: {
+          border: "1px solid red",
+          padding: "8px 16px",
+          color: "red",
+          borderRadius: "4px",
+        },
+      });
+      setIsLoading(false);
+    }
+  };
+
+  const clearCart = async () => {
+    setIsLoading(true);
+    try {
+      axios.defaults.withCredentials = true;
+      await axios.delete(`${import.meta.env.VITE_API_URL}carts/`);
+      toast.success("Item removed from cart", {
+        style: {
+          border: "1px solid #713200",
+          padding: "8px 16px",
+          color: "#713200",
+          borderRadius: "4px",
+        },
+        iconTheme: {
+          primary: "#713200",
+          secondary: "#FFFAEE",
+        },
+      });
+      await handleGetCartContent();
+      setIsLoading(false);
+    } catch (error) {
+      console.log(error);
+      toast.error("Failed to remove item, try again", {
+        style: {
+          border: "1px solid red",
+          padding: "8px 16px",
+          color: "red",
+          borderRadius: "4px",
+        },
+      });
+      setIsLoading(false);
+    }
+  };
+
   return (
-    <div className="sticky right-7 top-12 mt-4 z-20 ml-auto">
+    <div className="sticky right-7 top-12 z-20 ml-auto mt-4">
       <div className="absolute right-0  overflow-hidden bg-[url('./assets/images/bg_img.png')] uppercase shadow-[-7px_8px_30px_0px_#00000033]">
-        {cartData.length >= 1 ? (
+        {isLoading && <CartLoading />}
+        {!isLoading && cartData?.products?.length >= 1 ? (
           // Cart with items
           <section className="p-5">
             <div className="item-center relative flex justify-between border-b border-asisDark pb-10">
@@ -17,7 +128,7 @@ const Cart = ({ setHideCart, cartData }) => {
                   <span className="mr-1 font-normal">/</span>your cart
                 </p>
                 <p className="absolute -top-2 left-52 text-base font-medium text-black">
-                  ({cartData.length})
+                  ({cartData?.products?.length})
                 </p>
               </div>
               {/* close cart component */}
@@ -29,13 +140,15 @@ const Cart = ({ setHideCart, cartData }) => {
               />
             </div>
             <div className="max-h-[40vh] overflow-y-scroll">
-              {cartData.map((data, index) => {
+              {cartData.products.map((data, index) => {
                 return (
                   <section key={index}>
                     <div className="my-5 flex items-start justify-between gap-5 border-b border-asisDark pb-4">
                       {/* cart image */}
                       <img
-                        src={data.img}
+                        src={`${import.meta.env.VITE_BLOB_URL}${
+                          data.product.images[0]
+                        }`}
                         alt="collection_img_2"
                         className="h-36 w-[116px] object-cover object-top"
                       />
@@ -45,18 +158,24 @@ const Cart = ({ setHideCart, cartData }) => {
                         <div className="flex items-start justify-between border-b border-b-asisDark pb-2">
                           <div>
                             <p className="w-[212px] text-sm font-bold text-asisDark">
-                              {data.name}
+                              {data.product.name}
                             </p>
                             <p className="mt-2 text-xs font-semibold text-black">
-                              {data.price?.toLocaleString()} NGN
+                              {data.totalPrice?.toLocaleString()} NGN
                             </p>
                           </div>
                           {/* remove item from cart */}
-                          <img
-                            src={cancel_cart}
-                            alt="cancel_cart"
-                            className="w-5 cursor-pointer"
-                          />
+                          <button
+                            onClick={() =>
+                              removeItemFromCart(data.product._id, data.size)
+                            }
+                          >
+                            <img
+                              src={cancel_cart}
+                              alt="cancel_cart"
+                              className="w-5 cursor-pointer"
+                            />
+                          </button>
                         </div>
                         <div className="mt-3 flex w-full items-start justify-between text-xs font-semibold text-black">
                           <div>
@@ -77,7 +196,7 @@ const Cart = ({ setHideCart, cartData }) => {
             {/* total calculation  */}
             <div className="mt-4 flex items-center justify-between text-sm font-bold">
               <p>Total</p>
-              <p>270,000 NGN</p>
+              <p>{cartData.totalPrice} NGN</p>
             </div>
             <div className="mt-3 flex items-center justify-between border-b border-b-asisDark pb-4 text-[13px]/[20px] font-medium">
               <p>shipping</p>
@@ -94,6 +213,14 @@ const Cart = ({ setHideCart, cartData }) => {
                 checkout
               </button>
             </Link>
+            <button
+              className="mt-4 w-full text-right font-semibold italic underline"
+              onClick={() => {
+                clearCart();
+              }}
+            >
+              Clear your Cart
+            </button>
           </section>
         ) : (
           // Empty cart
@@ -103,7 +230,7 @@ const Cart = ({ setHideCart, cartData }) => {
                 <div>
                   <p className="text-4xl font-medium uppercase">/your cart</p>
                   <p className="absolute -top-1 left-52 text-base font-medium text-black">
-                    ({cartData.length})
+                    {/* ({cartData?.products?.length}) */}
                   </p>
                 </div>
                 <img
@@ -114,7 +241,7 @@ const Cart = ({ setHideCart, cartData }) => {
                 />
               </div>
               <img src={cartIcon} alt="cartIcon" className="ml-5 mt-8" />
-              <div className="mt-4 flex w-full cursor-pointer items-center justify-center bg-[#525050] py-2 text-sm font-semibold text-[#FFFEF5]">
+              <div className="mt-4 flex w-full items-center justify-center bg-[#525050] py-2 text-sm font-semibold text-[#FFFEF5]">
                 cart is empty
               </div>
             </div>
