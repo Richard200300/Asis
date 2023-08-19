@@ -26,7 +26,7 @@ const Page = () => {
     <div className=" h-full px-8">
      {data ? <div>
 
-      {hideCart && <Cart data={data} hideCart={hideCart} ShowCart={ShowCart} />}
+      {/* {hideCart && <Cart data={data} hideCart={hideCart} ShowCart={ShowCart} />} */}
       
       {data && (
         <div className="">

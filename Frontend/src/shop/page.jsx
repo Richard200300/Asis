@@ -36,9 +36,6 @@ const Page = () => {
     <div className="h-full p-0">
       {data ? (
         <section>
-          {/* Banner */}
-          <Banner />
-
           {/* Search */}
           <Search
             setDynamicUrl={setDynamicUrl}

@@ -10,7 +10,7 @@ import { Link } from "react-router-dom";
 const Header = ({ setHideCart, setHideWish, cartData, wishlistData }) => {
   return (
     <div className=" sticky top-[-66px] z-10 bg-[url('./assets/images/bg_img.png')] pt-[10px] uppercase">
-      <section className=" flex justify-end py-[10px]">
+      <section className=" flex justify-end px-4 py-3">
         <div className="flex gap-6">
           <div className="flex w-[139px] cursor-pointer items-center gap-3 border border-[#0B0B0B] px-[8px] py-[5px] font-[500] text-[#0B0B0B] ">
             <img src={globe} alt="globe" />
@@ -53,7 +53,7 @@ const Header = ({ setHideCart, setHideWish, cartData, wishlistData }) => {
           />
         </Link>
         <article className="flex">
-          <div
+          {/* <div
                         onClick={() => {
                           setHideWish((prev) => !prev);
                           setHideCart(false);
@@ -67,15 +67,15 @@ const Header = ({ setHideCart, setHideWish, cartData, wishlistData }) => {
             >
               wishlist <span className="">({wishlistData.length})</span>
             </p>
-          </div>
+          </div> */}
           <div
-            className="flex min-w-[172px] cursor-pointer justify-center border-r border-[#0B0B0B] px-[12px] py-[8px] text-[14px]/[21px] font-[600] text-[#0B0B0B] text-[#]  max-lg:hidden"
-            
-          >
-            <p className="" onClick={() => {
+            onClick={() => {
               setHideCart((prev) => !prev);
-              setHideWish(false)
-            }}>
+              setHideWish(false);
+            }}
+            className="flex min-w-[172px] cursor-pointer justify-center border-x border-[#0B0B0B] px-[12px] py-[8px] text-[14px]/[21px] font-[600] text-[#0B0B0B] text-[#]  max-lg:hidden"
+          >
+            <p className="">
               cart <span className="">({cartData.length})</span>
             </p>
           </div>
