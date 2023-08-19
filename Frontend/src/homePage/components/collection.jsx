@@ -17,6 +17,24 @@ const Collection = () => {
         "Introducing the Aisi High Fashion Alte Hoodie: A striking blend of contemporary style and bold expression. Crafted with meticulous a...",
       releaseDate: "13th, February, 2023",
     },
+    {
+      title: "ASIS HIGH FASHION ALTE HOODIE",
+      description:
+        "Introducing the Aisi High Fashion Alte Hoodie: A striking blend of contemporary style and bold expression. Crafted with meticulous a...",
+      releaseDate: "13th, February, 2023",
+    },
+    {
+      title: "ASIS HIGH FASHION ALTE HOODIE",
+      description:
+        "Introducing the Aisi High Fashion Alte Hoodie: A striking blend of contemporary style and bold expression. Crafted with meticulous a...",
+      releaseDate: "13th, February, 2023",
+    },
+    {
+      title: "ASIS HIGH FASHION ALTE HOODIE",
+      description:
+        "Introducing the Aisi High Fashion Alte Hoodie: A striking blend of contemporary style and bold expression. Crafted with meticulous a...",
+      releaseDate: "13th, February, 2023",
+    },
     // ... (more fashion data entries)
   ];
 
