@@ -1,93 +1,84 @@
 import React, { useState, useEffect } from "react";
-import Axios from "axios";
-import Header from "../components/header";
 import Banner from "../components/banner";
-import Search from "./component/search";
 import backToTop from "../assets/icons/back_to_top.svg";
-import Shop_products from "./component/shop_products";
+import ShopProducts from "./component/shop_products";
 import Filter from "./component/filter";
-import Footer from "../components/footer";
+import Search from "./component/search";
+import useFetch from "../components/useFetch";
 import Loading from "../components/loading";
 
 const Page = () => {
-  const [hide_filter, setHide_filter] = useState(true);
-  const [all_products, set_all_products] = useState([]);
+  // States
+  const [dynamicUrl, setDynamicUrl] = useState("products");
+  const [hideFilter, setHideFilter] = useState(true);
+
+  // API URL
+  const apiUrl = `http://localhost:5000/api/${dynamicUrl}`;
+  const { data } = useFetch(apiUrl);
+
+  // Scroll to top on component mount
   useEffect(() => {
-    fetchData("products/?limit=30");
+    window.scrollTo(0, 0);
   }, []);
-  console.log(all_products)
 
-  async function fetchData(product_data = "products/?limit=30") {
-    try {
-      const url =
-        product_data === "products/?limit=30"
-          ? "http://localhost:5000/api/products/?limit=30"
-          : `http://localhost:5000/api/products/${product_data}`;
+  // Handle scroll to top
+  const handleScrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth"
+    });
+  };
 
-      const response = await Axios.get(url);
-      set_all_products(response.data);
-    } catch (error) {
-      console.error(
-        `Error fetching data${
-          product_data === "all"
-            ? " for all countries"
-            : ` for product_data ${product_data}`
-        }:`,
-        error,
-      );
-    }
-  }
-  const align = all_products?.products?.length <= 3 ? "items-start" : "";
+  // Determine alignment based on product count
+  const align = data?.products?.length <= 3 ? "items-start" : "";
 
   return (
     <div className="h-full p-0">
-      <Header />
-      <Banner />
-      <Search setHide_filter={setHide_filter} fetchData={fetchData} />
+      {data ? (
+        <section>
+          {/* Banner */}
+          <Banner />
 
-      <section className={`flex flex-row-reverse justify-between ${align} `}>
-        <div
-          className={
-            hide_filter
-              ? "flex items-center justify-center"
-              : "m-auto flex items-center justify-center"
-          }
-        >
-          <div className="relative">
-          {all_products.loading ? (
-              <Loading /> // Display the loading spinner
-            ) : (
-              <Shop_products
-                hide_filter={hide_filter}
-                allProducts={all_products}
-                set_all_products={set_all_products}
-              />
-            )}
-          </div>
-        </div>
-        <div>
-          {hide_filter && (
-            <div className="sticky top-5">
-              <Filter fetchData={fetchData}/>
-            </div>
-          )}
-          <div>
-            <div className="sticky top-0"></div>
-
-            <div className="relative mt-[100px]"></div>
-          </div>
-        </div>
-      </section>
-      <section className="">
-        <div className="relative mt-[100px] border-t-[1.5px] border-[#0B0B0B]">
-          <img
-            src={backToTop}
-            alt="back_to_top"
-            className="absolute right-[10%] top-[-25px] cursor-pointer"
+          {/* Search */}
+          <Search
+            setDynamicUrl={setDynamicUrl}
+            setHideFilter={setHideFilter}
+            hideFilter={hideFilter}
           />
-        </div>
-      </section>
-      <Footer />
+
+          {/* Main content */}
+            <section className="flex justify-start">
+              <div className={`flex flex-row-reverse ${align} gap-10 justify-start`}>
+
+                {/* Shop products */}
+                    {data && <ShopProducts hideFilter={hideFilter} data={data} />}
+
+                {/* Filter */}
+                <div>
+                  {hideFilter && (
+                    <div className="sticky top-10 ">
+                      <Filter setDynamicUrl={setDynamicUrl} />
+                    </div>
+                  )}
+                </div>
+              </div>
+            </section>
+
+          {/* Back to top */}
+            <div className="relative mt-16 border-t border-[#0B0B0B]">
+              <img
+                src={backToTop}
+                alt="back_to_top"
+                className="absolute right-10 -top-7 cursor-pointer"
+                onClick={() => {
+                  handleScrollToTop();
+                }}
+              />
+            </div>
+        </section>
+      ) : (
+        <Loading />
+      )}
     </div>
   );
 };

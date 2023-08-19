@@ -1,23 +1,24 @@
-import React from "react";
-import cancel_cart from "../assets/icons/cancel_cart.svg";
-import cartIcon from "../assets/icons/cart-icon.svg";
-import down from "../assets/icons/down.svg";
-import { Link } from "react-router-dom";
 
-const Cart = ({ setHideCart, cartData }) => {
+import React, { useState, useEffect } from "react";
+import cancel_cart from "../assets/icons/cancel_cart.svg";
+import heart from "../assets/icons/heart.svg";
+import emptyWish from "../assets/icons/empty_wish.svg";
+import down from "../assets/icons/down.svg";
+
+const Wishlist = ({ setHideWish, wishlistData }) => {
   return (
-    <div className="sticky right-7 top-10 z-20 ml-auto">
-      <div className="absolute right-0  overflow-hidden bg-[url('./assets/images/bg_img.png')] uppercase shadow-[-7px_8px_30px_0px_#00000033]">
-        {cartData.length >= 1 ? (
+    <div className="sticky right-7 top-10 z-20 ml-auto uppercase ">
+      <div className="absolute right-0  overflow-hidden bg-[url('./assets/images/bg_img.png')]  shadow-[-7px_8px_30px_0px_#00000033]">
+        {wishlistData.length >= 1 ? (
           // Cart with items
           <section className="p-5">
             <div className="item-center relative flex justify-between border-b border-[#0B0B0B] pb-10">
               <div>
-                <p className="text-4xl font-medium uppercase">
-                  <span className="mr-1 font-normal">/</span>your cart
+                <p className="text-4xl font-medium ">
+                  wishlist
                 </p>
-                <p className="absolute -top-2 left-52 text-base font-medium text-[#000000]">
-                  ({cartData.length})
+                <p className="absolute -top-2 left-40 text-base font-medium text-[#000000]">
+                  ({wishlistData.length})
                 </p>
               </div>
               {/* close cart component */}
@@ -25,11 +26,11 @@ const Cart = ({ setHideCart, cartData }) => {
                 src={cancel_cart}
                 alt="cancel_cart"
                 className="cursor-pointer"
-                onClick={() => setHideCart(false)}
+                onClick={() => setHideWish(false)}
               />
             </div>
-            <div className="max-h-[40vh] overflow-y-scroll">
-              {cartData.map((data, index) => {
+            <div className="max-h-[43vh] overflow-y-scroll">
+              {wishlistData.map((data, index) => {
                 return (
                   <section key={index}>
                     <div className="my-5 flex items-start justify-between gap-5 border-b border-[#0B0B0B] pb-4">
@@ -48,15 +49,25 @@ const Cart = ({ setHideCart, cartData }) => {
                               {data.name}
                             </p>
                             <p className="mt-2 text-xs font-semibold text-[#000000]">
-                              {data.price?.toLocaleString()} NGN
+                            {data.price?.toLocaleString()} NGN
                             </p>
                           </div>
                           {/* remove item from cart */}
-                          <img
-                            src={cancel_cart}
-                            alt="cancel_cart"
-                            className="w-5 cursor-pointer"
-                          />
+                          <div className="flex flex-col gap-y-5">
+                            <img
+                              src={heart}
+                              alt="heart"
+                              className="w-5 cursor-pointer"
+                            />
+                            <div className="">
+                              <img
+                                src={cancel_cart}
+                                alt="cancel_cart"
+                                className="w-5 cursor-pointer"
+                              />
+                            </div>
+                          </div>
+                        
                         </div>
                         <div className="mt-3 flex w-full items-start justify-between text-xs font-semibold text-[#000000]">
                           <div>
@@ -74,48 +85,36 @@ const Cart = ({ setHideCart, cartData }) => {
                 );
               })}
             </div>
-            {/* total calculation  */}
-            <div className="mt-4 flex items-center justify-between text-sm font-bold">
-              <p>Total</p>
-              <p>270,000 NGN</p>
-            </div>
-            <div className="mt-3 flex items-center justify-between border-b border-b-[#0B0B0B] pb-4 text-[13px]/[20px] font-medium">
-              <p>shipping</p>
-              <p>calculated at checkout</p>
-            </div>
-            {/* Link to checkout */}
-            <Link to="/checkout">
+            {/* add to cart */}
+           
               <button
-                className="mt-5 flex cursor-pointer w-full uppercase items-center justify-center rounded-[7px] bg-[#0B0B0B] py-3 text-sm font-semibold text-[#FFFFFF]"
-                onClick={() => {
-                  setHideCart(false);
-                }}
+                className="mt-5 flex w-full uppercase cursor-pointer items-center justify-center rounded-[7px] bg-[#0B0B0B] py-3 text-sm font-semibold text-[#FFFFFF]"
+                
               >
-                checkout
+                add wishlist to cart
               </button>
-            </Link>
-          </section>
+         </section>
         ) : (
           // Empty cart
           <section className="relative w-96 px-3 py-6">
             <div>
               <div className="item-center relative flex justify-between border-b border-[#0B0B0B] pb-8">
                 <div >
-                  <p className="text-4xl font-medium uppercase">/your cart</p>
-                  <p className="absolute -top-1 left-52 text-base font-medium text-[#000000]">
-                    ({cartData.length})
+                  <p className="text-4xl font-medium ">Wishlist</p>
+                  <p className="absolute -top-1 left-40 text-base font-medium text-[#000000]">
+                    ({wishlistData.length})
                   </p>
                 </div>
                 <img
                   src={cancel_cart}
                   alt="cancel_cart"
                   className="cursor-pointer"
-                  onClick={() => setHideCart(false)}
+                  onClick={() => setHideWish(false)}
                 />
               </div>
-              <img src={cartIcon} alt="cartIcon" className="ml-5 mt-8" />
+              <img src={emptyWish} alt="cartIcon" className="ml-5 mt-8" />
               <div className="mt-4 flex w-full cursor-pointer items-center justify-center bg-[#525050] py-2 text-sm font-semibold text-[#FFFEF5]">
-                cart is empty
+                wishlist is empty
               </div>
             </div>
           </section>
@@ -125,4 +124,4 @@ const Cart = ({ setHideCart, cartData }) => {
   );
 };
 
-export default Cart;
+export default Wishlist;

@@ -1,24 +1,35 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 
-const FilterItem = ({ item, fetchData, lastItem }) => {
+// Component for individual filter items
+const FilterItem = ({ item, activeItem, setActiveItem }) => {
+  const isActive = activeItem === item;
+
+  // Handle filter item click
   const handleItemClick = () => {
-    fetchData(`?${lastItem}=${item}`);
+    setActiveItem(isActive ? null : item);
   };
 
   return (
-    <label
-      className="my-2 flex cursor-pointer items-center gap-2"
-      onClick={handleItemClick}
-    >
-      <input type="checkbox" className="cursor-pointer" />
-      <p className="w-[194px] text-[12px]/[16px] font-[500] text-[#0B0B0B]">
+    <label className="my-2 flex cursor-pointer items-center gap-2" htmlFor={`checkbox-${item}`}>
+      <input
+        type="checkbox"
+        className="cursor-pointer checkbox"
+        checked={isActive}
+        onChange={handleItemClick}
+        id={`checkbox-${item}`}
+      />
+      <p
+        className={`w-48 text-xs font-medium text-[#0B0B0B] ${isActive ? "cursor-pointer" : ""}`}
+      >
         {item}
       </p>
     </label>
   );
 };
 
-const Filter = ({ fetchData }) => {
+// Main Filter component
+const Filter = ({ setDynamicUrl }) => {
+  const [activeItem, setActiveItem] = useState(null); 
   const miniData = [
     "shoes & slides",
     "Pants",
@@ -28,13 +39,6 @@ const Filter = ({ fetchData }) => {
     "headset glasses",
   ];
   const filterData = [
-    {
-      type: "sales & offers",
-      items: [
-        "Members only free shipping for orders above 50,000 NGN",
-        "LIMITED TIME SALES",
-      ],
-    },
     {
       type: "Gender",
       items: ["male", "female", "unisex"],
@@ -51,40 +55,55 @@ const Filter = ({ fetchData }) => {
     },
   ];
 
+  // Update dynamic URL on active filter change
+  useEffect(() => {
+    if (activeItem) {
+      const query = `category=${activeItem}`;
+      setDynamicUrl(`products/?${query}`);
+    }
+  }, [activeItem, setDynamicUrl]);
+
   return (
-    <section className="filter_component mt-5 h-[90vh] max-h-[] w-[292px] border-[1.5px] border-[#0B0B0B] bg-[url('./assets/images/bg_img.png')] px-5 pb-5 pt-10">
+    <section className="filter_component mt-5 left-0 overflow-y-scroll filter w-72 border border-[#0B0B0B] px-5 pb-5 pt-10">
+      {/* MiniData filters */}
       <div>
-        <p className="text-[14px]/[21px] font-[600] uppercase text-[#000000]">
-          <em>Shop all </em>
+        <p className="text-sm px-1 font-semibold uppercase text-[#000000]">
+          <em
+            onClick={() => {
+              setDynamicUrl("products");
+              setActiveItem(null);
+            }}
+            className="cursor-pointer"
+          >
+            Shop all
+          </em>
         </p>
-        <ul className="border-b-[1px] border-[#878787] pb-5 text-[14px]/[21px] font-[600] uppercase text-[#878787]">
+        <ul className="border-b border-[#878787] pb-5 text-sm font-semibold uppercase text-[#878787]">
           {miniData.map((data) => (
             <li
               key={data}
-              onClick={() => {
-                fetchData(`?category=${data}`);
-              }}
-              className="my-2 cursor-pointer"
+              className={`my-2 p-1 rounded cursor-pointer ${activeItem === data ? "text-[#000000] italic" : ""}`}
             >
-              {data}
+              <span onClick={() => setActiveItem(activeItem === data ? null : data)}>
+                {data}
+              </span>
             </li>
           ))}
         </ul>
       </div>
+      
+      {/* Other filter categories */}
       {filterData.map(({ type, items }) => (
-        <div
-          key={type}
-          className="border-b-[1px] border-[#878787] pb-5 uppercase"
-        >
-          <p className="mt-5 text-[14px]/[21px] font-[600] uppercase text-[#000000]">
+        <div key={type} className="border-b border-[#878787] pb-5 uppercase">
+          <p className="mt-5 text-sm font-semibold uppercase text-[#000000]">
             {type}
           </p>
           {items.map((item, index) => (
             <FilterItem
-              key={item}
+              key={index}
               item={item}
-              fetchData={fetchData}
-              lastItem={type.toLowerCase()}
+              activeItem={activeItem}
+              setActiveItem={setActiveItem}
             />
           ))}
         </div>
