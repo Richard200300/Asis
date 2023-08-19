@@ -35,7 +35,7 @@ const Page = () => {
           <Membership />
           <Exclusive />
           <section>
-            <div className="relative my-20  border-t  border-[#0B0B0B]">
+            <div className="relative my-20  border-t  border-asisDark">
               <img
                 src={back_to_top}
                 alt="back_to_top"

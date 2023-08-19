@@ -11,7 +11,7 @@ const Limited_collection = () => {
     "essentials 2023",
   ];
   return (
-    <section className="relative mt-24 flex items-start justify-between border-t border-[#0B0B0B] pt-3 max-md:block">
+    <section className="relative mt-24 flex items-start justify-between border-t border-asisDark pt-3 max-md:block">
       <article className="mt-6  h-full basis-6/12 uppercase">
         <div className="w-64 text-4xl font-medium ">
           <p>
@@ -27,10 +27,10 @@ const Limited_collection = () => {
             return (
               <div key={index}>
                 <Link to={`/superspecialcategory/${data}`}>
-                <div className="flex cursor-pointer justify-between border-b border-[#5C5C5C] py-2">
-                  {data}
-                  <img src={down_arrow} alt="down_arrow" />
-                </div>
+                  <div className="flex cursor-pointer justify-between border-b border-[#5C5C5C] py-2">
+                    {data}
+                    <img src={down_arrow} alt="down_arrow" />
+                  </div>
                 </Link>
               </div>
             );
@@ -42,7 +42,7 @@ const Limited_collection = () => {
           <img
             src={limited_img}
             alt="limited_img"
-            className=" ml-4 mt-1 w-11/12 h-11/12 object-cover object-top"
+            className=" h-11/12 ml-4 mt-1 w-11/12 object-cover object-top"
           />
         </div>
         <img

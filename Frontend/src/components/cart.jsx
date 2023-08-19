@@ -11,7 +11,7 @@ const Cart = ({ setHideCart, cartData }) => {
         {cartData.length >= 1 ? (
           // Cart with items
           <section className="p-5">
-            <div className="item-center relative flex justify-between border-b border-[#0B0B0B] pb-10">
+            <div className="item-center relative flex justify-between border-b border-asisDark pb-10">
               <div>
                 <p className="text-4xl font-medium uppercase">
                   <span className="mr-1 font-normal">/</span>your cart
@@ -32,7 +32,7 @@ const Cart = ({ setHideCart, cartData }) => {
               {cartData.map((data, index) => {
                 return (
                   <section key={index}>
-                    <div className="my-5 flex items-start justify-between gap-5 border-b border-[#0B0B0B] pb-4">
+                    <div className="my-5 flex items-start justify-between gap-5 border-b border-asisDark pb-4">
                       {/* cart image */}
                       <img
                         src={data.img}
@@ -42,9 +42,9 @@ const Cart = ({ setHideCart, cartData }) => {
                       {/* right hand of the product detail of the cart */}
                       <section className="w-4/5">
                         {/* Product details */}
-                        <div className="flex items-start justify-between border-b border-b-[#0B0B0B] pb-2">
+                        <div className="flex items-start justify-between border-b border-b-asisDark pb-2">
                           <div>
-                            <p className="w-[212px] text-sm font-bold text-[#0B0B0B]">
+                            <p className="w-[212px] text-sm font-bold text-asisDark">
                               {data.name}
                             </p>
                             <p className="mt-2 text-xs font-semibold text-[#000000]">
@@ -79,14 +79,14 @@ const Cart = ({ setHideCart, cartData }) => {
               <p>Total</p>
               <p>270,000 NGN</p>
             </div>
-            <div className="mt-3 flex items-center justify-between border-b border-b-[#0B0B0B] pb-4 text-[13px]/[20px] font-medium">
+            <div className="mt-3 flex items-center justify-between border-b border-b-asisDark pb-4 text-[13px]/[20px] font-medium">
               <p>shipping</p>
               <p>calculated at checkout</p>
             </div>
             {/* Link to checkout */}
             <Link to="/checkout">
               <button
-                className="mt-5 flex cursor-pointer w-full uppercase items-center justify-center rounded-[7px] bg-[#0B0B0B] py-3 text-sm font-semibold text-[#FFFFFF]"
+                className="mt-5 flex w-full cursor-pointer items-center justify-center rounded-[7px] bg-asisDark py-3 text-sm font-semibold uppercase text-[#FFFFFF]"
                 onClick={() => {
                   setHideCart(false);
                 }}
@@ -99,8 +99,8 @@ const Cart = ({ setHideCart, cartData }) => {
           // Empty cart
           <section className="relative w-96 px-3 py-6">
             <div>
-              <div className="item-center relative flex justify-between border-b border-[#0B0B0B] pb-8">
-                <div >
+              <div className="item-center relative flex justify-between border-b border-asisDark pb-8">
+                <div>
                   <p className="text-4xl font-medium uppercase">/your cart</p>
                   <p className="absolute -top-1 left-52 text-base font-medium text-[#000000]">
                     ({cartData.length})

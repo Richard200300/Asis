@@ -41,13 +41,13 @@ const New_Arrival = () => {
         <div className="h-[541px] w-[336px] uppercase">
           <img src={new1} alt="new1" />
           <div className="mt-2">
-            <p className="text-[16px]/[20px] font-[600] text-[#0B0B0B]">
+            <p className="text-[16px]/[20px] font-[600] text-asisDark">
               mvif denim jean
             </p>
             <p className="text-[12px]/[16px] font-[600] text-[#17A500]">
-              AISI X CARHARRT
+              asis X CARHARRT
             </p>
-            <p className="text-[12px]/16px] font-[600] text-[#0B0B0B]">
+            <p className="text-[12px]/16px] font-[600] text-asisDark">
               172,000 NGN
             </p>
           </div>
@@ -55,13 +55,13 @@ const New_Arrival = () => {
         <div className="h-[541px] w-[336px] uppercase">
           <img src={new2} alt="new2" />
           <div className="mt-2">
-            <p className="text-[16px]/[20px] font-[600] text-[#0B0B0B]">
+            <p className="text-[16px]/[20px] font-[600] text-asisDark">
               mvif denim jean
             </p>
             <p className="text-[12px]/[16px] font-[600] text-[#17A500]">
-              AISI X CARHARRT
+              asis X CARHARRT
             </p>
-            <p className="text-[12px]/16px] font-[600] text-[#0B0B0B]">
+            <p className="text-[12px]/16px] font-[600] text-asisDark">
               172,000 NGN
             </p>
           </div>
@@ -69,13 +69,13 @@ const New_Arrival = () => {
         <div className="h-[541px] w-[336px] uppercase">
           <img src={new3} alt="new3" />
           <div className="mt-2">
-            <p className="text-[16px]/[20px] font-[600] text-[#0B0B0B]">
+            <p className="text-[16px]/[20px] font-[600] text-asisDark">
               mvif denim jean
             </p>
             <p className="text-[12px]/[16px] font-[600] text-[#17A500]">
-              AISI X CARHARRT
+              asis X CARHARRT
             </p>
-            <p className="text-[12px]/16px] font-[600] text-[#0B0B0B]">
+            <p className="text-[12px]/16px] font-[600] text-asisDark">
               172,000 NGN
             </p>
           </div>

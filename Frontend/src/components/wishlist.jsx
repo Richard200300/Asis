@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from "react";
 import cancel_cart from "../assets/icons/cancel_cart.svg";
 import heart from "../assets/icons/heart.svg";
@@ -12,11 +11,9 @@ const Wishlist = ({ setHideWish, wishlistData }) => {
         {wishlistData.length >= 1 ? (
           // Cart with items
           <section className="p-5">
-            <div className="item-center relative flex justify-between border-b border-[#0B0B0B] pb-10">
+            <div className="item-center relative flex justify-between border-b border-asisDark pb-10">
               <div>
-                <p className="text-4xl font-medium ">
-                  wishlist
-                </p>
+                <p className="text-4xl font-medium ">wishlist</p>
                 <p className="absolute -top-2 left-40 text-base font-medium text-[#000000]">
                   ({wishlistData.length})
                 </p>
@@ -33,7 +30,7 @@ const Wishlist = ({ setHideWish, wishlistData }) => {
               {wishlistData.map((data, index) => {
                 return (
                   <section key={index}>
-                    <div className="my-5 flex items-start justify-between gap-5 border-b border-[#0B0B0B] pb-4">
+                    <div className="my-5 flex items-start justify-between gap-5 border-b border-asisDark pb-4">
                       {/* cart image */}
                       <img
                         src={data.img}
@@ -43,13 +40,13 @@ const Wishlist = ({ setHideWish, wishlistData }) => {
                       {/* right hand of the product detail of the cart */}
                       <section className="w-4/5">
                         {/* Product details */}
-                        <div className="flex items-start justify-between border-b border-b-[#0B0B0B] pb-2">
+                        <div className="flex items-start justify-between border-b border-b-asisDark pb-2">
                           <div>
-                            <p className="w-[212px] text-sm font-bold text-[#0B0B0B]">
+                            <p className="w-[212px] text-sm font-bold text-asisDark">
                               {data.name}
                             </p>
                             <p className="mt-2 text-xs font-semibold text-[#000000]">
-                            {data.price?.toLocaleString()} NGN
+                              {data.price?.toLocaleString()} NGN
                             </p>
                           </div>
                           {/* remove item from cart */}
@@ -67,7 +64,6 @@ const Wishlist = ({ setHideWish, wishlistData }) => {
                               />
                             </div>
                           </div>
-                        
                         </div>
                         <div className="mt-3 flex w-full items-start justify-between text-xs font-semibold text-[#000000]">
                           <div>
@@ -86,20 +82,17 @@ const Wishlist = ({ setHideWish, wishlistData }) => {
               })}
             </div>
             {/* add to cart */}
-           
-              <button
-                className="mt-5 flex w-full uppercase cursor-pointer items-center justify-center rounded-[7px] bg-[#0B0B0B] py-3 text-sm font-semibold text-[#FFFFFF]"
-                
-              >
-                add wishlist to cart
-              </button>
-         </section>
+
+            <button className="mt-5 flex w-full cursor-pointer items-center justify-center rounded-[7px] bg-asisDark py-3 text-sm font-semibold uppercase text-[#FFFFFF]">
+              add wishlist to cart
+            </button>
+          </section>
         ) : (
           // Empty cart
           <section className="relative w-96 px-3 py-6">
             <div>
-              <div className="item-center relative flex justify-between border-b border-[#0B0B0B] pb-8">
-                <div >
+              <div className="item-center relative flex justify-between border-b border-asisDark pb-8">
+                <div>
                   <p className="text-4xl font-medium ">Wishlist</p>
                   <p className="absolute -top-1 left-40 text-base font-medium text-[#000000]">
                     ({wishlistData.length})

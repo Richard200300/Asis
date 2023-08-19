@@ -25,7 +25,7 @@ const Page = () => {
   const handleScrollToTop = () => {
     window.scrollTo({
       top: 0,
-      behavior: "smooth"
+      behavior: "smooth",
     });
   };
 
@@ -44,34 +44,35 @@ const Page = () => {
           />
 
           {/* Main content */}
-            <section className="flex justify-start">
-              <div className={`flex flex-row-reverse ${align} gap-10 justify-start`}>
+          <section className="flex justify-start">
+            <div
+              className={`flex flex-row-reverse ${align} justify-start gap-10`}
+            >
+              {/* Shop products */}
+              {data && <ShopProducts hideFilter={hideFilter} data={data} />}
 
-                {/* Shop products */}
-                    {data && <ShopProducts hideFilter={hideFilter} data={data} />}
-
-                {/* Filter */}
-                <div>
-                  {hideFilter && (
-                    <div className="sticky top-10 ">
-                      <Filter setDynamicUrl={setDynamicUrl} />
-                    </div>
-                  )}
-                </div>
+              {/* Filter */}
+              <div>
+                {hideFilter && (
+                  <div className="sticky top-10 ">
+                    <Filter setDynamicUrl={setDynamicUrl} />
+                  </div>
+                )}
               </div>
-            </section>
+            </div>
+          </section>
 
           {/* Back to top */}
-            <div className="relative mt-16 border-t border-[#0B0B0B]">
-              <img
-                src={backToTop}
-                alt="back_to_top"
-                className="absolute right-10 -top-7 cursor-pointer"
-                onClick={() => {
-                  handleScrollToTop();
-                }}
-              />
-            </div>
+          <div className="relative mt-16 border-t border-asisDark">
+            <img
+              src={backToTop}
+              alt="back_to_top"
+              className="absolute -top-7 right-10 cursor-pointer"
+              onClick={() => {
+                handleScrollToTop();
+              }}
+            />
+          </div>
         </section>
       ) : (
         <Loading />

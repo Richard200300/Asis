@@ -1,5 +1,5 @@
 import React from "react";
-import footer_logo from "../assets/icons/footer_logo.svg"
+import footer_logo from "../assets/icons/footer_logo.svg";
 import footer_img from "../assets/images/footer_img.png";
 import footer_icon from "../assets/icons/footer_icon.svg";
 import facebook from "../assets/icons/facebook.svg";
@@ -7,89 +7,100 @@ import Instagram from "../assets/icons/Instagram.svg";
 import Reddit from "../assets/icons/Reddit.svg";
 import Twitter from "../assets/icons/Twitter.svg";
 
-
-
 const Footer = () => {
   return (
-    <div className="grid grid-cols-4 max-lg:grid-cols-2 border-[#0B0B0B] border-t  w-full mt-20" >
-      <div className="uppercase border-b border-[#0B0B0B]">
-        <p className="w-[512px] max-md:w-full font-semibold text-[20px]/[32px] mt-2 ml-3  ">
-          /subsricb<em className="font-normal" >e</em > to our n<em className="font-normal" >e</em >wslett<em className="font-normal" >e</em >r & be th
-          <em className="font-normal" >e</em > first to he<em className="font-normal" >a</em >r ab<em className="font-normal" >o</em >ut new pr<em className="font-normal" >o</em >ducts
-          & <em className="font-normal" >e</em >vents
+    <div className="mt-20 grid w-full grid-cols-4 border-t  border-asisDark max-lg:grid-cols-2">
+      <div className="border-b border-asisDark uppercase">
+        <p className="ml-3 mt-2 w-[512px] text-[20px]/[32px] font-semibold max-md:w-full  ">
+          /subsricb<em className="font-normal">e</em> to our n
+          <em className="font-normal">e</em>wslett
+          <em className="font-normal">e</em>r & be th
+          <em className="font-normal">e</em> first to he
+          <em className="font-normal">a</em>r ab
+          <em className="font-normal">o</em>ut new pr
+          <em className="font-normal">o</em>ducts &{" "}
+          <em className="font-normal">e</em>vents
         </p>
       </div>
-      <div className="border-b border-[#0B0B0B]"></div>
+      <div className="border-b border-asisDark"></div>
 
-      <div className="border-b border-l border-[#0B0B0B] relative max-lg:border-l-0">
+      <div className="relative border-b border-l border-asisDark max-lg:border-l-0">
         <input
           type="email"
           placeholder="ENTER YOUR EMAIL ADDRESS"
-          className="w-full absolute bottom-3 outline-0 font-semibold text-[12px]/[16px] text-[#3C3C3C] px-5 bg-[transparent]"
+          className="absolute bottom-3 w-full bg-[transparent] px-5 text-[12px]/[16px] font-semibold text-[#3C3C3C] outline-0"
         />
       </div>
-      <div className="border-b border-l border-[#0B0B0B] h-[96px] uppercase relative pl-5">
-        <div className="absolute bottom-[5px] flex items-center gap-2 cursor-pointer">
-          <p className="font-semibold text-[12px]/[16px] text-[#0B0B0B] ">
+      <div className="relative h-[96px] border-b border-l border-asisDark pl-5 uppercase">
+        <div className="absolute bottom-[5px] flex cursor-pointer items-center gap-2">
+          <p className="text-[12px]/[16px] font-semibold text-asisDark ">
             agree & subscribe
           </p>
           <img src={footer_icon} alt="footer_icon" />
         </div>
       </div>
       {/* down footer seciton */}
-      <div className="border-r border-[#0B0B0B]  h-[392px] pt-7 pr-4 pl-3 border-b ">
-        <div className="w-[305px] h-[348px] max-lg:w-[100%] max-lg:h-[97%] ">
-        <img
-          src={footer_img}
-          alt="footer_img"
-          className="w-[100%] h-[100%]  object-cover object-top  "
-        />
+      <div className="h-[392px] border-b  border-r border-asisDark pl-3 pr-4 pt-7 ">
+        <div className="h-[348px] w-[305px] max-lg:h-[97%] max-lg:w-[100%] ">
+          <img
+            src={footer_img}
+            alt="footer_img"
+            className="h-[100%] w-[100%]  object-cover object-top  "
+          />
         </div>
-    
       </div>
-      <div className="relative border-b border-[#0B0B0B]">
-    <img src={footer_logo} alt="footer_logo" className="ml-5 absolute top-8 cursor-pointer" />
-          <p className="w-[90%] ml-5 absolute top-[30%] font-[500] text-sm text-[#0B0B0B] uppercase max-lg:w-[100%]">
-            AISI offers a carefully curated collection of stylish and versatile
-            clothing pieces that are designed to elevate everyday looks. From
-            comfortable essentials to trendy statement pieces, Aisi aims to
-            empower individuals to express their unique sense of style with
-            confidence.
-          </p>
-          <div className="flex items-center gap-5 absolute bottom-4 ml-5">
-            <img src={facebook} alt="facebook" className="cursor-pointer" />
-            <img src={Instagram} alt="Instagram" className="cursor-pointer" />
-            <img src={Reddit} alt="Reddit" className="cursor-pointer" />
-            <img src={Twitter} alt="Twitter" className="cursor-pointer" />
-          </div>
-     
+      <div className="relative border-b border-asisDark">
+        <img
+          src={footer_logo}
+          alt="footer_logo"
+          className="absolute top-8 ml-5 cursor-pointer"
+        />
+        <p className="absolute top-[30%] ml-5 w-[90%] text-sm font-[500] uppercase text-asisDark max-lg:w-[100%]">
+          asis offers a carefully curated collection of stylish and versatile
+          clothing pieces that are designed to elevate everyday looks. From
+          comfortable essentials to trendy statement pieces, asis aims to
+          empower individuals to express their unique sense of style with
+          confidence.
+        </p>
+        <div className="absolute bottom-4 ml-5 flex items-center gap-5">
+          <img src={facebook} alt="facebook" className="cursor-pointer" />
+          <img src={Instagram} alt="Instagram" className="cursor-pointer" />
+          <img src={Reddit} alt="Reddit" className="cursor-pointer" />
+          <img src={Twitter} alt="Twitter" className="cursor-pointer" />
+        </div>
       </div>
 
-      <div className="uppercase border-l border-b border-[#0B0B0B] h-[392px] relative max-lg:border-l-0 ">
-        <p className="font-normal text-sm text-[#0b0b0b77] ml-5 absolute top-[30%]">
+      <div className="relative h-[392px] border-b border-l border-asisDark uppercase max-lg:border-l-0 ">
+        <p className="absolute top-[30%] ml-5 text-sm font-normal text-[#0b0b0b77]">
           <em>/ site navigation</em>
         </p>
-        <ul className="list-none font-semibold text-base text-[#0B0B0B] absolute bottom-4 ml-5">
+        <ul className="absolute bottom-4 ml-5 list-none text-base font-semibold text-asisDark">
           <li className="my-2 cursor-pointer">homepage</li>
           <li className="my-2 cursor-pointer">shop</li>
           <li className="my-2 cursor-pointer">collections</li>
           <li className="cursor-pointer">contact</li>
         </ul>
       </div>
-      <div className="uppercase border-l border-[#0B0B0B] border-b  relative">
-        <p className="font-normal text-sm text-[#0B0B0B] ml-5 absolute top-[30%]">
+      <div className="relative border-b border-l border-asisDark  uppercase">
+        <p className="absolute top-[30%] ml-5 text-sm font-normal text-asisDark">
           <em>/ customer care</em>
         </p>
-        <ul className="list-none font-semibold text-base text-[#0B0B0B] absolute bottom-4 ml-5">
+        <ul className="absolute bottom-4 ml-5 list-none text-base font-semibold text-asisDark">
           <li className="my-2 cursor-pointer">shipping & payment</li>
           <li className="my-2 cursor-pointer">refund & return policy</li>
           <li className="cursor-pointer">care instructions</li>
         </ul>
       </div>
-      <div className="my-8 ml-5 uppercase font-semibold text-xs text-[#0B0B0B]">coyright 2023, aisi right reserved </div>
+      <div className="my-8 ml-5 text-xs font-semibold uppercase text-asisDark">
+        coyright 2023, asis right reserved{" "}
+      </div>
       <div className="max-lg:hidden"></div>
-      <div className="my-8 ml-5 uppercase font-semibold text-xs text-[#0B0B0B]">[ terms and conditions ]</div>
-      <div className="my-8 uppercase text-right font-semibold text-xs text-[#0B0B0B] max-md:text-left ml-5" >[ privacy ]</div>
+      <div className="my-8 ml-5 text-xs font-semibold uppercase text-asisDark">
+        [ terms and conditions ]
+      </div>
+      <div className="my-8 ml-5 text-right text-xs font-semibold uppercase text-asisDark max-md:text-left">
+        [ privacy ]
+      </div>
     </div>
   );
 };

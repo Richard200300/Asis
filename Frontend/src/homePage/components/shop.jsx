@@ -8,7 +8,7 @@ const Shop = () => {
   return (
     <section
       className=" relative mt-24 flex items-start 
-     justify-between border-t border-[#0B0B0B] pt-3 max-md:block"
+     justify-between border-t border-asisDark pt-3 max-md:block"
     >
       <article className="basis-1/5">
         <div className="mt-10 w-48 text-4xl	font-medium uppercase">
@@ -36,13 +36,13 @@ const Shop = () => {
           </div>
         </div>
       </article>
-      <article className="flex basis-8/12 items-start justify-between max-xl:block gap-5">
-        <article className="relative h-[40rem] w-[30rem] max-md:w-full max-md:h-full">
-          <div className="mt-7 flex h-[38rem] w-[29rem] items-center justify-center max-md:w-full max-md:h-full">
+      <article className="flex basis-8/12 items-start justify-between gap-5 max-xl:block">
+        <article className="relative h-[40rem] w-[30rem] max-md:h-full max-md:w-full">
+          <div className="mt-7 flex h-[38rem] w-[29rem] items-center justify-center max-md:h-full max-md:w-full">
             <img
               src={shop_img}
               alt="limited_img"
-              className=" ml-4 mt-1 w-11/12 h-11/12 object-cover object-top"
+              className=" h-11/12 ml-4 mt-1 w-11/12 object-cover object-top"
             />
           </div>
           <img
@@ -53,7 +53,7 @@ const Shop = () => {
           <img
             src={img_border}
             alt="img_border"
-            className="absolute top-8 left-1 rotate-180"
+            className="absolute left-1 top-8 rotate-180"
           />
           <img
             src={img_border}
@@ -63,16 +63,12 @@ const Shop = () => {
           <img
             src={img_border}
             alt="img_border"
-            className="absolute bottom-2 let-1 rotate-90"
+            className="let-1 absolute bottom-2 rotate-90"
           />
         </article>
         <article className="">
-          <div className="mt-14 h-96 w-[27rem] max-md:w-full max-md:h-full">
-            <img
-              src={shop_img2}
-              alt="shop_img2"
-              className="h-full w-full"
-            />
+          <div className="mt-14 h-96 w-[27rem] max-md:h-full max-md:w-full">
+            <img src={shop_img2} alt="shop_img2" className="h-full w-full" />
           </div>
         </article>
       </article>

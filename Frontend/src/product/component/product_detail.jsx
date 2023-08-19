@@ -33,7 +33,7 @@ const Product_detail = ({ data }) => {
   };
 
   return (
-    <section className="product_container mb-20 mt-10 h-full border-y border-[#0B0B0B]">
+    <section className="product_container mb-20 mt-10 h-full border-y border-asisDark">
       {/* Product details */}
       {data ? (
         <section className="flex items-start gap-5">
@@ -59,7 +59,7 @@ const Product_detail = ({ data }) => {
           </section>
 
           {/* Selected image */}
-          <section className="items-cent  flex basis-[45%] justify-center overflow-hidden border-x border-[#0B0B0B] px-3 py-5">
+          <section className="items-cent  flex basis-[45%] justify-center overflow-hidden border-x border-asisDark px-3 py-5">
             {selectedImage && (
               <img
                 src={`https://asis.blob.core.windows.net/asisimages/${selectedImage}`}
@@ -71,7 +71,7 @@ const Product_detail = ({ data }) => {
           {/* Product information */}
 
           <section className="basis-[40%] py-5">
-            <p className="mb-9 text-3xl font-medium text-[#0B0B0B]">
+            <p className="mb-9 text-3xl font-medium text-asisDark">
               /{data.name}
             </p>
             {/* Sizes */}
@@ -82,7 +82,7 @@ const Product_detail = ({ data }) => {
                   onClick={() => setSelectedSize(sizeData.size)}
                   className={`flex h-10 w-24 items-center justify-center border text-xs font-medium uppercase ${
                     selectedSize === sizeData.size
-                      ? "cursor-pointer border-[#0B0B0B] text-[#0b0b0b]"
+                      ? "cursor-pointer border-asisDark text-asisDark"
                       : " border-[#C4C4C4] text-[#C4C4C4]"
                   }`}
                 >
@@ -95,19 +95,19 @@ const Product_detail = ({ data }) => {
             <section className="">
               {/* Time */}
               <article className="flex items-center justify-between text-base font-semibold">
-                <p className="uppercase text-[#0B0B0B]">time</p>
+                <p className="uppercase text-asisDark">time</p>
                 <p className="text-[#17A500]">12:01:43:20</p>
               </article>
 
               {/* Description */}
-              <p className="my-9 text-sm font-medium text-[#0B0B0B]">
+              <p className="my-9 text-sm font-medium text-asisDark">
                 {data.description}
               </p>
 
               {/* Add to cart */}
 
               <button
-                className={`my-3 w-full  bg-[#0B0B0B] py-4 text-center text-xs font-semibold uppercase ${
+                className={`my-3 w-full  bg-asisDark py-4 text-center text-xs font-semibold uppercase ${
                   selectedSize
                     ? "cursor-pointer text-[#FFFFFF]"
                     : " cursor-default text-[#C4C4C4]"
@@ -120,13 +120,13 @@ const Product_detail = ({ data }) => {
               </button>
 
               {/* Add to wishlist */}
-              <button className="mb-3 w-full cursor-pointer border border-[#0B0B0B] py-4 text-center text-xs font-semibold uppercase text-[#0B0B0B]">
+              <button className="mb-3 w-full cursor-pointer border border-asisDark py-4 text-center text-xs font-semibold uppercase text-asisDark">
                 add to wishlist
               </button>
 
               {/* Accordion */}
-              <section className="border-y border-[#0B0B0B] text-sm uppercase text-[#0B0B0B] ">
-                <article className="flex cursor-pointer items-center justify-between border-b border-[#0B0B0B] py-2">
+              <section className="border-y border-asisDark text-sm uppercase text-asisDark ">
+                <article className="flex cursor-pointer items-center justify-between border-b border-asisDark py-2">
                   <p>product details</p>
                   <img src={down} alt="down" />
                 </article>
