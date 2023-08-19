@@ -20,7 +20,9 @@ const Page = () => {
       behavior: "smooth",
     });
   };
-  const { data } = useFetch("http://localhost:5000/api/products/?limit=10");
+  const { data } = useFetch(
+    `${import.meta.env.VITE_API_URL}products/?limit=10`,
+  );
   const name = "new arrival";
   return (
     <div className=" h-full p-0 ">

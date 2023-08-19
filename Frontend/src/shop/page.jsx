@@ -13,7 +13,7 @@ const Page = () => {
   const [hideFilter, setHideFilter] = useState(true);
 
   // API URL
-  const apiUrl = `http://localhost:5000/api/${dynamicUrl}`;
+  const apiUrl = `${import.meta.env.VITE_API_URL}${dynamicUrl}`;
   const { data } = useFetch(apiUrl);
 
   // Scroll to top on component mount

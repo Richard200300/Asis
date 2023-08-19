@@ -12,7 +12,7 @@ const Page = () => {
   const { id } = useParams();
   const [hideCart, ShowCart] = useState(false);
 
-  const apiUrl = `http://localhost:5000/api/products/${id}`;
+  const apiUrl = `${import.meta.env.VITE_API_URL}products/${id}`;
   const {data} = useFetch(apiUrl);
 
    const name = 'you may also like'

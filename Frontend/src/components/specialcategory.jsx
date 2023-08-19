@@ -8,7 +8,9 @@ import up_arrow from "../assets/icons/up_arrow.svg";
 import Loading from "./loading.jsx";
 
 const SpecialCategory = ({ name }) => {
-  const { data } = useFetch("http://localhost:5000/api/products/?limit=10");
+  const { data } = useFetch(
+    `${import.meta.env.VITE_API_URL}products/?limit=10`,
+  );
   const [scrollPosition, setScrollPosition] = useState(0);
 
   const handleScroll = (increment) => {
