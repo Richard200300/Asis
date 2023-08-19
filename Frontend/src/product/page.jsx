@@ -23,7 +23,7 @@ const Page = () => {
 
 
   return (
-    <div className=" h-full p-0">
+    <div className=" h-full px-8">
      {data ? <div>
 
       {hideCart && <Cart data={data} hideCart={hideCart} ShowCart={ShowCart} />}
