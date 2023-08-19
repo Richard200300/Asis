@@ -85,11 +85,10 @@ const Page = () => {
             wishlistData={wishData}
           />
 
-          {/* Render banner component */}
-          <Banner />
-
           {/* Render the Cart component if hideCart is true */}
           {hideCart && <Cart setHideCart={setHideCart} cartData={cartData} />}
+          {/* Render banner component */}
+          <Banner />
 
           {/* Render the Wishlist component if hideWish is true */}
           {hideWish && (

@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 
 const Cart = ({ setHideCart, cartData }) => {
   return (
-    <div className="sticky right-7 top-10 z-20 ml-auto">
+    <div className="sticky right-7 top-12 mt-4 z-20 ml-auto">
       <div className="absolute right-0  overflow-hidden bg-[url('./assets/images/bg_img.png')] uppercase shadow-[-7px_8px_30px_0px_#00000033]">
         {cartData.length >= 1 ? (
           // Cart with items
