@@ -5,6 +5,7 @@ import Footer from "../components/footer";
 import Cart from "../components/cart";
 import Wishlist from "../components/wishlist";
 import collection_img_2 from "../assets/images/collection_img_2.png";
+import Banner from "../components/banner";
 
 const Page = () => {
   // State to control the visibility of the cart and wishlist
@@ -74,17 +75,27 @@ const Page = () => {
 
   return (
     <main className="bg-[url('./assets/images/bg_img.png')] px-7 max-md:px-3">
-      <section className="w-full flex justify-center items-start">
+      <section className="flex w-full items-start justify-center">
         <div className="max-w-7xl">
           {/* Render the header component and pass cart and wishlist data */}
-          <Header setHideCart={setHideCart} setHideWish={setHideWish} cartData={cartData} wishlistData={wishData} />
-          
+          <Header
+            setHideCart={setHideCart}
+            setHideWish={setHideWish}
+            cartData={cartData}
+            wishlistData={wishData}
+          />
+
+          {/* Render banner component */}
+          <Banner />
+
           {/* Render the Cart component if hideCart is true */}
           {hideCart && <Cart setHideCart={setHideCart} cartData={cartData} />}
-          
+
           {/* Render the Wishlist component if hideWish is true */}
-          {hideWish && <Wishlist setHideWish={setHideWish} wishlistData={wishData} />}
-          
+          {hideWish && (
+            <Wishlist setHideWish={setHideWish} wishlistData={wishData} />
+          )}
+
           {/* Render the nested route components */}
           <Outlet />
 

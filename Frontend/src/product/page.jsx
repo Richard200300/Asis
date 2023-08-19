@@ -25,7 +25,6 @@ const Page = () => {
   return (
     <div className=" h-full p-0">
      {data ? <div>
-      <Banner />
 
       {hideCart && <Cart data={data} hideCart={hideCart} ShowCart={ShowCart} />}
       
