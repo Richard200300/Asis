@@ -6,73 +6,53 @@ import Cart from "../components/cart";
 import Wishlist from "../components/wishlist";
 import collection_img_2 from "../assets/images/collection_img_2.png";
 import Banner from "../components/banner";
+import axios from "axios";
 
 const Page = () => {
   // State to control the visibility of the cart and wishlist
   const [hideCart, setHideCart] = useState(false);
-  const [hideWish, setHideWish] = useState(false);
+  // const [hideWish, setHideWish] = useState(false);
 
-  useEffect(() => {
+  const [cartData, setCartData] = React.useState([]);
+
+  const handleGetCartContent = async () => {
+    try {
+      const response = await axios.get(`${import.meta.env.VITE_API_URL}carts`);
+      console.log(response.data.products);
+      setCartData(response.data.products);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  React.useEffect(() => {
     // Scroll to the top of the page when the component mounts
     window.scrollTo(0, 0);
+    handleGetCartContent();
   }, []);
 
-  // Sample cart data
-  const cartData = [
-    {
-      name: "OVERGROWTH CONVERTIBLE PANTS",
-      price: 135000,
-      size: 1,
-      color: "greenish brown",
-      qty: 1,
-      img: collection_img_2,
-    },
-    {
-      name: "ANOTHER ITEM",
-      price: 90000,
-      size: 2,
-      color: "blue",
-      qty: 2,
-      img: collection_img_2,
-    },
-  ];
+  useEffect(() => {}, []);
 
-  // Sample wishlist data
-  const wishData = [
-    {
-      name: "OVERGROWTH CONVERTIBLE PANTS",
-      price: 135000,
-      size: 1,
-      color: "greenish brown",
-      qty: 1,
-      img: collection_img_2,
-    },
-    {
-      name: "ANOTHER ITEM",
-      price: 90000,
-      size: 2,
-      color: "blue",
-      qty: 1,
-      img: collection_img_2,
-    },
-    {
-      name: "OVERGROWTH CONVERTIBLE PANTS",
-      price: 135000,
-      size: 1,
-      color: "greenish brown",
-      qty: 1,
-      img: collection_img_2,
-    },
-    {
-      name: "ANOTHER ITEM",
-      price: 90000,
-      size: 2,
-      color: "blue",
-      qty: 1,
-      img: collection_img_2,
-    },
-  ];
+  // // Sample cart data
+  // const cartData = [
+  //   {
+  //     name: "OVERGROWTH CONVERTIBLE PANTS",
+  //     price: 135000,
+  //     size: 1,
+  //     color: "greenish brown",
+  //     qty: 1,
+  //     img: collection_img_2,
+  //   },
+  //   {
+  //     name: "ANOTHER ITEM",
+  //     price: 90000,
+  //     size: 2,
+  //     color: "blue",
+  //     qty: 2,
+  //     img: collection_img_2,
+  //   },
+  // ];
 
+  
   return (
     <main className="bg-[url('./assets/images/bg_img.png')] px-7 max-md:px-3">
       <section className="flex w-full items-start justify-center">
@@ -80,9 +60,9 @@ const Page = () => {
           {/* Render the header component and pass cart and wishlist data */}
           <Header
             setHideCart={setHideCart}
-            setHideWish={setHideWish}
+            // setHideWish={setHideWish}
             cartData={cartData}
-            wishlistData={wishData}
+            // wishlistData={wishData}
           />
 
           {/* Render the Cart component if hideCart is true */}
@@ -91,9 +71,9 @@ const Page = () => {
           <Banner />
 
           {/* Render the Wishlist component if hideWish is true */}
-          {hideWish && (
+          {/* {hideWish && (
             <Wishlist setHideWish={setHideWish} wishlistData={wishData} />
-          )}
+          )} */}
 
           {/* Render the nested route components */}
           <Outlet />

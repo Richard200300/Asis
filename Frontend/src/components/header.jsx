@@ -71,7 +71,7 @@ const Header = ({ setHideCart, setHideWish, cartData, wishlistData }) => {
           <div
             onClick={() => {
               setHideCart((prev) => !prev);
-              setHideWish(false);
+              // setHideWish(false);
             }}
             className="flex min-w-[172px] cursor-pointer justify-center border-x border-asisDark px-[12px] py-[8px] text-[14px]/[21px] font-[600] text-[#] text-asisDark  max-lg:hidden"
           >
