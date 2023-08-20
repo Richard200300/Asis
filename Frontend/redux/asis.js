@@ -2,6 +2,18 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   cart: {},
+  order: {
+    firstName: "",
+    lastName: "",
+    email: "",
+    phone: "",
+    address: "",
+    city: "",
+    state: "",
+    zip: "",
+    country: "",
+    shipping: "",
+  },
 };
 
 export const asis = createSlice({
@@ -11,10 +23,13 @@ export const asis = createSlice({
     setCart: (state, action) => {
       state.cart = action.payload;
     },
+    setOrder: (state, action) => {
+      state.order = { ...state.order, ...action.payload };
+    },
   },
 });
 
 // Action creators are generated for each case reducer function
-export const { setCart } = asis.actions;
+export const { setCart, setOrder } = asis.actions;
 
 export default asis.reducer;

@@ -1,9 +1,18 @@
-import React from 'react'
+import React from "react";
+import OrderNav from "./orderNav";
+import Contact from "./contact";
+import Shipping from "./shipping";
 
 const Order = () => {
-  return (
-    <div className='flex-1'>Order</div>
-  )
-}
+  const [activeStep, setActiveStep] = React.useState(1); // [1,2,3]
 
-export default Order
+  return (
+    <div className="flex-1">
+      <OrderNav activeStep={activeStep} setActiveStep={setActiveStep} />
+      {activeStep === 1 && <Contact setActiveStep={setActiveStep} />}
+      {activeStep === 2 && <Shipping setActiveStep={setActiveStep} />}
+    </div>
+  );
+};
+
+export default Order;

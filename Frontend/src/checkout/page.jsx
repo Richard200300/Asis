@@ -4,9 +4,9 @@ import CheckoutCart from "./components/checkoutCart";
 const Page = () => {
   
   return (
-    <main className="flex items-stretch">
-      <Order />
-      <CheckoutCart />
+    <main className="flex h-full  items-stretch gap-20">
+      {/* <Order />
+      <CheckoutCart /> */}
     </main>
   );
 };

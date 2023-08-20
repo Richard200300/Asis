@@ -4,7 +4,7 @@ const VowelItalicizer = ({ text }) => {
   const italicizeVowels = (str) => {
     const vowels = ["a", "e", "i", "o", "u", "A", "E", "I", "O", "U"];
     return str.split("").map((char, index) =>
-      vowels.includes(char) && index != 0 ? (
+      vowels.includes(char) ? (
         <span key={index} className="font-normal italic">
           {char}
         </span>
@@ -14,7 +14,7 @@ const VowelItalicizer = ({ text }) => {
     );
   };
 
-  return <span className="">{italicizeVowels(text)}</span>;
+  return <apan className="">{italicizeVowels(text)}</apan>;
 };
 
 export default VowelItalicizer;

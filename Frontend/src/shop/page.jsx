@@ -35,7 +35,7 @@ const Page = () => {
   return (
     <div className="h-full ">
       {data ? (
-        <section>
+        <section className="">
           {/* Search */}
           <Search
             setDynamicUrl={setDynamicUrl}
