@@ -6,6 +6,7 @@ import { useDispatch } from "react-redux";
 import { setCart } from "../../../redux/asis";
 import CartLoading from "../../components/cartLoader";
 import AddToCartLoading from "./addToCartLoading";
+import VowelItalicizer from "../../components/vowelItalicizer";
 
 const Product_detail = ({ data }) => {
   // States
@@ -104,12 +105,12 @@ const Product_detail = ({ data }) => {
       {data ? (
         <section className="flex items-start gap-5">
           {/* Thumbnail images */}
-          <section className="gap flex basis-7 items-center flex-col justify-center py-5">
+          <section className="gap flex basis-7 flex-col items-center justify-center py-5">
             {data.images?.map((img, index) => (
               <div
                 key={index}
                 onClick={() => setSelectedImage(img)}
-                className={` mb-5 flex h-20 w-24 cursor-pointer items-center justify-center bg-center bg-contain bg-no-repeat ${
+                className={` mb-5 flex h-20 w-24 cursor-pointer items-center justify-center bg-contain bg-center bg-no-repeat ${
                   img === selectedImage
                     ? `bg-[url('./assets/images/frames.png')]`
                     : ""
@@ -125,7 +126,7 @@ const Product_detail = ({ data }) => {
           </section>
 
           {/* Selected image */}
-          <section className="flex h-[47rem] w-[32rem] flex-1 items-cente  justify-center  overflow-hidden border-x border-asisDark px-3 py-5">
+          <section className="items-cente flex h-[47rem] w-[32rem] flex-1  justify-center  overflow-hidden border-x border-asisDark px-3 py-5">
             {selectedImage && (
               <img
                 src={`${import.meta.env.VITE_BLOB_URL}${selectedImage}`}
@@ -136,9 +137,9 @@ const Product_detail = ({ data }) => {
 
           {/* Product information */}
 
-          <section className="flex-1 w-full py-5">
-            <p className="mb-9 text-3xl font-medium text-asisDark">
-              /{data.name}
+          <section className="w-full flex-1 py-5">
+            <p className="mb-9 text-3xl uppercase font-medium text-asisDark">
+              / <VowelItalicizer text={data.name} />
             </p>
             {/* Sizes */}
             <section className="mb-5 flex flex-wrap gap-x-5 gap-y-3">

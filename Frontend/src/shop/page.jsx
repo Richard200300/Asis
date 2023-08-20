@@ -54,7 +54,7 @@ const Page = () => {
               {/* Filter */}
               <div>
                 {hideFilter && (
-                  <div className="sticky top-12 ">
+                  <div className="sticky lg:block hidden top-12 ">
                     <Filter setDynamicUrl={setDynamicUrl} />
                   </div>
                 )}

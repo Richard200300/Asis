@@ -8,6 +8,8 @@ import toast from "react-hot-toast";
 import CartLoading from "./cartLoader";
 import { useSelector, useDispatch } from "react-redux";
 import { setCart } from "../../redux/asis";
+import SpecialChar from "./specialChar";
+import VowelItalicizer from "./vowelItalicizer";
 
 const Cart = ({ setHideCart }) => {
   const ref = React.useRef(null);
@@ -136,15 +138,20 @@ const Cart = ({ setHideCart }) => {
 
   return (
     <div ref={ref} className="sticky  right-7 top-12 z-20 ml-auto mt-4">
-      <div className="absolute right-0 min-w-[26rem] overflow-hidden bg-[url('./assets/images/bg_img.png')] uppercase shadow-[-7px_8px_30px_0px_#00000033]">
+      <div className="absolute right-0 min-w-[29rem] overflow-hidden bg-[url('./assets/images/bg_img.png')] uppercase shadow-[-7px_8px_30px_0px_#00000033]">
         {isLoading && <CartLoading />}
         {!isLoading && cartData?.products?.length >= 1 ? (
           // Cart with items
           <section className="p-5">
-            <div className="item-center relative flex justify-between border-b border-asisDark pb-10">
+            <div className="item-center relative flex justify-between border-b-2 border-asisDark pb-10">
               <div>
                 <p className="text-4xl font-medium uppercase">
-                  <span className="mr-1 font-normal">/</span>your cart
+                  {/* <span className="mr-1 font-normal">/</span>y
+                    <SpecialChar char={`o`} />
+                    ur c
+                    <SpecialChar char={`a`} />
+                    rt */}
+                 / <VowelItalicizer text="your cart" />
                 </p>
                 <p className="absolute -top-2 left-[13.5rem] text-base font-medium text-black">
                   ({cartData?.products?.length})
@@ -162,7 +169,7 @@ const Cart = ({ setHideCart }) => {
               {cartData.products.map((data, index) => {
                 return (
                   <section key={index}>
-                    <div className="my-5 flex items-start justify-between gap-5 border-b border-asisDark pb-4">
+                    <div className="my-5 flex items-start justify-between gap-5 border-b-2 border-asisDark pb-4">
                       {/* cart image */}
                       <img
                         src={`${import.meta.env.VITE_BLOB_URL}${
@@ -174,13 +181,19 @@ const Cart = ({ setHideCart }) => {
                       {/* right hand of the product detail of the cart */}
                       <section className="w-4/5">
                         {/* Product details */}
-                        <div className="flex items-start justify-between border-b border-b-asisDark pb-2">
+                        <div className="flex items-start justify-between border-b-2 border-b-asisDark/30 pb-2">
                           <div>
-                            <p className="w-[212px] text-sm font-bold text-asisDark">
-                              {data.product.name}
-                            </p>
+                            <Link to={`/product/${data.product._id}`}>
+                              <p className="w-[212px] text-sm font-bold text-asisDark">
+                                {data.product.name}
+                              </p>
+                            </Link>
                             <p className="mt-2 text-xs font-semibold text-black">
-                              {data.totalPrice?.toLocaleString()} NGN
+                              {Intl.NumberFormat("en-NG", {
+                                style: "currency",
+                                currency: "NGN",
+                              }).format(data.totalPrice)}{" "}
+                              NGN{" "}
                             </p>
                           </div>
                           {/* remove item from cart */}
@@ -200,7 +213,10 @@ const Cart = ({ setHideCart }) => {
                           <div>
                             {/* <p>{data.color}</p> */}
                             <p>
-                              size: <span className="font-bold text-sm">{data.size}</span>
+                              size:{" "}
+                              <span className="text-sm font-bold">
+                                {data.size}
+                              </span>
                             </p>
                           </div>
                           <div className="flex items-center gap-1 ">
@@ -215,18 +231,26 @@ const Cart = ({ setHideCart }) => {
               })}
             </div>
             {/* total calculation  */}
-            <div className="mt-4 flex items-center justify-between text-sm font-bold">
-              <p>Total</p>
-              <p>{cartData.totalPrice} NGN</p>
-            </div>
-            <div className="mt-3 flex items-center justify-between border-b border-b-asisDark pb-4 text-[13px]/[20px] font-medium">
-              <p>shipping</p>
-              <p>calculated at checkout</p>
+            <div className="gap- flex flex-col border-b-2 border-b-asisDark ">
+              <div className="mt-4 flex items-center justify-between  text-sm font-bold">
+                <p>Total</p>
+                <p>
+                  {Intl.NumberFormat("en-NG", {
+                    style: "currency",
+                    currency: "NGN",
+                  }).format(cartData.totalPrice)}{" "}
+                  NGN
+                </p>
+              </div>
+              <div className="mt-3 flex items-center justify-between  pb-4 text-[13px]/[20px] font-medium">
+                <p>shipping</p>
+                <p>calculated at checkout</p>
+              </div>
             </div>
             {/* Link to checkout */}
             <Link to="/checkout">
               <button
-                className="mt-5 flex w-full cursor-pointer items-center justify-center rounded-[7px] bg-asisDark py-3 text-sm font-semibold uppercase text-[#FFFFFF]"
+                className="mt-5 flex w-full cursor-pointer items-center justify-center bg-asisDark py-3 text-sm font-semibold uppercase text-[#FFFFFF]"
                 onClick={() => {
                   setHideCart(false);
                 }}
@@ -245,9 +269,9 @@ const Cart = ({ setHideCart }) => {
           </section>
         ) : (
           // Empty cart
-          <section className="relative w-96 px-3 py-6">
-            <div>
-              <div className="item-center relative flex justify-between border-b border-asisDark pb-8">
+          <section className="relative w-full px-3 py-6">
+            <div className="flex flex-col items-center">
+              <div className="item-center relative flex w-full justify-between border-b border-asisDark pb-8">
                 <div>
                   <p className="text-4xl font-medium uppercase">/your cart</p>
                   <p className="absolute -top-1 left-52 text-base font-medium text-black">
@@ -261,7 +285,7 @@ const Cart = ({ setHideCart }) => {
                   onClick={() => setHideCart(false)}
                 />
               </div>
-              <img src={cartIcon} alt="cartIcon" className="ml-5 mt-8 opacity-30" />
+              <img src={cartIcon} alt="cartIcon" className="opacity-30 " />
               <div className="mt-4 flex w-full items-center justify-center bg-[#525050] py-2 text-sm font-semibold text-[#FFFEF5]">
                 cart is empty
               </div>

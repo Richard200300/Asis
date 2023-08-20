@@ -6,6 +6,7 @@ import right_button from "../assets/icons/right_button.svg";
 import up_arrow from "../assets/icons/up_arrow.svg";
 import Loading from "./loading.jsx";
 import axios from "axios";
+import VowelItalicizer from "./vowelItalicizer.jsx";
 
 const SpecialCategory = ({ name, category, except }) => {
   const [products, setProducts] = useState([]);
@@ -56,10 +57,13 @@ const SpecialCategory = ({ name, category, except }) => {
   }
   return (
     <section>
-      <section className="relative my-14 flex w-full items-stretch justify-between gap-x-4 border-t border-asisDark pt-12 uppercase">
+      <section className="relative flex w-full items-stretch justify-between gap-x-4 border-t border-asisDark py-14 pt-12 uppercase">
         <div className=" flex flex-col items-end text-left text-4xl font-semibold">
-          <div className="flex-col flex items-end">
-            <p> / {name}</p>
+          <div className="flex flex-col items-end">
+            <p>
+              {" "}
+              / <VowelItalicizer text={name} />{" "}
+            </p>
             <div className="mt-5 w-56 ">
               <div className="ml-auto flex w-24  items-center justify-between">
                 <img
