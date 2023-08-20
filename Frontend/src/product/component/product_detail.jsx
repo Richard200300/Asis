@@ -104,12 +104,12 @@ const Product_detail = ({ data }) => {
       {data ? (
         <section className="flex items-start gap-5">
           {/* Thumbnail images */}
-          <section className="gap flex basis-7 flex-col justify-center py-5">
+          <section className="gap flex basis-7 items-center flex-col justify-center py-5">
             {data.images?.map((img, index) => (
               <div
                 key={index}
                 onClick={() => setSelectedImage(img)}
-                className={` mb-5 flex h-20 w-24 cursor-pointer items-center justify-center bg-contain bg-no-repeat ${
+                className={` mb-5 flex h-20 w-24 cursor-pointer items-center justify-center bg-center bg-contain bg-no-repeat ${
                   img === selectedImage
                     ? `bg-[url('./assets/images/frames.png')]`
                     : ""
@@ -118,14 +118,14 @@ const Product_detail = ({ data }) => {
                 <img
                   src={`${import.meta.env.VITE_BLOB_URL}${img}`}
                   alt="collection_img"
-                  className="mr-5 h-16 w-14 object-cover object-top "
+                  className="h-16 w-14 object-cover object-center "
                 />
               </div>
             ))}
           </section>
 
           {/* Selected image */}
-          <section className="flex h-[47rem] w-[32rem] basis-[45%] items-cente  justify-center  overflow-hidden border-x border-asisDark px-3 py-5">
+          <section className="flex h-[47rem] w-[32rem] flex-1 items-cente  justify-center  overflow-hidden border-x border-asisDark px-3 py-5">
             {selectedImage && (
               <img
                 src={`${import.meta.env.VITE_BLOB_URL}${selectedImage}`}
@@ -136,7 +136,7 @@ const Product_detail = ({ data }) => {
 
           {/* Product information */}
 
-          <section className="basis-[40%] py-5">
+          <section className="flex-1 w-full py-5">
             <p className="mb-9 text-3xl font-medium text-asisDark">
               /{data.name}
             </p>

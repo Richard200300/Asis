@@ -9,7 +9,7 @@ import { Link } from "react-router-dom";
 
 const Header = ({ setHideCart, setHideWish, cartLength, wishlistData }) => {
   return (
-    <div className=" sticky top-[-66px] z-10 bg-[url('./assets/images/bg_img.png')] pt-[10px] uppercase">
+    <div className=" sticky w-full top-[-66px] z-10 pt-[10px] uppercase">
       <section className=" flex justify-end px-4 py-3">
         <div className="flex gap-6">
           <div className="flex w-[139px] cursor-pointer items-center gap-3 border border-asisDark px-[8px] py-[5px] font-[500] text-asisDark ">
@@ -26,7 +26,7 @@ const Header = ({ setHideCart, setHideWish, cartLength, wishlistData }) => {
           </div>
         </div>
       </section>
-      <div className="flex items-center  justify-between border-y border-asisDark ">
+      <div className="flex items-center backdrop-blur-md justify-between border-y border-asisDark ">
         <div className="flex">
           <Link
             to="/shop"

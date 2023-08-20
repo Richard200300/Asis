@@ -33,7 +33,7 @@ const Page = () => {
   const align = data?.products?.length <= 3 ? "items-start" : "";
 
   return (
-    <div className="h-full p-0">
+    <div className="h-full ">
       {data ? (
         <section>
           {/* Search */}
@@ -44,7 +44,7 @@ const Page = () => {
           />
 
           {/* Main content */}
-          <section className="flex justify-start">
+          <section className="flex justify-start px-8">
             <div
               className={`flex flex-row-reverse ${align} justify-start gap-10`}
             >

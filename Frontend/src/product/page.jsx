@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import Product_detail from "./component/product_detail";
-import SpecialCategory from "../components/specialCategory";
+// import SpecialCategory from "../components/specialCategory";
 import Loading from "../components/loading";
 import axios from "axios";
+import SpecialCategory from "../components/specialcategory";
 
 const Page = () => {
   const { id } = useParams();
@@ -28,6 +29,7 @@ const Page = () => {
   };
   useEffect(() => {
     handleFetchProducts();
+     window.scrollTo(0, 0);
   }, [id]);
   useEffect(() => {
     handleFetchProducts();

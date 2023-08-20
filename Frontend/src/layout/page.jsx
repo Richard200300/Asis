@@ -60,9 +60,9 @@ const Page = () => {
   // ];
 
   return (
-    <main className="bg-[url('./assets/images/bg_img.png')] bg-no-repeat bg-cover px-7 max-md:px-3">
-      <section className="flex w-full items-start justify-center">
-        <div className="max-w-7xl">
+    <main className="bg-[url('./assets/images/bg_img.png')] bg-no-repeat bg-cover">
+      {/* <section className="flex flex-col w-full items-start justify-center"> */}
+        <div className="max-w-8xl">
           <Toaster position="top-right" />
           {/* Render the header component and pass cart and wishlist data */}
           <Header
@@ -90,7 +90,7 @@ const Page = () => {
           {/* Render the footer component */}
           <Footer />
         </div>
-      </section>
+      {/* </section> */}
     </main>
   );
 };
