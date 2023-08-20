@@ -13,31 +13,33 @@ const Page = () => {
   const [hideCart, ShowCart] = useState(false);
 
   const apiUrl = `${import.meta.env.VITE_API_URL}products/${id}`;
-  const {data} = useFetch(apiUrl);
+  const { data } = useFetch(apiUrl);
 
-   const name = 'you may also like'
-   useEffect(() => {
-    window.scrollTo(0, 0); 
+  const name = "you may also like";
+  useEffect(() => {
+    window.scrollTo(0, 0);
   }, []);
-
-
 
   return (
     <div className=" h-full px-8">
-     {data ? <div>
+      {data ? (
+        <div>
+          {/* {hideCart && <Cart data={data} hideCart={hideCart} ShowCart={ShowCart} />} */}
 
-      {/* {hideCart && <Cart data={data} hideCart={hideCart} ShowCart={ShowCart} />} */}
-      
-      {data && (
-        <div className="">
-
-        <Product_detail id={id} data={data} ShowCart={ShowCart} />
-        <SpecialCategory name={name} />
+          {data && (
+            <div className="">
+              <Product_detail id={id} data={data} ShowCart={ShowCart} />
+              <SpecialCategory
+                category={data.category}
+                name={name}
+                except={data._id}
+              />
+            </div>
+          )}
         </div>
-
+      ) : (
+        <Loading />
       )}
-
-</div> : <Loading />}
     </div>
   );
 };

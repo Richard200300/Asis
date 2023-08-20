@@ -56,7 +56,10 @@ const editCart = async (req, res) => {
                 cart: cart
             });
     } else {
-        const cart = await Cart.findById(cartId);
+        const cart = await Cart.findById(cartId).populate(
+        "products.product",
+        "name price images"
+    );
         const productExist = cart.products.find(
             (item) =>
                 item.product.toString() === product._id.toString() &&

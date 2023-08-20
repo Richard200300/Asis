@@ -10,6 +10,7 @@ import AddToCartLoading from "./addToCartLoading";
 const Product_detail = ({ data }) => {
   // States
   const [selectedImage, setSelectedImage] = useState(null);
+  const [showDescription, setShowDescription] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
   const [selectedSize, setSelectedSize] = useState("");
   const [isAddingToCart, setIsAddingToCart] = useState(false);
@@ -61,13 +62,13 @@ const Product_detail = ({ data }) => {
         dispatch(setCart(response.data.cart));
         toast.success("Item added to cart", {
           style: {
-            border: "1px solid #713200",
+            border: "1px solid green",
             padding: "8px 16px",
-            color: "#713200",
+            color: "green",
             borderRadius: "4px",
           },
           iconTheme: {
-            primary: "#713200",
+            primary: "green",
             secondary: "#FFFAEE",
           },
         });
@@ -124,11 +125,11 @@ const Product_detail = ({ data }) => {
           </section>
 
           {/* Selected image */}
-          <section className="items-cent  flex basis-[45%] justify-center overflow-hidden border-x border-asisDark px-3 py-5">
+          <section className="flex h-[47rem] w-[32rem] basis-[45%] items-cente  justify-center  overflow-hidden border-x border-asisDark px-3 py-5">
             {selectedImage && (
               <img
                 src={`${import.meta.env.VITE_BLOB_URL}${selectedImage}`}
-                className="h-[31rem] w-[32rem]   overflow-hidden object-cover object-top"
+                className="overflow-hidden object-contain object-top"
               />
             )}
           </section>
@@ -166,14 +167,14 @@ const Product_detail = ({ data }) => {
 
               {/* Description */}
               <p className="my-9 text-sm font-medium text-asisDark">
-                {data.description}
+                {data.brief}
               </p>
 
               {/* Add to cart */}
 
               <button
                 className={`relative my-3 flex max-h-12  w-full justify-center  py-4 text-center text-xs font-semibold uppercase ${
-                  (selectedSize)
+                  selectedSize
                     ? "bg-asisDark text-[#FFFFFF]"
                     : "bg-asisDark/70 text-[#C4C4C4]"
                 }`}
@@ -190,22 +191,38 @@ const Product_detail = ({ data }) => {
               </button>
 
               {/* Add to wishlist */}
-              <button className="relative mb-3 w-full cursor-pointer border border-asisDark py-4 text-center text-xs font-semibold uppercase text-asisDark">
+              {/* <button className="relative mb-3 w-full cursor-pointer border border-asisDark py-4 text-center text-xs font-semibold uppercase text-asisDark">
                 add to wishlist
-              </button>
+              </button> */}
 
               {/* Accordion */}
-              <section className="border-y border-asisDark text-sm uppercase text-asisDark ">
-                <article className="flex cursor-pointer items-center justify-between border-b border-asisDark py-2">
+              <section
+                onClick={() => setShowDescription((prev) => !prev)}
+                className="border-y border-asisDark text-sm uppercase text-asisDark "
+              >
+                <article className="border-b1 flex cursor-pointer items-center justify-between border-asisDark py-2 font-semibold">
                   <p>product details</p>
-                  <img src={down} alt="down" />
+                  <img
+                    className={`transition-all duration-300 ${
+                      showDescription ? "rotate-180 transform" : ""
+                    }`}
+                    src={down}
+                    alt="down"
+                  />
                 </article>
 
-                <article className="flex cursor-pointer items-center justify-between py-2">
+                {/* <article className="flex cursor-pointer items-center justify-between py-2">
                   <p>size guild</p>
                   <img src={down} alt="down" />
-                </article>
+                </article> */}
               </section>
+              <div
+                className={`grid border-b border-asisDark  text-sm text-asisDark/80 transition-all duration-300 ${
+                  showDescription ? "grid-rows-[1fr] py-2" : "grid-rows-[0fr]"
+                } `}
+              >
+                <p className="overflow-hidden">{data.description}</p>
+              </div>
             </section>
           </section>
         </section>

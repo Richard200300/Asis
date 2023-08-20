@@ -28,11 +28,12 @@ const Header = ({ setHideCart, setHideWish, cartLength, wishlistData }) => {
       </section>
       <div className="flex items-center  justify-between border-y border-asisDark ">
         <div className="flex">
-          <div className="flex w-[174px] cursor-pointer justify-center px-[12px] py-[8px] text-[14px]/[21px] font-[600] text-[#] text-asisDark  max-lg:hidden">
-            <Link to="/shop">
-              <p className="">shop</p>
-            </Link>
-          </div>
+          <Link
+            to="/shop"
+            className="flex w-[174px] cursor-pointer justify-center px-[12px] py-[8px] text-[14px]/[21px] font-[600] text-[#] text-asisDark  max-lg:hidden"
+          >
+            <p className="">shop</p>
+          </Link>
           <div
             className="flex w-[174px] cursor-pointer
            justify-center border-x border-asisDark 
@@ -76,7 +77,7 @@ const Header = ({ setHideCart, setHideWish, cartLength, wishlistData }) => {
             className="flex min-w-[172px] cursor-pointer justify-center border-x border-asisDark px-[12px] py-[8px] text-[14px]/[21px] font-[600] text-[#] text-asisDark  max-lg:hidden"
           >
             <p className="">
-              cart <span className="">({cartLength})</span>
+              cart <span className="">({cartLength || 0})</span>
             </p>
           </div>
           <div className="flex min-w-[108px] cursor-pointer justify-center border-asisDark px-[12px] py-[8px] text-[14px]/[21px] font-[600] text-[#] text-asisDark max-lg:border-l max-md:w-full ">

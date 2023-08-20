@@ -10,9 +10,28 @@ import { useSelector, useDispatch } from "react-redux";
 import { setCart } from "../../redux/asis";
 
 const Cart = ({ setHideCart }) => {
+  const ref = React.useRef(null);
   const cartData = useSelector((state) => state.asis.cart);
   const dispatch = useDispatch();
   const [isLoading, setIsLoading] = React.useState(true);
+
+  const handleEffect = async () => {
+    const handleClickOutside = (event) => {
+      if (ref.current && !ref.current.contains(event.target)) {
+        setHideCart(false);
+      }
+    };
+
+    // Bind the event listener
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      // Unbind the event listener on clean up
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  };
+  React.useEffect(() => {
+    handleEffect();
+  }, [ref]);
 
   const handleGetCartContent = async () => {
     setIsLoading(true);
@@ -56,13 +75,13 @@ const Cart = ({ setHideCart }) => {
       console.log(item);
       toast.success("Item removed from cart", {
         style: {
-          border: "1px solid #713200",
+          border: "1px solid green",
           padding: "8px 16px",
-          color: "#713200",
+          color: "green",
           borderRadius: "4px",
         },
         iconTheme: {
-          primary: "#713200",
+          primary: "green",
           secondary: "#FFFAEE",
         },
       });
@@ -89,13 +108,13 @@ const Cart = ({ setHideCart }) => {
       await axios.delete(`${import.meta.env.VITE_API_URL}carts/`);
       toast.success("Item removed from cart", {
         style: {
-          border: "1px solid #713200",
+          border: "1px solid green",
           padding: "8px 16px",
-          color: "#713200",
+          color: "green",
           borderRadius: "4px",
         },
         iconTheme: {
-          primary: "#713200",
+          primary: "green",
           secondary: "#FFFAEE",
         },
       });
@@ -116,8 +135,8 @@ const Cart = ({ setHideCart }) => {
   };
 
   return (
-    <div className="sticky right-7 top-12 z-20 ml-auto mt-4">
-      <div className="absolute right-0  overflow-hidden bg-[url('./assets/images/bg_img.png')] uppercase shadow-[-7px_8px_30px_0px_#00000033]">
+    <div ref={ref} className="sticky  right-7 top-12 z-20 ml-auto mt-4">
+      <div className="absolute right-0 min-w-[26rem] overflow-hidden bg-[url('./assets/images/bg_img.png')] uppercase shadow-[-7px_8px_30px_0px_#00000033]">
         {isLoading && <CartLoading />}
         {!isLoading && cartData?.products?.length >= 1 ? (
           // Cart with items
@@ -127,7 +146,7 @@ const Cart = ({ setHideCart }) => {
                 <p className="text-4xl font-medium uppercase">
                   <span className="mr-1 font-normal">/</span>your cart
                 </p>
-                <p className="absolute -top-2 left-52 text-base font-medium text-black">
+                <p className="absolute -top-2 left-[13.5rem] text-base font-medium text-black">
                   ({cartData?.products?.length})
                 </p>
               </div>
@@ -150,7 +169,7 @@ const Cart = ({ setHideCart }) => {
                           data.product.images[0]
                         }`}
                         alt="collection_img_2"
-                        className="h-36 w-[116px] object-cover object-top"
+                        className="h-36 w-[116px] object-contain object-top"
                       />
                       {/* right hand of the product detail of the cart */}
                       <section className="w-4/5">
@@ -179,11 +198,13 @@ const Cart = ({ setHideCart }) => {
                         </div>
                         <div className="mt-3 flex w-full items-start justify-between text-xs font-semibold text-black">
                           <div>
-                            <p>{data.color}</p>
-                            <p>size: {data.size}</p>
+                            {/* <p>{data.color}</p> */}
+                            <p>
+                              size: <span className="font-bold text-sm">{data.size}</span>
+                            </p>
                           </div>
                           <div className="flex items-center gap-1 ">
-                            <p> q.ty:{data.qty}</p>
+                            <p> q.ty:{data?.qty}</p>
                             <img src={down} alt="down" />
                           </div>
                         </div>
@@ -240,7 +261,7 @@ const Cart = ({ setHideCart }) => {
                   onClick={() => setHideCart(false)}
                 />
               </div>
-              <img src={cartIcon} alt="cartIcon" className="ml-5 mt-8" />
+              <img src={cartIcon} alt="cartIcon" className="ml-5 mt-8 opacity-30" />
               <div className="mt-4 flex w-full items-center justify-center bg-[#525050] py-2 text-sm font-semibold text-[#FFFEF5]">
                 cart is empty
               </div>

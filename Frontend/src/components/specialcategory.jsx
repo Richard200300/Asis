@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import useFetch from "./useFetch.jsx";
 import Products from "./products.jsx";
 import { Link } from "react-router-dom";
@@ -7,10 +7,20 @@ import right_button from "../assets/icons/right_button.svg";
 import up_arrow from "../assets/icons/up_arrow.svg";
 import Loading from "./loading.jsx";
 
-const SpecialCategory = ({ name }) => {
-  const { data } = useFetch(
-    `${import.meta.env.VITE_API_URL}products/?limit=10`,
+const SpecialCategory = ({ name, category, except }) => {
+  let { data } = useFetch(
+    `${import.meta.env.VITE_API_URL}products/?limit=10&category=${
+      category || ""
+    }`,
   );
+  useEffect(() => {
+    if (data?.products?.length == 0) {
+      const { newData } = useFetch(
+        `${import.meta.env.VITE_API_URL}products/?limit=10`,
+      );
+      data = newData;
+    }
+  }, [data]);
   const [scrollPosition, setScrollPosition] = useState(0);
 
   const handleScroll = (increment) => {
@@ -61,19 +71,22 @@ const SpecialCategory = ({ name }) => {
           </article>
           <article className="scroll-container scroll-snap-x mandatory scrollbar-width-thin scrollbar-thumb-gray-500 w-[70%] overflow-x-scroll scroll-smooth pb-5 transition-all duration-300">
             {data && (
-              <div className="flex gap-10">
-                {data.products.map((data) => (
-                  <div key={data._id}>
-                    <Link to={`/product/${data._id}`}>
-                      <Products
-                        name={data.name}
-                        price={data.price}
-                        collaborations={data.collaborations}
-                        images={data.images}
-                      />
-                    </Link>
-                  </div>
-                ))}
+              <div className="flex gap-10 pr-4">
+                {data.products.map((data) => {
+                  if (data._id === except) return null;
+                  return (
+                    <div key={data._id}>
+                      <Link to={`/product/${data._id}`}>
+                        <Products
+                          name={data.name}
+                          price={data.price}
+                          collaborations={data.collaborations}
+                          images={data.images}
+                        />
+                      </Link>
+                    </div>
+                  );
+                })}
               </div>
             )}
           </article>

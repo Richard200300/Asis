@@ -13,8 +13,8 @@ const Products = ({ name, price, collaborations, images }) => {
   };
 
   return (
-    <div className="h-[445px] w-[268px] cursor-pointer ">
-      <div className="h-[380px] w-[268px] border-[1px] border-[#878787] max-md:w-full">
+    <div className="aspect-[9/16] h-[28rem] w-64 cursor-pointer ">
+      <div className="h-96 w-64 border-[1px] border-[#878787] max-md:w-full">
         <img
           src={`${import.meta.env.VITE_BLOB_URL}${images[0]}`}
           alt="products_img"
@@ -22,9 +22,11 @@ const Products = ({ name, price, collaborations, images }) => {
         />
       </div>
       <div className="mt-2 font-semibold uppercase">
-        <p className="text-sm">{name}</p>
+        <p className="text-sm font-bold">{name}</p>
         <div className="flex gap-4">{renderCollaborations()}</div>
-        <p className="text-xs text-asisDark">{price?.toLocaleString()} ngn</p>
+        <p className="text-sm font-semibold text-asisDark">
+          {price?.toLocaleString()} ngn
+        </p>
       </div>
     </div>
   );

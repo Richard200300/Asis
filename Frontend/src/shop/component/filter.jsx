@@ -40,7 +40,7 @@ const Filter = ({ setDynamicUrl }) => {
     "Pants",
     "Shirts",
     "bags",
-    "wristwatches",
+    "Wristwatches",
     "headset glasses",
   ];
   const filterData = [
@@ -48,16 +48,16 @@ const Filter = ({ setDynamicUrl }) => {
       type: "Gender",
       items: ["male", "female", "unisex"],
     },
-    {
-      type: "Collaborations",
-      items: [
-        "asis X Nike",
-        "asis X oakley",
-        "asis X bluboy",
-        "asis X zara",
-        "asis X piece et patch",
-      ],
-    },
+    // {
+    //   type: "Collaborations",
+    //   items: [
+    //     "asis X Nike",
+    //     "asis X oakley",
+    //     "asis X bluboy",
+    //     "asis X zara",
+    //     "asis X piece et patch",
+    //   ],
+    // },
   ];
 
   // Update dynamic URL on active filter change
