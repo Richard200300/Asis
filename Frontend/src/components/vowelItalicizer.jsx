@@ -14,7 +14,7 @@ const VowelItalicizer = ({ text }) => {
     );
   };
 
-  return <apan className="">{italicizeVowels(text)}</apan>;
+  return <span className="">{italicizeVowels(text)}</span>;
 };
 
 export default VowelItalicizer;

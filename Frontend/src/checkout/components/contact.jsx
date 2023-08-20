@@ -8,22 +8,32 @@ import ContactInput from "./contactInput";
 
 const Contact = ({ setActiveStep }) => {
   const orderDetails = useSelector((state) => state.asis.order);
+  const {
+    firstName,
+    lastName,
+    email,
+    phone,
+    address,
+    city,
+    state,
+    zip,
+    country,
+  } = orderDetails;
   const dispatch = useDispatch();
 
   const formik = useFormik({
     initialValues: {
-      firstName: "",
-      lastName: "",
-      email: "",
-      phone: "",
-      address: "",
-      city: "",
-      state: "",
-      zip: "",
-      country: "",
+      firstName,
+      lastName,
+      email,
+      phone,
+      address,
+      city,
+      state,
+      zip,
+      country,
     },
     onSubmit: (values) => {
-      console.log(values);
       dispatch(setOrder(values));
       setActiveStep(2);
     },
@@ -115,7 +125,7 @@ const Contact = ({ setActiveStep }) => {
           placeholder="ZIP CODE *"
         />
       </section>
-      <section className="flex justify-end pl-4 gap-4">
+      <section className="flex justify-end gap-4 pl-4">
         {/* <button
           onClick={setActiveStep(1)}
           className="border-b-2 border-asisDark px-2 py-1 text-sm font-bold"
@@ -124,7 +134,7 @@ const Contact = ({ setActiveStep }) => {
         </button> */}
         <button
           type="submit"
-          onClick={setActiveStep(1)}
+          onClick={() => setActiveStep(1)}
           className=" w-1/2 bg-asisDark py-3  font-bold text-white"
         >
           Go to Shipping

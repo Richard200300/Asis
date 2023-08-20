@@ -16,7 +16,7 @@ const shippingSchema = new mongoose.Schema({
         type: String,
     },
     durationInDays: {
-        type: Number,
+        type: String,
     },
 });
 

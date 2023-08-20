@@ -60,7 +60,7 @@ const Page = () => {
   // ];
 
   return (
-    <main className="h-full bg-red-200 bg-[url('./assets/images/bg_img.png')] bg-cover bg-no-repeat">
+    <main className="h-full bg-[url('./assets/images/bg_img.png')] bg-cover bg-no-repeat">
       {/* <section className="flex w-full flex-col items-start justify-center"> */}
         <div className="px-8 pb-8">
           <Toaster position="top-right" />

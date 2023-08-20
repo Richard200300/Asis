@@ -11,7 +11,7 @@ const { adminAuthorization } = require("../middleware/adminAuthorization");
 
 router
     .route("/")
-    .get(adminAuthorization, getShippingDetails)
+    .get(getShippingDetails)
     .post(adminAuthorization, createShippingDetails);
 
 router

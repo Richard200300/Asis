@@ -20,24 +20,6 @@ const CheckoutCart = () => {
 
   const navigate = useNavigate();
 
-  // const handleEffect = async () => {
-  //   const handleClickOutside = (event) => {
-  //     if (ref.current && !ref.current.contains(event.target)) {
-  //       setHideCart(false);
-  //     }
-  //   };
-
-  //   // Bind the event listener
-  //   document.addEventListener("mousedown", handleClickOutside);
-  //   return () => {
-  //     // Unbind the event listener on clean up
-  //     document.removeEventListener("mousedown", handleClickOutside);
-  //   };
-  // };
-  // React.useEffect(() => {
-  //   handleEffect();
-  // }, [ref]);
-
   const handleGetCartContent = async () => {
     setIsLoading(true);
     try {
@@ -143,7 +125,7 @@ const CheckoutCart = () => {
   };
 
   return (
-    <div className="">
+    <div className=" h--full">
       <div ref={ref} className="z-20 ml-auto ">
         <div className="relative min-w-[29rem] overflow-hidden uppercase ">
           {isLoading && <CartLoading />}

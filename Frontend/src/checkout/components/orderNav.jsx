@@ -40,13 +40,13 @@ const OrderNav = ({ activeStep, setActiveStep }) => {
           } ${activeStep == 3 && "translate-x-[200%]"}`}
         ></div>
       </div>
-      <div
+      {/* <div
         onClick={() => {
           if (activeStep < 3) setActiveStep(activeStep + 1);
           if (activeStep == 3) setActiveStep(1);
         }}
         className="absolute right-0 top-0 h-4 w-20 bg-[#B0B0B0]"
-      ></div>
+      ></div> */}
     </nav>
   );
 };
