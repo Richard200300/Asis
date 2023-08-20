@@ -4,6 +4,7 @@ import { setOrder } from "../../../redux/asis";
 import axios from "axios";
 import VowelItalicizer from "../../components/vowelItalicizer";
 import { toast } from "react-hot-toast";
+import Loading from "./loading";
 
 const Shipping = ({ setActiveStep }) => {
   const orderDetails = useSelector((state) => state.asis.order);
@@ -77,7 +78,7 @@ const Shipping = ({ setActiveStep }) => {
   }, []);
 
   if (isLoading) {
-    return <div>Loading...</div>;
+    return <Loading />;
   }
 
   return (

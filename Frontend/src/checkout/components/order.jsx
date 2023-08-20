@@ -2,15 +2,18 @@ import React from "react";
 import OrderNav from "./orderNav";
 import Contact from "./contact";
 import Shipping from "./shipping";
+// import Loading from "./loading";
 
 const Order = () => {
-  const [activeStep, setActiveStep] = React.useState(1); // [1,2,3]
+  const [activeStep, setActiveStep] = React.useState(1);
 
   return (
-    <div className="flex-1 h-full">
+    <div className="flex flex-1 flex-col">
       <OrderNav activeStep={activeStep} setActiveStep={setActiveStep} />
-      {activeStep === 1 && <Contact setActiveStep={setActiveStep} />}
-      {activeStep === 2 && <Shipping setActiveStep={setActiveStep} />}
+      <section className="relative h-full">
+        {activeStep === 1 && <Contact setActiveStep={setActiveStep} />}
+        {activeStep === 2 && <Shipping setActiveStep={setActiveStep} />}
+      </section>
     </div>
   );
 };

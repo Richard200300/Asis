@@ -125,13 +125,11 @@ const CheckoutCart = () => {
   };
 
   return (
-    <div className=" h--full">
-      <div ref={ref} className="z-20 ml-auto ">
         <div className="relative min-w-[29rem] overflow-hidden uppercase ">
           {isLoading && <CartLoading />}
           {!isLoading && (
             // Cart with items
-            <section className="p-5">
+            <section className="p-5 h-full">
               <div className="item-center relative flex justify-between border-b-2 border-asisDark pb-10">
                 <div>
                   <p className="text-4xl font-medium uppercase">
@@ -148,7 +146,7 @@ const CheckoutCart = () => {
                 </div>
                 {/* close cart component */}
               </div>
-              <div className="max-h-[40vh] overflow-y-scroll">
+              <div className="max-h-[50vh] overflow-y-scroll">
                 {cartData.products.map((data, index) => {
                   return (
                     <section key={index}>
@@ -242,8 +240,6 @@ const CheckoutCart = () => {
             </section>
           )}
         </div>
-      </div>
-    </div>
   );
 };
 
