@@ -26,6 +26,14 @@ const createOrderStripe = async (req, res) => {
             price: item.price,
         };
     });
+
+    const orderExist = await Order.findOne({ cart });
+    if (orderExist) {
+        throw new BadRequestError("Order has been placed");
+    } else {
+        req.body.cart = cart;
+    }
+    
     req.body.products = products;
     // req.body.totalPrice = cart.totalPrice;
 

@@ -65,6 +65,10 @@ const orderSchema = new mongoose.Schema(
             type: mongoose.Schema.Types.ObjectId,
             ref: "Customer",
         },
+        cart: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "Cart",
+        },
     },
     {
         timestamps: true,
