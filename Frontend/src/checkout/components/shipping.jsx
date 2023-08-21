@@ -37,11 +37,12 @@ const Shipping = ({ setActiveStep }) => {
           borderRadius: "4px",
         },
       });
+      
       setIsLoading(false);
       return;
     }
     dispatch(setOrder({ shipping: selectedShipping }));
-    console.log(orderDetails);
+    setActiveStep(3);
     setIsLoading(false);
   };
 
@@ -60,7 +61,6 @@ const Shipping = ({ setActiveStep }) => {
       !zip ||
       !country
     ) {
-      console.log("object");
       setActiveStep(1);
       return;
     }

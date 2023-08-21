@@ -5,6 +5,7 @@ const {
     getShippingDetails,
     updateShippingDetails,
     deleteShippingDetails,
+    getShippingDetailsById,
 } = require("../controller/shippings");
 
 const { adminAuthorization } = require("../middleware/adminAuthorization");
@@ -16,6 +17,7 @@ router
 
 router
     .route("/:id")
+    .get(getShippingDetailsById)
     .put(adminAuthorization, updateShippingDetails)
     .delete(adminAuthorization, deleteShippingDetails);
 

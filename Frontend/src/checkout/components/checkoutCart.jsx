@@ -47,6 +47,7 @@ const CheckoutCart = () => {
     }
   };
   React.useEffect(() => {
+    cartData?.products?.length === 0 && navigate("/shop", { replace: true });
     handleGetCartContent();
     console.log(cartData);
   }, []);
@@ -125,121 +126,123 @@ const CheckoutCart = () => {
   };
 
   return (
-        <div className="relative min-w-[29rem] overflow-hidden uppercase ">
-          {isLoading && <CartLoading />}
-          {!isLoading && (
-            // Cart with items
-            <section className="p-5 h-full">
-              <div className="item-center relative flex justify-between border-b-2 border-asisDark pb-10">
-                <div>
-                  <p className="text-4xl font-medium uppercase">
-                    {/* <span className="mr-1 font-normal">/</span>y
+    <div className="relative min-w-[29rem] overflow-hidden uppercase ">
+      {isLoading && <CartLoading />}
+      {!isLoading && (
+        // Cart with items
+        <section className="h-full p-5">
+          <div className="item-center relative flex justify-between border-b-2 border-asisDark pb-10">
+            <div>
+              <p className="text-4xl font-medium uppercase">
+                {/* <span className="mr-1 font-normal">/</span>y
                     <SpecialChar char={`o`} />
                     ur c
                     <SpecialChar char={`a`} />
                     rt */}
-                    / <VowelItalicizer text="your cart" />
-                  </p>
-                  <p className="absolute -top-2 left-[13.5rem] text-base font-medium text-black">
-                    ({cartData?.products?.length})
-                  </p>
-                </div>
-                {/* close cart component */}
-              </div>
-              <div className="max-h-[50vh] overflow-y-scroll">
-                {cartData.products.map((data, index) => {
-                  return (
-                    <section key={index}>
-                      <div className="my-5 flex items-start justify-between gap-5 border-b-2 border-asisDark pb-4">
-                        {/* cart image */}
-                        <img
-                          src={`${import.meta.env.VITE_BLOB_URL}${
-                            data.product.images[0]
-                          }`}
-                          alt="collection_img_2"
-                          className="h-36 w-[116px] object-contain object-top"
-                        />
-                        {/* right hand of the product detail of the cart */}
-                        <section className="w-4/5">
-                          {/* Product details */}
-                          <div className="flex items-start justify-between border-b-2 border-b-asisDark/30 pb-2">
-                            <div>
-                              <Link to={`/product/${data.product._id}`}>
-                                <p className="w-[212px] text-sm font-bold text-asisDark">
-                                  {data.product.name}
-                                </p>
-                              </Link>
-                              <p className="mt-2 text-xs font-semibold text-black">
-                                {Intl.NumberFormat("en-US", {
-                                  style: "currency",
-                                  currency: "USD",
-                                }).format(data.totalPrice)}{" "}
-                                USD
-                              </p>
-                            </div>
-                            {/* remove item from cart */}
-                            <button
-                              onClick={() =>
-                                removeItemFromCart(data.product._id, data.size)
-                              }
-                            >
-                              <img
-                                src={cancel_cart}
-                                alt="cancel_cart"
-                                className="w-5 cursor-pointer"
-                              />
-                            </button>
-                          </div>
-                          <div className="mt-3 flex w-full items-start justify-between text-xs font-semibold text-black">
-                            <div>
-                              {/* <p>{data.color}</p> */}
-                              <p>
-                                size:{" "}
-                                <span className="text-sm font-bold">
-                                  {data.size}
-                                </span>
-                              </p>
-                            </div>
-                            <div className="flex items-center gap-1 ">
-                              <p> q.ty:{data?.qty}</p>
-                              <img src={down} alt="down" />
-                            </div>
-                          </div>
-                        </section>
+                / <VowelItalicizer text="your cart" />
+              </p>
+              <p className="absolute -top-2 left-[13.5rem] text-base font-medium text-black">
+                ({cartData?.products?.length})
+              </p>
+            </div>
+            {/* close cart component */}
+          </div>
+          <div className="max-h-[50vh] overflow-y-scroll">
+            {cartData.products.map((data, index) => {
+              return (
+                <section key={index}>
+                  <div className="my-5 flex items-start justify-between gap-5 border-b-2 border-asisDark pb-4">
+                    {/* cart image */}
+                    <img
+                      src={`${import.meta.env.VITE_BLOB_URL}${
+                        data.product.images[0]
+                      }`}
+                      alt="collection_img_2"
+                      className="h-36 w-[116px] object-contain object-top"
+                    />
+                    {/* right hand of the product detail of the cart */}
+                    <section className="w-4/5">
+                      {/* Product details */}
+                      <div className="flex items-start justify-between border-b-2 border-b-asisDark/30 pb-2">
+                        <div>
+                          <Link to={`/product/${data.product._id}`}>
+                            <p className="w-[212px] text-sm font-bold text-asisDark">
+                              {data.product.name}
+                            </p>
+                          </Link>
+                          <p className="mt-2 text-xs font-semibold text-black">
+                            {Intl.NumberFormat("en-US", {
+                              style: "currency",
+                              currency: "USD",
+                            }).format(data.totalPrice)}{" "}
+                            USD
+                          </p>
+                        </div>
+                        {/* remove item from cart */}
+                        <button
+                          onClick={() =>
+                            removeItemFromCart(data.product._id, data.size)
+                          }
+                        >
+                          <img
+                            src={cancel_cart}
+                            alt="cancel_cart"
+                            className="w-5 cursor-pointer"
+                          />
+                        </button>
+                      </div>
+                      <div className="mt-3 flex w-full items-start justify-between text-xs font-semibold text-black">
+                        <div>
+                          {/* <p>{data.color}</p> */}
+                          <p>
+                            size:{" "}
+                            <span className="text-sm font-bold">
+                              {data.size}
+                            </span>
+                          </p>
+                        </div>
+                        <div className="flex items-center gap-1 ">
+                          <p> q.ty:{data?.qty}</p>
+                          <img src={down} alt="down" />
+                        </div>
                       </div>
                     </section>
-                  );
-                })}
-              </div>
-              {/* total calculation  */}
-              <div className="flex flex-col gap-4 border-b-2 border-b-asisDark ">
-                <div className="mt-4 flex items-center justify-between  text-sm font-bold">
-                  <p>Total</p>
-                  <p>
-                    {Intl.NumberFormat("en-US", {
-                      style: "currency",
-                      currency: "USD",
-                    }).format(cartData.totalPrice)}{" "}
-                    NGN
-                  </p>
-                </div>
-                <div className="mt-3 flex items-center justify-between  pb-4 text-[13px]/[20px] font-medium">
-                  <p>shipping</p>
-                  <p>calculated at checkout</p>
-                </div>
-              </div>
+                  </div>
+                </section>
+              );
+            })}
+          </div>
+          {/* total calculation  */}
+          <div className="flex flex-col gap-4 border-b-2 border-b-asisDark ">
+            <div className="mt-4 flex items-center justify-between  text-sm font-bold">
+              <p>Total</p>
+              <p>
+                {Intl.NumberFormat("en-US", {
+                  style: "currency",
+                  currency: "USD",
+                }).format(cartData.totalPrice)}{" "}
+                NGN
+              </p>
+            </div>
+            <div className="mt-3 flex items-center justify-between  pb-4 text-[13px]/[20px] font-medium">
+              <p>shipping</p>
+              <p>calculated at checkout</p>
+            </div>
+          </div>
 
-              <button
-                className="w-full py-4 text-right font-semibold italic underline"
-                onClick={() => {
-                  clearCart();
-                }}
-              >
-                Clear your Cart
-              </button>
-            </section>
-          )}
-        </div>
+          <div className="flex justify-end">
+            <button
+              className="px-2 py-4 text-right font-semibold italic underline"
+              onClick={() => {
+                clearCart();
+              }}
+            >
+              Clear your Cart
+            </button>
+          </div>
+        </section>
+      )}
+    </div>
   );
 };
 

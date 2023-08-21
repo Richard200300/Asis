@@ -197,10 +197,32 @@ const updateOrder = async (req, res) => {
     res.status(200).json({ msg: "Order updated", order });
 };
 
+const deleteOrder = async (req, res) => {
+    // get order id from request params
+    const { id } = req.params;
+
+    // check if id is valid
+    if (!mongoose.isValidObjectId(id)) {
+        throw new BadRequestError("Invalid order id");
+    }
+
+    // find order by id and delete
+    const order = await Order.findById(id);
+
+    // if order not found throw error
+    if (!order) {
+        throw new NotFoundError("order not found");
+    }
+
+    await Order.findByIdAndDelete(id);
+    // send success message
+    res.json({ message: "order deleted successfully" });
+};
 module.exports = {
     createOrderStripe,
     getOrders,
     getOrdersAdmin,
     getOrder,
     updateOrder,
+    deleteOrder,
 };

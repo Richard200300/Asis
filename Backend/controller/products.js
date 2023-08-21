@@ -372,6 +372,7 @@ const createSpecialCategory = async (req, res) => {
         specialCategory,
     });
 };
+
 const createSuperSpecialCategory = async (req, res) => {
     if (!req.body.name) {
         throw new BadRequestError("Name is required");

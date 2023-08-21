@@ -13,6 +13,7 @@ import Receipt from "./receipt/page.jsx";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import store from "../redux/store";
 import { Provider } from "react-redux";
+import OrderComplete from "./completed/page.jsx";
 
 const router = createBrowserRouter([
   {
@@ -42,6 +43,10 @@ const router = createBrowserRouter([
       {
         path: "/checkout",
         element: <Checkout />,
+      },
+      {
+        path: "/complete",
+        element: <OrderComplete />,
       },
       {
         path: "/receipt/:id",

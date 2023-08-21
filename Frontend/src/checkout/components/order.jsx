@@ -2,6 +2,7 @@ import React from "react";
 import OrderNav from "./orderNav";
 import Contact from "./contact";
 import Shipping from "./shipping";
+import Payment from "./payment";
 // import Loading from "./loading";
 
 const Order = () => {
@@ -13,6 +14,7 @@ const Order = () => {
       <section className="relative h-full">
         {activeStep === 1 && <Contact setActiveStep={setActiveStep} />}
         {activeStep === 2 && <Shipping setActiveStep={setActiveStep} />}
+        {activeStep === 3 && <Payment setActiveStep={setActiveStep} />}
       </section>
     </div>
   );
