@@ -46,7 +46,11 @@ const Wishlist = ({ setHideWish, wishlistData }) => {
                               {data.name}
                             </p>
                             <p className="mt-2 text-xs font-semibold text-black">
-                              {data.price?.toLocaleString()} NGN
+                              {Intl.NumberFormat("en-US", {
+                                style: "currency",
+                                currency: "USD",
+                              }).format(data.price)}{" "}
+                              USD
                             </p>
                           </div>
                           {/* remove item from cart */}

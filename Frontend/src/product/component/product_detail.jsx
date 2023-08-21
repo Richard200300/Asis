@@ -138,7 +138,7 @@ const Product_detail = ({ data }) => {
           {/* Product information */}
 
           <section className="w-full flex-1 py-5">
-            <p className="mb-9 text-3xl uppercase font-medium text-asisDark">
+            <p className="mb-9 text-3xl font-medium uppercase text-asisDark">
               / <VowelItalicizer text={data.name} />
             </p>
             {/* Sizes */}
@@ -187,7 +187,14 @@ const Product_detail = ({ data }) => {
                 {isAddingToCart ? (
                   <AddToCartLoading />
                 ) : (
-                  <p>Add to cart- {data.price?.toLocaleString()} NGN</p>
+                  <p>
+                    Add to cart-{" "}
+                    {Intl.NumberFormat("en-US", {
+                      style: "currency",
+                      currency: "USD",
+                    }).format(data.price)}{" "}
+                    USD
+                  </p>
                 )}
               </button>
 

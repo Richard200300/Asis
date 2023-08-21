@@ -151,7 +151,7 @@ const Cart = ({ setHideCart }) => {
                     ur c
                     <SpecialChar char={`a`} />
                     rt */}
-                 / <VowelItalicizer text="your cart" />
+                  / <VowelItalicizer text="your cart" />
                 </p>
                 <p className="absolute -top-2 left-[13.5rem] text-base font-medium text-black">
                   ({cartData?.products?.length})
@@ -189,11 +189,11 @@ const Cart = ({ setHideCart }) => {
                               </p>
                             </Link>
                             <p className="mt-2 text-xs font-semibold text-black">
-                              {Intl.NumberFormat("en-NG", {
+                              {Intl.NumberFormat("en-US", {
                                 style: "currency",
-                                currency: "NGN",
+                                currency: "USD",
                               }).format(data.totalPrice)}{" "}
-                              NGN{" "}
+                              USD{" "}
                             </p>
                           </div>
                           {/* remove item from cart */}
@@ -235,11 +235,11 @@ const Cart = ({ setHideCart }) => {
               <div className="mt-4 flex items-center justify-between  text-sm font-bold">
                 <p>Total</p>
                 <p>
-                  {Intl.NumberFormat("en-NG", {
+                  {Intl.NumberFormat("en-US", {
                     style: "currency",
-                    currency: "NGN",
+                    currency: "USD",
                   }).format(cartData.totalPrice)}{" "}
-                  NGN
+                  USD
                 </p>
               </div>
               <div className="mt-3 flex items-center justify-between  pb-4 text-[13px]/[20px] font-medium">

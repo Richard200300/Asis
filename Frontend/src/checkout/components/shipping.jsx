@@ -82,7 +82,7 @@ const Shipping = ({ setActiveStep }) => {
   }
 
   return (
-    <div className="flex flex-col gap-8 py-8">
+    <div className="flex flex-col gap-12 py-8">
       <h2 className="text-2xl font-semibold uppercase">
         / <VowelItalicizer text={"Shipping method"} />
       </h2>
@@ -119,11 +119,14 @@ const Shipping = ({ setActiveStep }) => {
                 selectedShipping === shippingDetail._id && "text-asisDark"
               }`}
             >
-              {Intl.NumberFormat("en-NG", {
-                style: "currency",
-                currency: "NGN",
-              }).format(shippingDetail.fee)}{" "}
-              NGN
+              {Intl.NumberFormat(
+                shippingDetail.currency == "USD" ? "en-US" : "en-NG",
+                {
+                  style: "currency",
+                  currency: shippingDetail.currency,
+                },
+              ).format(shippingDetail.fee)}{" "}
+              {shippingDetail.currency}
             </p>
           </div>
         ))}
@@ -159,11 +162,11 @@ const Shipping = ({ setActiveStep }) => {
           }`}
         >
           Go to Payment -{" "}
-          {Intl.NumberFormat("en-NG", {
+          {Intl.NumberFormat("en-US", {
             style: "currency",
-            currency: "NGN",
+            currency: "USD",
           }).format(cartData.totalPrice)}{" "}
-          NGN
+          USD
         </button>
       </section>
     </div>

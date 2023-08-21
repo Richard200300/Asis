@@ -25,7 +25,11 @@ const Products = ({ name, price, collaborations, images }) => {
         <p className="text-sm font-bold">{name}</p>
         <div className="flex gap-4">{renderCollaborations()}</div>
         <p className="text-sm font-semibold text-asisDark">
-          {price?.toLocaleString()} ngn
+          {Intl.NumberFormat("en-US", {
+            style: "currency",
+            currency: "USD",
+          }).format(price)}{" "}
+          usd
         </p>
       </div>
     </div>
@@ -33,3 +37,9 @@ const Products = ({ name, price, collaborations, images }) => {
 };
 
 export default Products;
+// {
+//   Intl.NumberFormat("en-NG", {
+//     style: "currency",
+//     currency: "NGN",
+//   }).format(price);
+// }
