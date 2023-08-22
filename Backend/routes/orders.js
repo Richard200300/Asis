@@ -7,6 +7,7 @@ const {
     updateOrder,
     getOrdersAdmin,
     deleteOrder,
+    getOrderByClientSecrete,
 } = require("../controller/orders");
 const {
     customerAuthorization,
@@ -19,6 +20,9 @@ router.route("/admin").get(adminAuthorization, getOrdersAdmin);
 router
     .route("/stripe")
     .post(customerAuthorization, getCartFromCookie, createOrderStripe);
+
+router.route("/clientSecret").post(getOrderByClientSecrete);
+
 router
     .route("/:id")
     .get(getOrder)

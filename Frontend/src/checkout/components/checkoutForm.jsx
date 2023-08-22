@@ -23,7 +23,7 @@ export default function CheckoutForm({
   shippingMethods,
   orderId,
 }) {
-    const navigate = useNavigate();
+  const navigate = useNavigate();
 
   const stripe = useStripe();
   const elements = useElements();
@@ -121,7 +121,7 @@ export default function CheckoutForm({
       elements,
       confirmParams: {
         // Make sure to change this to your payment completion page
-        return_url: import.meta.env.VITE_STRIPE_REDIRECT_URL,
+        return_url: `${import.meta.env.VITE_STRIPE_REDIRECT_URL}/${orderId}`,
       },
     });
 
@@ -223,7 +223,7 @@ export default function CheckoutForm({
       </section>
       <section className="flex items-end justify-end gap-4 pl-4">
         <button
-        type="button"
+          type="button"
           onClick={cancelOrder}
           className="h-min border-b-2 border-asisDark px-4 pb-1.5 text-sm font-bold"
         >

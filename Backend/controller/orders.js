@@ -33,7 +33,7 @@ const createOrderStripe = async (req, res) => {
     } else {
         req.body.cart = cart;
     }
-    
+
     req.body.products = products;
     // req.body.totalPrice = cart.totalPrice;
 
@@ -126,6 +126,21 @@ const getOrder = async (req, res) => {
     const order = await Order.findById(id).select(
         "-customer -createdAt -updatedAt -__v -clientSecret"
     );
+
+    if (!order) {
+        throw new BadRequestError("Order doesn't exist");
+    }
+
+    res.json({ order });
+};
+
+const getOrderByClientSecrete = async (req, res) => {
+    const { clientSecret } = req.body;
+
+    const order = await Order.findOne({ clientSecret }).select(
+        "-customer -createdAt -updatedAt -__v -clientSecret"
+    );
+    console.log(order);
 
     if (!order) {
         throw new BadRequestError("Order doesn't exist");
@@ -231,6 +246,7 @@ module.exports = {
     getOrders,
     getOrdersAdmin,
     getOrder,
+    getOrderByClientSecrete,
     updateOrder,
     deleteOrder,
 };
