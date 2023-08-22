@@ -8,11 +8,11 @@
 
 ::-webkit-scrollbar {
 width: 0px;
-  height: 4px;
+  height: 8px;
   }
 ::-webkit-scrollbar-thumb {
     background-color: #878787;
-    border-radius: 4px; 
+    border-radius: 2px; 
 
   }
 ::-webkit-scrollbar-track {

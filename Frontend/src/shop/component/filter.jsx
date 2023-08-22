@@ -10,16 +10,21 @@ const FilterItem = ({ item, activeItem, setActiveItem }) => {
   };
 
   return (
-    <label className="my-2 flex cursor-pointer items-center gap-2" htmlFor={`checkbox-${item}`}>
+    <label
+      className="my-2 flex cursor-pointer items-center gap-2"
+      htmlFor={`checkbox-${item}`}
+    >
       <input
         type="checkbox"
-        className="cursor-pointer checkbox"
+        className="checkbox cursor-pointer"
         checked={isActive}
         onChange={handleItemClick}
         id={`checkbox-${item}`}
       />
       <p
-        className={`w-48 text-xs font-medium text-[#0B0B0B] ${isActive ? "cursor-pointer" : ""}`}
+        className={`w-48 text-xs font-medium text-asisDark ${
+          isActive ? "cursor-pointer" : ""
+        }`}
       >
         {item}
       </p>
@@ -29,13 +34,13 @@ const FilterItem = ({ item, activeItem, setActiveItem }) => {
 
 // Main Filter component
 const Filter = ({ setDynamicUrl }) => {
-  const [activeItem, setActiveItem] = useState(null); 
+  const [activeItem, setActiveItem] = useState(null);
   const miniData = [
     "shoes & slides",
     "Pants",
     "Shirts",
     "bags",
-    "wristwatches",
+    "Wristwatches",
     "headset glasses",
   ];
   const filterData = [
@@ -43,16 +48,16 @@ const Filter = ({ setDynamicUrl }) => {
       type: "Gender",
       items: ["male", "female", "unisex"],
     },
-    {
-      type: "Collaborations",
-      items: [
-        "aisi X Nike",
-        "aisi X oakley",
-        "aisi X bluboy",
-        "aisi X zara",
-        "aisi X piece et patch",
-      ],
-    },
+    // {
+    //   type: "Collaborations",
+    //   items: [
+    //     "asis X Nike",
+    //     "asis X oakley",
+    //     "asis X bluboy",
+    //     "asis X zara",
+    //     "asis X piece et patch",
+    //   ],
+    // },
   ];
 
   // Update dynamic URL on active filter change
@@ -64,10 +69,10 @@ const Filter = ({ setDynamicUrl }) => {
   }, [activeItem, setDynamicUrl]);
 
   return (
-    <section className="filter_component mt-5 left-0 overflow-y-scroll filter w-72 border border-[#0B0B0B] px-5 pb-5 pt-10">
+    <section className="filter_component left-0 mt-5 w-72 overflow-y-scroll border border-asisDark px-5 pb-5 pt-10 filter">
       {/* MiniData filters */}
       <div>
-        <p className="text-sm px-1 font-semibold uppercase text-[#000000]">
+        <p className="px-1 text-sm font-semibold uppercase text-black">
           <em
             onClick={() => {
               setDynamicUrl("products");
@@ -82,20 +87,24 @@ const Filter = ({ setDynamicUrl }) => {
           {miniData.map((data) => (
             <li
               key={data}
-              className={`my-2 p-1 rounded cursor-pointer ${activeItem === data ? "text-[#000000] italic" : ""}`}
+              className={`my-2 cursor-pointer rounded p-1 ${
+                activeItem === data ? "italic text-black" : ""
+              }`}
             >
-              <span onClick={() => setActiveItem(activeItem === data ? null : data)}>
+              <span
+                onClick={() => setActiveItem(activeItem === data ? null : data)}
+              >
                 {data}
               </span>
             </li>
           ))}
         </ul>
       </div>
-      
+
       {/* Other filter categories */}
       {filterData.map(({ type, items }) => (
         <div key={type} className="border-b border-[#878787] pb-5 uppercase">
-          <p className="mt-5 text-sm font-semibold uppercase text-[#000000]">
+          <p className="mt-5 text-sm font-semibold uppercase text-black">
             {type}
           </p>
           {items.map((item, index) => (

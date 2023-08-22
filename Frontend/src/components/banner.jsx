@@ -4,7 +4,7 @@ import right from "../assets/icons/right.svg";
 
 const Banner = () => {
     return (
-        <section className='global bg-[#17A500] h-12 flex justify-center mt-5'>
+        <section className='global w-full bg-[#17A500] h-12 flex justify-center mt-5'>
             <article className="flex flex-col justify-center items-center text-xs font-medium text-[#FFFEF5] relative">
                 {/* Banner content */}
                 <p className="bg-[#17A500]">

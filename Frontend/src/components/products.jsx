@@ -13,21 +13,33 @@ const Products = ({ name, price, collaborations, images }) => {
   };
 
   return (
-    <div className="h-[445px] w-[268px] cursor-pointer ">
-      <div className="h-[380px] w-[268px] max-md:w-full border-[1px] border-[#878787]">
+    <div className="aspect-[9/16] h-[28rem] w-64 cursor-pointer ">
+      <div className="h-96 w-64 border-[1px] border-[#878787] max-md:w-full">
         <img
-          src={`https://asis.blob.core.windows.net/asisimages/${images[0]}`}
+          src={`${import.meta.env.VITE_BLOB_URL}${images[0]}`}
           alt="products_img"
           className="h-full w-full object-cover object-top"
         />
       </div>
       <div className="mt-2 font-semibold uppercase">
-        <p className="text-sm">{name}</p>
+        <p className="text-sm font-bold">{name}</p>
         <div className="flex gap-4">{renderCollaborations()}</div>
-        <p className="text-xs text-[#0B0B0B]">{price?.toLocaleString()} ngn</p>
+        <p className="text-sm font-semibold text-asisDark">
+          {Intl.NumberFormat("en-US", {
+            style: "currency",
+            currency: "USD",
+          }).format(price)}{" "}
+          usd
+        </p>
       </div>
     </div>
   );
 };
 
 export default Products;
+// {
+//   Intl.NumberFormat("en-NG", {
+//     style: "currency",
+//     currency: "NGN",
+//   }).format(price);
+// }

@@ -20,7 +20,9 @@ const Page = () => {
       behavior: "smooth",
     });
   };
-  const { data } = useFetch("http://localhost:5000/api/products/?limit=10");
+  const { data } = useFetch(
+    `${import.meta.env.VITE_API_URL}products/?limit=10`,
+  );
   const name = "new arrival";
   return (
     <div className=" h-full p-0 ">
@@ -35,7 +37,7 @@ const Page = () => {
           <Membership />
           <Exclusive />
           <section>
-            <div className="relative my-20  border-t  border-[#0B0B0B]">
+            <div className="relative my-20  border-t  border-asisDark">
               <img
                 src={back_to_top}
                 alt="back_to_top"

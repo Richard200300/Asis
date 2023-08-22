@@ -15,11 +15,11 @@ const Search = ({ setHideFilter, hideFilter, setDynamicUrl }) => {
   }
 
   return (
-    <section className="mt-8 flex items-center border-y border-[#000000]">
+    <section className="mt-8 flex items-center border-y border-black">
       {/* Hide/Show Filter */}
       <div
         onClick={() => setHideFilter((prevFilter) => !prevFilter)}
-        className="flex h-10 cursor-pointer items-center justify-center gap-1 border-r border-[#000000] px-5 uppercase text-[#0B0B0B] max-md:px-3"
+        className="flex h-10 cursor-pointer items-center justify-center gap-1 border-r border-black px-5 uppercase text-asisDark max-md:px-3"
       >
         <p className="text-sm font-medium max-md:text-xs max-md:font-bold">
           {hideFilter ? "hide filter" : "show filter"}
@@ -28,7 +28,7 @@ const Search = ({ setHideFilter, hideFilter, setDynamicUrl }) => {
       </div>
 
       {/* Search input */}
-      <div className="relative basis-[79%] items-center gap-3 uppercase text-[#0B0B0B] max-xl:basis-[70%] max-lg:basis-[69%] max-md:basis-[60]">
+      <div className="relative basis-[79%] items-center gap-3 uppercase text-asisDark max-xl:basis-[70%] max-lg:basis-[69%] max-md:basis-[60]">
         <input
           type="text"
           placeholder="SEARCH"
@@ -44,7 +44,7 @@ const Search = ({ setHideFilter, hideFilter, setDynamicUrl }) => {
       </div>
 
       {/* Sort by */}
-      <div className="flex h-10 cursor-pointer items-center justify-center gap-1 border-l border-[#000000] px-5 uppercase text-[#0B0B0B]">
+      <div className="flex h-10 cursor-pointer items-center justify-center gap-1 border-l border-black px-5 uppercase text-asisDark">
         <p className="text-sm font-medium">sort by</p>
         <img src={down} alt="down" />
       </div>

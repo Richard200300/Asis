@@ -13,7 +13,7 @@ const Page = () => {
   const [hideFilter, setHideFilter] = useState(true);
 
   // API URL
-  const apiUrl = `http://localhost:5000/api/${dynamicUrl}`;
+  const apiUrl = `${import.meta.env.VITE_API_URL}${dynamicUrl}`;
   const { data } = useFetch(apiUrl);
 
   // Scroll to top on component mount
@@ -25,7 +25,7 @@ const Page = () => {
   const handleScrollToTop = () => {
     window.scrollTo({
       top: 0,
-      behavior: "smooth"
+      behavior: "smooth",
     });
   };
 
@@ -33,12 +33,9 @@ const Page = () => {
   const align = data?.products?.length <= 3 ? "items-start" : "";
 
   return (
-    <div className="h-full p-0">
+    <div className="h-full ">
       {data ? (
-        <section>
-          {/* Banner */}
-          <Banner />
-
+        <section className="">
           {/* Search */}
           <Search
             setDynamicUrl={setDynamicUrl}
@@ -47,34 +44,35 @@ const Page = () => {
           />
 
           {/* Main content */}
-            <section className="flex justify-start">
-              <div className={`flex flex-row-reverse ${align} gap-10 justify-start`}>
+          <section className="flex justify-start px-8">
+            <div
+              className={`flex flex-row-reverse ${align} justify-start gap-10`}
+            >
+              {/* Shop products */}
+              {data && <ShopProducts hideFilter={hideFilter} data={data} />}
 
-                {/* Shop products */}
-                    {data && <ShopProducts hideFilter={hideFilter} data={data} />}
-
-                {/* Filter */}
-                <div>
-                  {hideFilter && (
-                    <div className="sticky top-10 ">
-                      <Filter setDynamicUrl={setDynamicUrl} />
-                    </div>
-                  )}
-                </div>
+              {/* Filter */}
+              <div>
+                {hideFilter && (
+                  <div className="sticky lg:block hidden top-12 ">
+                    <Filter setDynamicUrl={setDynamicUrl} />
+                  </div>
+                )}
               </div>
-            </section>
+            </div>
+          </section>
 
           {/* Back to top */}
-            <div className="relative mt-16 border-t border-[#0B0B0B]">
-              <img
-                src={backToTop}
-                alt="back_to_top"
-                className="absolute right-10 -top-7 cursor-pointer"
-                onClick={() => {
-                  handleScrollToTop();
-                }}
-              />
-            </div>
+          <div className="relative mt-16 border-t border-asisDark">
+            <img
+              src={backToTop}
+              alt="back_to_top"
+              className="absolute -top-7 right-10 cursor-pointer"
+              onClick={() => {
+                handleScrollToTop();
+              }}
+            />
+          </div>
         </section>
       ) : (
         <Loading />

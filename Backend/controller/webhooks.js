@@ -3,6 +3,7 @@ const stripe = require("stripe")(process.env.STRIPE_SECRETE_KEY);
 
 const stripeWebhook = async (req, res) => {
     const sig = req.headers["stripe-signature"];
+    // console.log({ h: req.headers, b: req.body });
 
     let event;
     try {
@@ -20,7 +21,7 @@ const stripeWebhook = async (req, res) => {
     const client_secrete = event.data.object.client_secret;
     if (!client_secrete) return res.status(200).send("No client_secrete found");
 
-    const order = await Order.findOne({ client_secrete });
+    const order = await Order.findOne({ clientSecret: client_secrete });
     if (!order) {
         return res.status(200).send();
     }

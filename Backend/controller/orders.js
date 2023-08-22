@@ -26,6 +26,14 @@ const createOrderStripe = async (req, res) => {
             price: item.price,
         };
     });
+
+    const orderExist = await Order.findOne({ cart });
+    if (orderExist) {
+        throw new BadRequestError("Order has been placed");
+    } else {
+        req.body.cart = cart;
+    }
+
     req.body.products = products;
     // req.body.totalPrice = cart.totalPrice;
 
@@ -126,6 +134,21 @@ const getOrder = async (req, res) => {
     res.json({ order });
 };
 
+const getOrderByClientSecrete = async (req, res) => {
+    const { clientSecret } = req.body;
+
+    const order = await Order.findOne({ clientSecret }).select(
+        "-customer -createdAt -updatedAt -__v -clientSecret"
+    );
+    console.log(order);
+
+    if (!order) {
+        throw new BadRequestError("Order doesn't exist");
+    }
+
+    res.json({ order });
+};
+
 const getOrdersAdmin = async (req, res) => {
     const queryObject = {};
 
@@ -197,10 +220,33 @@ const updateOrder = async (req, res) => {
     res.status(200).json({ msg: "Order updated", order });
 };
 
+const deleteOrder = async (req, res) => {
+    // get order id from request params
+    const { id } = req.params;
+
+    // check if id is valid
+    if (!mongoose.isValidObjectId(id)) {
+        throw new BadRequestError("Invalid order id");
+    }
+
+    // find order by id and delete
+    const order = await Order.findById(id);
+
+    // if order not found throw error
+    if (!order) {
+        throw new NotFoundError("order not found");
+    }
+
+    await Order.findByIdAndDelete(id);
+    // send success message
+    res.json({ message: "order deleted successfully" });
+};
 module.exports = {
     createOrderStripe,
     getOrders,
     getOrdersAdmin,
     getOrder,
+    getOrderByClientSecrete,
     updateOrder,
+    deleteOrder,
 };

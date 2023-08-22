@@ -1,11 +1,42 @@
 import React, { useState, useEffect } from "react";
 import down from "../../assets/icons/down.svg";
+import toast from "react-hot-toast";
+import axios from "axios";
+import { useDispatch } from "react-redux";
+import { setCart } from "../../../redux/asis";
+import CartLoading from "../../components/cartLoader";
+import AddToCartLoading from "./addToCartLoading";
+import VowelItalicizer from "../../components/vowelItalicizer";
 
 const Product_detail = ({ data }) => {
   // States
   const [selectedImage, setSelectedImage] = useState(null);
+  const [showDescription, setShowDescription] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
   const [selectedSize, setSelectedSize] = useState("");
+  const [isAddingToCart, setIsAddingToCart] = useState(false);
+
+  const dispatch = useDispatch();
+
+  function getFormattedTime() {
+    const now = new Date();
+    const hours = String(now.getHours()).padStart(2, "0");
+    const minutes = String(now.getMinutes()).padStart(2, "0");
+    const seconds = String(now.getSeconds()).padStart(2, "0");
+    const milliseconds = String(now.getMilliseconds()).padStart(3, "0");
+
+    return `${hours}:${minutes}:${seconds}:${milliseconds}`;
+  }
+  const [currentTime, setCurrentTime] = useState(getFormattedTime());
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      setCurrentTime(getFormattedTime());
+    }, 1000);
+
+    return () => {
+      clearInterval(intervalId);
+    };
+  }, []);
 
   // Effect to set initial selected image
   useEffect(() => {
@@ -15,64 +46,100 @@ const Product_detail = ({ data }) => {
   }, [data]);
 
   // Handle adding to cart
-  const handleAddToCart = () => {
+  const handleAddToCart = async () => {
+    setIsAddingToCart(true);
     if (selectedSize) {
-      setErrorMessage("Item has been added to cart successfully.");
-      console.log("Item has been added to cart successfully.");
-      setTimeout(() => {
-        setErrorMessage("");
-      }, 3000);
+      try {
+        axios.defaults.withCredentials = true;
+        let item = {
+          productId: data._id,
+          size: selectedSize,
+          quantity: 1,
+        };
+        const response = await axios.put(
+          `${import.meta.env.VITE_API_URL}carts`,
+          item,
+        );
+        dispatch(setCart(response.data.cart));
+        toast.success("Item added to cart", {
+          style: {
+            border: "1px solid green",
+            padding: "8px 16px",
+            color: "green",
+            borderRadius: "4px",
+          },
+          iconTheme: {
+            primary: "green",
+            secondary: "#FFFAEE",
+          },
+        });
+        setIsAddingToCart(false);
+      } catch (error) {
+        console.log(error);
+        toast.error("Failed to add item to cart", {
+          style: {
+            border: "1px solid red",
+            padding: "8px 16px",
+            color: "red",
+            borderRadius: "4px",
+          },
+        });
+        setIsAddingToCart(false);
+      }
     } else {
-      setErrorMessage("Please select a size before adding to cart.");
-      console.log("Please select a size before adding to cart.");
-
-      setTimeout(() => {
-        setErrorMessage("");
-      }, 2000);
+      toast.error("Select a size to add to cart", {
+        style: {
+          border: "1px solid red",
+          padding: "8px 16px",
+          color: "red",
+          borderRadius: "4px",
+        },
+      });
+      setIsAddingToCart(false);
     }
   };
 
   return (
-    <section className="product_container mb-20 mt-10 h-full border-y border-[#0B0B0B]">
+    <section className="product_container mb-20 mt-10 h-full border-y border-asisDark">
       {/* Product details */}
       {data ? (
         <section className="flex items-start gap-5">
           {/* Thumbnail images */}
-          <section className="gap flex basis-7 flex-col justify-center py-5">
+          <section className="gap flex basis-7 flex-col items-center justify-center py-5">
             {data.images?.map((img, index) => (
               <div
                 key={index}
                 onClick={() => setSelectedImage(img)}
-                className={` mb-5 flex h-20 w-24 cursor-pointer items-center justify-center bg-contain bg-no-repeat ${
+                className={` mb-5 flex h-20 w-24 cursor-pointer items-center justify-center bg-contain bg-center bg-no-repeat ${
                   img === selectedImage
                     ? `bg-[url('./assets/images/frames.png')]`
                     : ""
                 }`}
               >
                 <img
-                  src={`https://asis.blob.core.windows.net/asisimages/${img}`}
+                  src={`${import.meta.env.VITE_BLOB_URL}${img}`}
                   alt="collection_img"
-                  className="mr-5 h-16 w-14 object-cover object-top "
+                  className="h-16 w-14 object-cover object-center "
                 />
               </div>
             ))}
           </section>
 
           {/* Selected image */}
-          <section className="items-cent  flex basis-[45%] justify-center overflow-hidden border-x border-[#0B0B0B] px-3 py-5">
+          <section className="items-cente flex h-[47rem] w-[32rem] flex-1  justify-center  overflow-hidden border-x border-asisDark px-3 py-5">
             {selectedImage && (
               <img
-                src={`https://asis.blob.core.windows.net/asisimages/${selectedImage}`}
-                className="h-[31rem] w-[32rem]   overflow-hidden object-cover object-top"
+                src={`${import.meta.env.VITE_BLOB_URL}${selectedImage}`}
+                className="overflow-hidden object-contain object-top"
               />
             )}
           </section>
 
           {/* Product information */}
 
-          <section className="basis-[40%] py-5">
-            <p className="mb-9 text-3xl font-medium text-[#0B0B0B]">
-              /{data.name}
+          <section className="w-full flex-1 py-5">
+            <p className="mb-9 text-3xl font-medium uppercase text-asisDark">
+              / <VowelItalicizer text={data.name} />
             </p>
             {/* Sizes */}
             <section className="mb-5 flex flex-wrap gap-x-5 gap-y-3">
@@ -80,9 +147,9 @@ const Product_detail = ({ data }) => {
                 <div
                   key={index}
                   onClick={() => setSelectedSize(sizeData.size)}
-                  className={`flex h-10 w-24 items-center justify-center border text-xs font-medium uppercase ${
+                  className={`flex h-10 w-24 cursor-pointer items-center justify-center border text-xs font-medium uppercase ${
                     selectedSize === sizeData.size
-                      ? "cursor-pointer border-[#0B0B0B] text-[#0b0b0b]"
+                      ? " border-asisDark text-asisDark"
                       : " border-[#C4C4C4] text-[#C4C4C4]"
                   }`}
                 >
@@ -95,47 +162,75 @@ const Product_detail = ({ data }) => {
             <section className="">
               {/* Time */}
               <article className="flex items-center justify-between text-base font-semibold">
-                <p className="uppercase text-[#0B0B0B]">time</p>
-                <p className="text-[#17A500]">12:01:43:20</p>
+                <p className="uppercase text-asisDark">time</p>
+                <p className="text-[#17A500]">{currentTime}</p>
               </article>
 
               {/* Description */}
-              <p className="my-9 text-sm font-medium text-[#0B0B0B]">
-                {data.description}
+              <p className="my-9 text-sm font-medium text-asisDark">
+                {data.brief}
               </p>
 
               {/* Add to cart */}
 
               <button
-                className={`my-3 w-full  bg-[#0B0B0B] py-4 text-center text-xs font-semibold uppercase ${
+                className={`relative my-3 flex max-h-12  w-full justify-center  py-4 text-center text-xs font-semibold uppercase ${
                   selectedSize
-                    ? "cursor-pointer text-[#FFFFFF]"
-                    : " cursor-default text-[#C4C4C4]"
+                    ? "bg-asisDark text-[#FFFFFF]"
+                    : "bg-asisDark/70 text-[#C4C4C4]"
                 }`}
+                disabled={isAddingToCart}
                 onClick={() => {
                   handleAddToCart();
                 }}
               >
-                Add to cart -{data.price?.toLocaleString()} NGN
+                {isAddingToCart ? (
+                  <AddToCartLoading />
+                ) : (
+                  <p>
+                    Add to cart-{" "}
+                    {Intl.NumberFormat("en-US", {
+                      style: "currency",
+                      currency: "USD",
+                    }).format(data.price)}{" "}
+                    USD
+                  </p>
+                )}
               </button>
 
               {/* Add to wishlist */}
-              <button className="mb-3 w-full cursor-pointer border border-[#0B0B0B] py-4 text-center text-xs font-semibold uppercase text-[#0B0B0B]">
+              {/* <button className="relative mb-3 w-full cursor-pointer border border-asisDark py-4 text-center text-xs font-semibold uppercase text-asisDark">
                 add to wishlist
-              </button>
+              </button> */}
 
               {/* Accordion */}
-              <section className="border-y border-[#0B0B0B] text-sm uppercase text-[#0B0B0B] ">
-                <article className="flex cursor-pointer items-center justify-between border-b border-[#0B0B0B] py-2">
+              <section
+                onClick={() => setShowDescription((prev) => !prev)}
+                className="border-y border-asisDark text-sm uppercase text-asisDark "
+              >
+                <article className="border-b1 flex cursor-pointer items-center justify-between border-asisDark py-2 font-semibold">
                   <p>product details</p>
-                  <img src={down} alt="down" />
+                  <img
+                    className={`transition-all duration-300 ${
+                      showDescription ? "rotate-180 transform" : ""
+                    }`}
+                    src={down}
+                    alt="down"
+                  />
                 </article>
 
-                <article className="flex cursor-pointer items-center justify-between py-2">
+                {/* <article className="flex cursor-pointer items-center justify-between py-2">
                   <p>size guild</p>
                   <img src={down} alt="down" />
-                </article>
+                </article> */}
               </section>
+              <div
+                className={`grid border-b border-asisDark  text-sm text-asisDark/80 transition-all duration-300 ${
+                  showDescription ? "grid-rows-[1fr] py-2" : "grid-rows-[0fr]"
+                } `}
+              >
+                <p className="overflow-hidden">{data.description}</p>
+              </div>
             </section>
           </section>
         </section>
